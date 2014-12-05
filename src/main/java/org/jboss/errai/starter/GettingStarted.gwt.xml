@@ -7,4 +7,6 @@
 <inherits name="org.jboss.errai.ui.UI"/>
 <inherits name="org.jboss.errai.ui.nav.Navigation"/>
 <inherits name="org.jboss.errai.databinding.DataBinding"/>
+
+  <add-linker name="xsiframe" />
 </module>
