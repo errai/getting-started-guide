@@ -14,22 +14,8 @@ import javax.annotation.PostConstruct;
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
 @Page(role = DefaultPage.class)
-@Templated
+@Templated("WelcomePage.html#main")
 public class WelcomePage extends Composite{
-    @Inject
-    Button mavenButton;
-
-    @Inject
-    Button javaButton;
-
-    @Inject
-    Anchor gwtLink;
-
-    @Inject
-    Anchor cdiLink;
-
-    @Inject
-    Anchor jaxRsLink;
 
     @PostConstruct
     public void setup() {
