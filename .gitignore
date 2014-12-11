@@ -5,6 +5,7 @@
 .project
 .settings
 .metadata/*
+.forge_settings
 .gwt-tmp/
 target/
 bin/
