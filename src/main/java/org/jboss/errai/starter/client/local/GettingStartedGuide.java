@@ -4,7 +4,6 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import org.jboss.errai.ioc.client.api.EntryPoint;
-import org.jboss.errai.ui.client.widget.ListWidget;
 import org.jboss.errai.ui.nav.client.local.Navigation;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
@@ -40,5 +39,6 @@ public class GettingStartedGuide extends Composite {
     public void clientMain() {
         content.add(navigation.getContentPanel());
         RootPanel.get().add(this);
+
     }
 }

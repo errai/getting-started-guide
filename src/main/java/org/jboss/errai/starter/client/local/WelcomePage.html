@@ -1,8 +1,69 @@
-<div><h1>
-	Welcome to Errai!
-</h1>
-<h2>What is Errai?</h2>
-<p>Errai is a GWT-based framework for building rich web applications using next-generation web technologies. Built
-   on-top of ErraiBus, the framework provides a unified federation and RPC infrastructure with true, uniform,
-   asynchronous messaging across the client and server.
-</p></div>
+<div id="WelcomePage">
+	<div class="title"><h1>Getting Started</h1></div>
+	<div class="page">
+		<h2>What is Errai?</h2>
+
+		<p>Errai is a framework which combines a constellation of web and server-side technologies to assist you in
+		   developing
+		   large, scalable rich web applications using a consistent, standardized programming model for client and server
+		   development.
+		</p>
+
+		<!--<h2>Required Software</h2>-->
+
+		<!--<ul>-->
+			<!--<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Development Kit (JDK 6+)</a></li>-->
+			<!--<li><a href="http://maven.apache.org/download.html">Dependency Management - Maven 3+</a></li>-->
+			<!--<li><a href="http://www.wildfly.org/">Application Server - WildFly 8+ (not required for development mode)</a></li>-->
+		<!--</ul>-->
+
+		<h2>Core Technologies</h2>
+
+		<p>Errai is an end-to-end framework, in that, parts of the framework run and operate within the client and parts
+		   run and operate within the server. To accomplish this, Errai relies on a set of various technologies as
+		   explained below. If you are not already familiar with these technologies, it is advisable to read up on them
+		   before you start using Errai.</p> <!--reword last sentence?-->
+		<ul>
+			<li>
+				<a href="http://www.gwtproject.org/">Google Web Toolkit (GWT)</a>
+
+				<!--<p>GWT is a toolkit built around a Java-to-JavaScript compiler. It provides a JRE emulation library, abstraction-->
+				   <!--of browser quirks, a development mode runtime, and tools for native JavaScript integration.</p>-->
+
+				<!--<p>Errai uses GWT to accomplish the translation of concepts such as CDI into the browser, which enables a-->
+				   <!--consistent client and server programming experience.</p>-->
+			</li>
+			<li>
+				<a href="http://cdi-spec.org/">Contexts and Dependency Injection (CDI)</a>
+
+				<!--<p>CDI is a standard part of the Java EE 6.0 stack, and is defined in the JSR-299 specification. CDI is the main-->
+				   <!--programming model explored in this guide.-->
+				   <!--&lt;!&ndash;need this sentence?&ndash;&gt;As such, the basic concepts of CDI will be introduced in this guide,-->
+				   <!--so pre-existing knowledge is not strictly necessary.</p>-->
+
+				<!--<p>Errai’s support for CDI is two-fold. For the server-side, Errai has integration with Weld, which is the-->
+				   <!--reference implementation (RI) of the JSR-299 specification. The client-side integration for CDI is provided-->
+				   <!--by-->
+				   <!--the Errai CDI &lt;!&ndash;link to Errai CDI guide page&ndash;&gt; extension. Errai CDI implements a subset of the JSR-299-->
+				   <!--specification to provide the CDI programming model within client code.</p>-->
+			</li>
+			<li>
+				<a href="https://jax-rs-spec.java.net/">Java API for RESTful Web Services (JAX-RS)</a>
+
+				<!--<p>JAX-RS is an API which provides a standardized programming model for specifying web services based around the-->
+				   <!--concept of the Representational State Transfer (REST) architecture. REST has by and far become the preferred-->
+				   <!--way of developing web services, and is used pervasively in modern web applications. Errai provides a set of-->
+				   <!--tools to make working with JAX-RS easier.</p>-->
+			</li>
+			<li>
+				<a href="#"><!-- link to Errai Bus page? -->ErraiBus</a>
+
+				<!--<p>ErraiBus is an underlying transport technology which provides true, bidirectional, asynchronous messaging-->
+				   <!--between the client and the server. It powers a myriad of technologies throughout the Errai framework, from-->
+				   <!--RPC to CDI Events.</p>-->
+			</li>
+		</ul>
+
+		<h2>What's in this guide?</h2>
+	</div>
+</div>
