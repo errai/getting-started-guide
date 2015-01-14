@@ -10,6 +10,15 @@ h1 {
     font-size: 40px;
 }
 
+h3 {
+    color: #BA7416;
+}
+
+h5 {
+    margin-top: 30px;
+    font-weight: bold;
+}
+
 .overview {
     color: #4b2512;
     font-size: 10px;
@@ -73,4 +82,17 @@ body {
 
 #sidebar {
     padding: 0;
+}
+
+.textblock {
+    display: block;
+    padding: 20px;
+    border: 1px solid lightgrey;
+    border-radius: 0;
+    margin: 10px 0;
+}
+
+.tip {
+    color: #BA7416;
+    font-weight: bold;
 }

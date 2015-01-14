@@ -25,20 +25,98 @@
        to wherever you would like the application’s directory to be located. <!--TODO: rephrase last sentence-->
     </p>
 
-    <h2>JBoss Forge</h2>
+    <h2>Your First App</h2>
+
+    <p>There are two ways for you to create your first Errai application. You can use our sample app, Errai Tutorial, as a
+       starting point, or you can create a barebones Errai app using JBoss Forge, that will have all the basic dependencies in place for you.
+       Both options are explained in detail below.
+    </p>
+
+    <h3>Errai Tutorial</h3>
+
+    <p>The Errai Tutorial is a basic sample application that showcases all the major features of Errai. You can use it both as an example to explore
+       Errai's functionality and as a base upon which to build your own more complex web app. The Errai Tutorial can be downloaded from the GitHub
+       repository <a href="https://github.com/errai/errai-tutorial">here</a>.
+    </p>
+
+    <h3>JBoss Forge</h3>
 
     <p>To get you started with your first Errai app, we will use JBoss Forge and the Errai Forge Addon to create a new app with the basic
        dependencies already in place. Download the latest version of JBoss Forge <a href="http://forge.jboss.org/download">here</a>.
       <br/>
-      </p>
-    <p>
-       Add Forge to your PATH environment variable. In Linux, you can add the following line to your $HOME/.bashrc file:
-
     </p>
 
     <p>
-      Once installed, you need to add the Errai Forge Addon to your installation to create a new Errai app.
+      Once installed, you need to add the Errai Forge Addon to your installation to create a new Errai app. Run the following command in your
+      terminal window:
+      <br/>
+      <code class="textblock">forge --install org.jboss.errai.forge:errai-forge-addon,$VERSION</code>
+      where $VERSION is replaced by the latest Errai version (currently 3.1.1-SNAPSHOT).
     </p>
 
+    <p><h5>1. Run Forge from your terminal:</h5>
+    <code class="textblock">forge</code>
+
+    You should see a prompt that looks like this (where home is the directory in which you started Forge):
+    <code class="textblock">[home]</code>
+
+    <h5>2. Run the following command to create a new project:</h5>
+    <code class="textblock">[home] project-new --named errai-forge-demo --topLevelPackage org.jboss.errai.demo --version 3.1.1-SNAPSHOT
+                            --finalName
+                            "Errai Forge Demo" --type war --buildSystem Maven"</code>
+
+    In the above parameters:
+    <ul>
+      <li><i>--named</i> is the artifactId.</li>
+      <li><i>--topLevelPackage</i> is the groupId.</li>
+      <li><i>--version</i> defaults to 1.0.0-SNAPSHOT.</li>
+      <li><i>--finalName</i> is the human-readable name of your project.</li>
+      <li><i>--type</i> is the packaging type of your project.</li>
+      <li><i>--buildSystem</i> is the build system used by your project.</li>
+    </ul>
+
+    Forge will now prompt you from within your project:
+    <code class="textblock">[errai-forge-demo]</code>
+
+    <h5>3. Run the <b>errai-setup</b> command to install the core dependencies and configurations required for all Errai features:</h5>
+    <code class="textblock">errai-setup --versionSelect 3.0-SNAPSHOT --logicalModuleName org.jboss.errai.demo.ErraiDemo --moduleName
+                            ErraiDemo</code>
+    In the above parameters:
+    <ul>
+      <li><i>--versionSelect</i> is the version of Errai you wish to use.</li>
+      <li><i>--logicalModuleName</i> is the logical name of the GWT module for your project.</li>
+      <li><i>--moduleName</i> is a short name used for referencing your GWT module in urls.</li>
+    </ul>
+
+    You can also just type <code>errai-setup</code> instead, and the Errai Forge Addon will prompt you with an interactive interface to enter the
+    rest of the values.
+
+    <span class="tip textblock">TIP:  If you are running errai-setup on a pre-existing project with a GWT module you can replace the
+      <i>--logicalModule</i> option with <i> --moduleSelect</i> followed by the logical name of your GWT module.
+    </span>
+
+    <h5>Add Errai Features</h5>
+    The <code>errai-add-features</code> command adds dependencies and configurations for any selected modules in Errai.
+    <br />
+    To see a list of Errai features, type the following command and press TAB to auto-complete the available Errai modules:
+    <code class="textblock">errai-add-features --featureSelect</code>
+    <br />
+    <!--Here are some brief descriptions of the features (for more information find the documentation on the Errai website):-->
+    <!--<br />-->
+    <!--<ul>-->
+      <!--<li><i>errai-messaging</i> provides a bi-directional message bus and remote procedure calls.</li>-->
+      <!--<li><i>errai-ioc</i> provides a client-side dependency injection container.</li>-->
+      <!--<li><i>errai-cdi-integration</i> provides a client-side CDI container, network transmittable CDI events, and integration with Errai and-->
+             <!--server-side CDI containers.</li>-->
+      <!--<li><i>errai-ui</i> provides HTML5 templating and i18n support.</li>-->
+      <!--<li><i>errai-data-binding</i> synchronizes state between errai-ui templates and model objects.</li>-->
+      <!--<li><i>errai-navigation</i> provides "page" navigation within a single-page app, with compile-time verified internal links.</li>-->
+      <!--<li><i>errai-jpa-client</i> implements a subset of the JPA specification in the browser (on top of local storage).</li>-->
+      <!--<li><i>errai-jpa-datasync</i> synchronizes state between server- and client-side JPA entities.</li>-->
+      <!--<li><i>errai-jaxrs</i> provides a declarative client-side API for accessing JAX-RS endpoints.</li>-->
+      <!--<li><i>errai-security</i> provides a declarative API for securing errai-navigation pages, errai-ui elements, and errai-messaging RPC services.</li>-->
+      <!--<li><i>errai-cordova</i> provides an API for mobile device components and configures a plugin for compiling Errai/GWT applications natively.</li>-->
+    <!--</ul>-->
+    </p>
   </div>
 </div>

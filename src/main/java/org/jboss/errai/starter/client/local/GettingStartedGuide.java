@@ -18,7 +18,6 @@ import javax.inject.Inject;
 @Templated
 public class GettingStartedGuide extends Composite {
 
-
     @Inject
     private Navigation navigation;
 
