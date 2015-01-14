@@ -1,11 +1,18 @@
+.forge_settings
+.errai
+src/main/webapp/app/
+src/main/gwt-unitCache/
+rebel.xml
+.forge_settings
+src/main/webapp/WEB-INF/deploy/app/rpcPolicyManifest/
+src/main/webapp/WEB-INF/classes/
+src/main/webapp/WEB-INF/lib/
 *.iml
-.idea/*
-*/.idea/*
+/.idea/*
 .classpath
 .project
 .settings
 .metadata/*
-.forge_settings
 .gwt-tmp/
 target/
 bin/
@@ -35,3 +42,5 @@ gwt-unitCache/
 class_list.txt
 *.jpage
 .factorypath
+.bowerrc
+bower.json
