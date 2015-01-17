@@ -1,0 +1,56 @@
+<div id="ErraiNavigationPage">
+	<div class="title"><h1>Errai Navigation</h1></div>
+	<div class="page">
+		<h2>Introduction</h2>
+
+		<p>Errai Navigation is a system to create multiple bookmarkable web pages within a single web app. It
+		   offers a declarative way to configure pages and links and provides compile-time link referential safety (i.e.
+		   no broken links). Errai Navigation also provides clean integration with
+			<a href="#Errai UI">Errai UI</a> and other view technologies.
+		</p>
+
+		<h2>Installation Instructions</h2>
+
+		<h3>Errai Forge Addon</h3>
+
+		<p>To run the code in this section, use the Errai Forge Addon to add the <code>errai-navigation</code> feature
+		   to your project.
+		</p>
+
+		<h3>Manual Installation</h3>
+
+		<p>If you are not using the Errai Forge addon, here are the steps to manually add Errai Navigation to your
+		   project. Note that if you are using the Errai Tutorial to follow along, you do not need to complete these
+		   steps.
+		</p>
+
+		<h4>Maven Dependencies</h4>
+
+		<p>Add the following dependencies to your pom.xml</p>
+		<pre data-language="html" class="code-snippet">
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-navigation</artifactId>
+			<version>${errai.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-cdi-client</artifactId>
+			<version>${errai.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		</pre>
+
+		<h4>GWT Module Descriptor</h4>
+
+		<p>Once you have Errai UI Navigation on your classpath, ensure your application inherits the GWT module as well.
+		   Add this line to your application’s *.gwt.xml file:
+		</p>
+		<pre data-language="html" class="code-snippet">
+		<inherits name="org.jboss.errai.ui.nav.Navigation"/>
+		</pre>
+		<p class="tip textblock">TIP: In our example, the GWT module file is located at <code>src/main/java/org/jboss/errai/demo/ErraiDemo.gwt.xml</code>
+		</p>
+	</div>
+</div>
