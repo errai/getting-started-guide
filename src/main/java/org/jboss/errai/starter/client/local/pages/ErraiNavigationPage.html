@@ -31,16 +31,14 @@
       <dependency>
         <groupId>org.jboss.errai</groupId>
         <artifactId>errai-navigation</artifactId>
-        <version>${errai.version}</version>
         <scope>provided</scope>
       </dependency>
 
 		<dependency>
-      <groupId>org.jboss.errai</groupId>
-      <artifactId>errai-cdi-client</artifactId>
-      <version>${errai.version}</version>
-      <scope>provided</scope>
-    </dependency>
+          <groupId>org.jboss.errai</groupId>
+          <artifactId>errai-cdi-client</artifactId>
+          <scope>provided</scope>
+        </dependency>
 		</pre>
 
     <h4>GWT Module Descriptor</h4>
@@ -60,7 +58,8 @@
     <ul>
       <li>The <code>@Page</code> annotation marks any widget as a page.</li>
       <li>The <code>TransitionTo&lt;P&gt;></code>, <code>TransitionAnchor&lt;P&gt;</code>, and <code>TransitionToRole&lt;R&gt;</code>
-          classes are injectable types that provide links to other pages.</li>
+          classes are injectable types that provide links to other pages.
+      </li>
       <li>The <code>Navigation</code> singleton offers control over the navigation system as a whole.</li>
     </ul>
     <p>
@@ -72,8 +71,10 @@
     </p>
 
     <h3>Declaring a Page</h3>
-    Pages in Errai are subclasses of GWT's Widget class. To declare a page, simply annotate any subclass of Widget with the
-    <code>@Page</code> annotation:
+
+    <p>Pages in Errai are subclasses of GWT's Widget class. To declare a page, simply annotate any subclass of
+       Widget with the
+      <code>@Page</code> annotation:</p>
 
     <h5>ItemListPage.java</h5>
     <pre class="code-snippet-small" data-language="java">
@@ -83,7 +84,8 @@
       }
     </pre>
     <p>
-      By default, the name of a page is the simple name of the class that declares it. In the above example, the ItemListPage will fill the
+      By default, the name of a page is the simple name of the class that declares it. In the above example, the
+      ItemListPage will fill the
       navigation panel whenever the browser’s location bar reads
       <code class="textblock">localhost:8888/errai-forge-demo/index.html<strong>#ItemListPage</strong></code>
       If you prefer a different page name, use the @Page annotation’s path attribute:
@@ -98,6 +100,59 @@
     <p>Using this in our ErraiDemo example, the URL to the ItemListPage would look
        like<code class="textblock">localhost:8888/errai-forge-demo/index.html<strong>#items</strong></code></p>
 
+    <h4>Default Page</h4>
+
+    <p>Every app using Errai Navigation must have exactly one <strong>default page</strong>. This requirement is
+       enforced at compile time.
+       The default (starting) page is the one that is displayed when there is no fragment ID in the URL bar. In
+       addition, in case of any
+       page navigation errors, Errai's default error handling behaviour is to navigate back to the default page.
+      <br/>
+       Use the <code>role = DefaultPage.class</code> attribute to declare the default starting page, like this:
+    </p>
+    <h5>ItemListPage.java</h5>
+    <pre class="code-snippet-small" data-language="java">
+      @Page(role = DefaultPage.class)
+      public class ItemListPage extends Composite {
+        // Some code...
+      }
+	</pre>
+
+    <h4>Page Roles</h4>
+
+    <p><code>DefaultPage.class</code> is just one example of a page role. A page role is simply an interface used to
+                                      mark @Page types. The main uses for page roles are as follows:</p>
+    <ul>
+      <li>Using the Navigation singleton, you can look up all pages that have a specific role.</li>
+      <li>If a role is unique (as is the case with DefaultPage) then it should extend UniquePageRole. This will allow
+          you to use Navigation to navigate to the page by its role.
+      </li>
+    </ul>
+
+    <h3>Page Lifecycles</h3>
+
+    <p>There are four annotations related to page lifecycle events: <code>@PageShowing, @PageShown, @PageHiding, and
+                                                                          @PageHidden</code>.These annotations designate
+       methods so a page widget can be notified when it is displayed or hidden. The actual order of events is
+       described in the next section.</p>
+
+    <h5>ItemListPage</h5>
+    <pre class="code-snippet" data-language="java">
+      @Page
+      public class ItemListPage extends VerticalPanel {
+        @PageShowing
+        private void preparePage() {
+        }
+
+        @PageHiding
+        private void unpreparePage() {
+        }
+
+        // Some code...
+    }
+    </pre>
+
+    <h4>Lifecycle Phases</h4>
 
   </div>
 </div>
