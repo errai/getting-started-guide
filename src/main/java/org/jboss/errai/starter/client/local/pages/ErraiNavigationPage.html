@@ -1,10 +1,13 @@
 <div id="ErraiNavigationPage">
-  <div class="title"><h1>Errai Navigation</h1></div>
+  <div class="title"><h1>Errai Navigation</h1>
+    <!--<button id="echo" type="button">Echo</button>-->
+  </div>
   <div class="page">
     <h2>Introduction</h2>
 
     <p>Errai Navigation is a system to create multiple bookmarkable web pages within a single web app. It
-       offers a declarative way to configure pages and links and provides compile-time link referential safety (i.e.
+       offers a declarative way to configure pages and links and provides compile-time link referential safety
+       (i.e.
        no broken links). Errai Navigation also provides clean integration with
       <a href="#Errai UI">Errai UI</a> and other view technologies.
     </p>
@@ -76,28 +79,28 @@
        Widget with the
       <code>@Page</code> annotation:</p>
 
-    <h5>ItemListPage.java</h5>
+    <h5>ItemPage.java</h5>
     <pre class="code-snippet-small" data-language="java">
       @Page
-      public class ItemListPage extends Composite {
+      public class ItemPage extends Composite {
         // Some code...
       }
     </pre>
     <p>
       By default, the name of a page is the simple name of the class that declares it. In the above example, the
-      ItemListPage will fill the
+      ItemPage will fill the
       navigation panel whenever the browser’s location bar reads
-      <code class="textblock">localhost:8888/errai-forge-demo/index.html<strong>#ItemListPage</strong></code>
+      <code class="textblock">localhost:8888/errai-forge-demo/index.html<strong>#ItemPage</strong></code>
       If you prefer a different page name, use the @Page annotation’s path attribute:
     </p>
-    <h5>ItemListPage.java</h5>
+    <h5>ItemPage.java</h5>
     <pre class="code-snippet-small" data-language="java">
       @Page(path="items")
-      public class ItemListPage extends Composite {
+      public class ItemPage extends Composite {
         // Some code...
       }
     </pre>
-    <p>Using this in our ErraiDemo example, the URL to the ItemListPage would look
+    <p>Using this in our ErraiDemo example, the URL to the ItemPage would look
        like<code class="textblock">localhost:8888/errai-forge-demo/index.html<strong>#items</strong></code></p>
 
     <h4>Default Page</h4>
@@ -110,10 +113,10 @@
       <br/>
        Use the <code>role = DefaultPage.class</code> attribute to declare the default starting page, like this:
     </p>
-    <h5>ItemListPage.java</h5>
+    <h5>ItemPage.java</h5>
     <pre class="code-snippet-small" data-language="java">
       @Page(role = DefaultPage.class)
-      public class ItemListPage extends Composite {
+      public class ItemPage extends Composite {
         // Some code...
       }
 	</pre>
@@ -129,6 +132,35 @@
       </li>
     </ul>
 
+    <h3>Page State Parameters</h3>
+
+    <p>Oftentimes, a page widget is used to represent an instance of a class of things. For example, our ItemPage
+    may be used as a template to display a particular user-selected item available at a store. In this case, it is
+    important that the bookmarkable navigation URL includes not only the name of the page but also an identifier for
+    the particular item being displayed.</p>
+
+    <p>To do this, Errai Navigation uses page state parameters. Consider the following page widget:</p>
+
+    <pre class="code-snippet-small" data-language="java">
+      @Page
+      public class ItemPage extends VerticalPanel {
+
+        @PageState
+        private int itemId;
+
+        // Code ...
+      }
+    </pre>
+
+    <p>This page would be accessible at a URL like the following: </p>
+    <code class="textblock">http://www.company.com/store/index.html<strong>#ItemPage;id=4</strong></code>
+
+    <p>where the host address is <code>www.company.com</code> and the application context is <code>store</code>. Before
+       loading up the page, the Navigation singleton would assign <code>itemId = 4</code>.</p>
+
+    <p>Page state parameters can also be accessed using URLs with path parameters. In this case, you have to declare the
+    template of the page’s path in the path field of the @Page annotation. As an example, consider the following code:</p>
+
     <h3>Page Lifecycles</h3>
 
     <p>There are four annotations related to page lifecycle events: <code>@PageShowing, @PageShown, @PageHiding, and
@@ -136,10 +168,10 @@
        methods so a page widget can be notified when it is displayed or hidden. The actual order of events is
        described in the next section.</p>
 
-    <h5>ItemListPage</h5>
+    <h5>ItemPage.java</h5>
     <pre class="code-snippet" data-language="java">
       @Page
-      public class ItemListPage extends VerticalPanel {
+      public class ItemPage extends VerticalPanel {
         @PageShowing
         private void preparePage() {
         }
@@ -152,7 +184,23 @@
     }
     </pre>
 
-    <h4>Lifecycle Phases</h4>
+    <h4>Lifecycle Phases</h4><!--do we really need this section -->
+    <p>Here is the order of execution of lifecycle pages when transitioning from one page to another:</p>
+
+    <ol>
+      <li>The fragment identifier in the URL changes.</li>
+      <li>The @PageHiding method on the current (about-to-be-navigated-away-from) page is invoked.</li>
+      <li>The current page is removed from the browser’s DOM.</li>
+      <li>The @PageHidden method on the just-removed page is invoked.</li>
+      <li>The navigation system looks up the corresponding new '@Page' bean in the client-side bean manager.</li>
+      <li>The navigation system writes to all @PageState fields in the new page bean (more on this in the next
+          section).
+      </li>
+      <li>The @PageShowing method of the new page is invoked.</li>
+      <li>The new page widget is added to the DOM (as a direct child of the navigation content panel).</li>
+      <li>The @PageShown method of the new page is invoked.</li>
+    </ol>
+
 
   </div>
 </div>

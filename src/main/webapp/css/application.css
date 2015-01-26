@@ -26,6 +26,13 @@ h6 {
     font-weight: bold;
 }
 
+code {
+    color: #202020;
+}
+
+code.textblock {
+    color: #c7254e;
+}
 .overview {
     color: #4b2512;
     font-size: 10px;
