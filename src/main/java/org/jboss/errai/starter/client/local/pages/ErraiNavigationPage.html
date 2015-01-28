@@ -5,26 +5,22 @@
   <div class="page">
     <h2>Introduction</h2>
 
-    <p>Errai Navigation is a system to create multiple bookmarkable web pages within a single web app. It
-       offers a declarative way to configure pages and links and provides compile-time link referential safety
-       (i.e.
-       no broken links). Errai Navigation also provides clean integration with
-      <a href="#Errai UI">Errai UI</a> and other view technologies.
-    </p>
+    <p>Errai Navigation is a system to create multiple bookmarkable web pages within a single web app. It offers a
+       declarative way to configure pages and links and provides compile-time link referential safety (i.e. no broken
+       links). Errai Navigation also provides clean integration with <a href="#Errai UI">Errai UI</a> and other view
+       technologies. </p>
 
     <h2>Installation Instructions</h2>
 
     <h3>Errai Forge Addon</h3>
 
-    <p>To run the code in this section, use the Errai Forge Addon to add the <code>errai-navigation</code> feature
-       to your project.
-    </p>
+    <p>To run the code in this section, use the Errai Forge Addon to add the <code>errai-navigation</code> feature to
+       your project. </p>
 
     <h3>Manual Installation</h3>
 
-    <p>If you are not using the Errai Forge addon, here are the steps to manually add Errai Navigation to your
-    project. Note that if you are using the Errai Tutorial to follow along, you do not need to complete these
-    steps.
+    <p>If you are not using the Errai Forge addon, here are the steps to manually add Errai Navigation to your project. Note
+    that if you are using the Errai Tutorial to follow along, you do not need to complete these steps.
     </p>
 
     <h4>Maven Dependencies</h4>
@@ -46,8 +42,8 @@
 
     <h4>GWT Module Descriptor</h4>
 
-    <p>Once you have Errai UI Navigation on your classpath, ensure your application inherits the GWT module as well.
-    Add this line to your application’s *.gwt.xml file:
+    <p>Once you have Errai UI Navigation on your classpath, ensure your application inherits the GWT module as well. Add
+    this line to your application’s *.gwt.xml file:
     </p>
 		<pre data-language=html class="code-snippet">
 		<inherits name="org.jboss.errai.ui.nav.Navigation"/>
@@ -60,27 +56,27 @@
     <p>Errai Navigation has these main parts: </p>
     <ul>
       <li>The <code>@Page</code> annotation marks any widget as a page.</li>
-      <li>The <code>TransitionTo&lt;P&gt;></code>, <code>TransitionAnchor&lt;P&gt;</code>, and <code>TransitionToRole&lt;R&gt;</code>
+      <li>The <code>TransitionTo&lt;P&gt;</code>, <code>TransitionAnchor&lt;P&gt;</code>, and <code>TransitionToRole&lt;R&gt;</code>
           classes are injectable types that provide links to other pages.
       </li>
       <li>The <code>Navigation</code> singleton offers control over the navigation system as a whole.</li>
     </ul>
     <p>
-      The Navigation singleton owns a GWT Panel called the navigation panel . This panel always contains a widget corresponding to the
-      fragment ID (the part after the # symbol) in the browser’s location bar. Whenever the fragment ID changes for any reason (for
-      example, because the user pressed the back button, navigated to a bookmarked URL, or simply typed a fragment ID by hand), the
-      widget in the navigation panel is replaced by the widget associated with that fragment ID. Likewise, when the application asks the
-      navigation system to follow a link, the fragment ID in the browser’s location bar is updated to reflect the new current page.
+      The Navigation singleton owns a GWT Panel called the navigation panel . This panel always contains a widget
+      corresponding to the fragment ID (the part after the # symbol) in the browser’s location bar. Whenever the
+      fragment ID changes for any reason (for example, because the user pressed the back button, navigated to a
+      bookmarked URL, or simply typed a fragment ID by hand), the widget in the navigation panel is replaced by the
+      widget associated with that fragment ID. Likewise, when the application asks the navigation system to follow a
+      link, the fragment ID in the browser’s location bar is updated to reflect the new current page.
     </p>
 
     <h3>Declaring a Page</h3>
 
-    <p>Pages in Errai are subclasses of GWT's Widget class. To declare a page, simply annotate any subclass of
-       Widget with the
-      <code>@Page</code> annotation:</p>
+    <p>Pages in Errai are subclasses of GWT's Widget class. To declare a page, simply annotate any subclass of Widget
+       with the <code>@Page</code> annotation:</p>
 
     <h5>ItemPage.java</h5>
-    <pre class="code-snippet-small" data-language="java">
+    <pre class="code-snippet" data-language="java">
       @Page
       public class ItemPage extends Composite {
         // Some code...
@@ -88,35 +84,29 @@
     </pre>
     <p>
       By default, the name of a page is the simple name of the class that declares it. In the above example, the
-      ItemPage will fill the
-      navigation panel whenever the browser’s location bar reads
-      <code class="textblock">localhost:8888/errai-forge-demo/index.html<strong>#ItemPage</strong></code>
-      If you prefer a different page name, use the @Page annotation’s path attribute:
-    </p>
+      ItemPage will fill the navigation panel whenever the browser’s location bar reads <code class="textblock">localhost:8888/errai-forge-demo/index.html<strong>#ItemPage</strong></code>
+      If you prefer a different page name, use the @Page annotation’s path attribute: </p>
     <h5>ItemPage.java</h5>
-    <pre class="code-snippet-small" data-language="java">
+    <pre class="code-snippet" data-language="java">
       @Page(path="items")
       public class ItemPage extends Composite {
         // Some code...
       }
     </pre>
-    <p>Using this in our ErraiDemo example, the URL to the ItemPage would look
-       like<code class="textblock">localhost:8888/errai-forge-demo/index.html<strong>#items</strong></code></p>
+    <p>Using this in our ErraiDemo example, the URL to the ItemPage would look like<code class="textblock">localhost:8888/errai-forge-demo/index.html<strong>#items</strong></code>
+    </p>
 
     <h4>Default Page</h4>
 
     <p>Every app using Errai Navigation must have exactly one <strong>default page</strong>. This requirement is
-       enforced at compile time.
-       The default (starting) page is the one that is displayed when there is no fragment ID in the URL bar. In
-       addition, in case of any
-       page navigation errors, Errai's default error handling behaviour is to navigate back to the default page.
-      <br/>
-       Use the <code>role = DefaultPage.class</code> attribute to declare the default starting page, like this:
-    </p>
+       enforced at compile time. The default (starting) page is the one that is displayed when there is no fragment ID
+       in the URL bar. In addition, in case of any page navigation errors, Errai's default error handling behaviour is
+       to navigate back to the default page. <br/> Use the <code>role = DefaultPage.class</code> attribute to declare
+       the default starting page, like this: </p>
     <h5>ItemPage.java</h5>
-    <pre class="code-snippet-small" data-language="java">
+    <pre class="code-snippet" data-language="java">
       @Page(role = DefaultPage.class)
-      public class ItemPage extends Composite {
+      public class ItemPage extends VerticalPanel {
         // Some code...
       }
 	</pre>
@@ -132,16 +122,84 @@
       </li>
     </ul>
 
+    <h3>Transitioning Between Pages</h3>
+
+    <p>Errai Navigation allows for injected links between pages of your web app. There is no limit to the number of
+       links that can be used. The only restriction is that the target of the link must be a Widget type annotated with
+       @Page. There are two mechanisms for providing links between pages of your web app:
+      <code>TransitionAnchor&lt;P&gt;
+      </code> and <code>TransitionTo&lt;P&gt;</code>.
+    </p>
+
+    <h4>TransitionAnchor</h4>
+    <p>The easiest way to declare a link between pages is to inject an instance of
+      <code>TransitionAnchor&lt;P&gt;</code>, where P is the class of the target page.<br />
+
+    Here is an example declaring an anchor link from the templated WelcomePage to the ItemPage. The first code
+    sample would go in WelcomePage.java while the second would go in the WelcomePage.html, the associated HTML
+    template (more on templated pages in Errai UI).<!-- TODO: Add link to Errai UI -->
+    </p>
+    <h5>WelcomePage.java</h5>
+    <pre class="code-snippet" data-language="java" >
+      @Page(role = DefaultPage.class)
+      @Templated
+      public class WelcomePage extends Composite {
+
+        @Inject
+        @DataField
+        TransitionAnchor&lt;ItemListPage&gt; itemLink;
+
+        // Some code ...
+      }
+    </pre>
+    <h5>WelcomePage.html</h5>
+    <pre class="code-snippet" data-language="html">
+      <div>
+        <a id="itemLink">Go to Item List Page</a>
+      </div>
+    </pre>
+
+    <h4>TransitionTo</h4>
+    <p>Sometimes it is necessary to manually transition between pages (such as in response to an event being fired).
+    To declare a manual link from one page to another, inject an instance of <code>TransitionTo&lt;P&gt;</code>, where P
+    is the class of the target page. This code declares a manual link from the ItemPage to the WelcomePage:</p>
+
+    <h5>ItemPage.java</h5>
+    <pre class="code-snippet" data-language="java">
+      @Page
+      public class ItemPage extends Composite {
+
+        @Inject
+        TransitionTo&lt;WelcomePage&gt; startButtonClicked;
+
+        @Inject
+        Button startButton;
+
+        @EventHandler("startButton")
+        public void onStartButtonClicked(ClickEvent e) {
+          startButtonClicked.go();
+        }
+      }
+    </pre>
+
+    <h4>TransitionTo with a UniquePageRole</h4>
+    <p>For convenience, it is also possible to transition to a page by its role using an injected
+       <code>TransitionToRole&lt;R&gt;</code>
+       where R is an interface extending UniquePageRole. This type is used exactly as the <code>TransitionTo</code>;
+       just inject a parameterized instance and invoke the go() method. <br/>
+       By injecting a <code>TransitionToRole</code> into a <code>@Page</code>, Errai will verify the existence
+       of a single page with this role at compile-time.</p>
+
     <h3>Page State Parameters</h3>
 
-    <p>Oftentimes, a page widget is used to represent an instance of a class of things. For example, our ItemPage
-    may be used as a template to display a particular user-selected item available at a store. In this case, it is
-    important that the bookmarkable navigation URL includes not only the name of the page but also an identifier for
-    the particular item being displayed.</p>
+    <p>Oftentimes, a page widget is used to represent an instance of a class of things. For example, our ItemPage may be
+    used as a template to display a particular user-selected item available at a store. In this case, it is important
+    that the bookmarkable navigation URL includes not only the name of the page but also an identifier for the
+    particular item being displayed.</p>
 
     <p>To do this, Errai Navigation uses page state parameters. Consider the following page widget:</p>
 
-    <pre class="code-snippet-small" data-language="java">
+    <pre class="code-snippet" data-language="java">
       @Page
       public class ItemPage extends VerticalPanel {
 
@@ -161,11 +219,67 @@
     <p>Page state parameters can also be accessed using URLs with path parameters. In this case, you have to declare the
     template of the page’s path in the path field of the @Page annotation. As an example, consider the following code:</p>
 
+    <pre class="code-snippet" data-language="java">
+      @Page(path="item/{itemID}/{customerID}")
+      public class ItemPage extends VerticalPanel {
+
+        @PageState
+        private int itemID;
+
+        @PageState
+        private String customerID;
+
+        // More code...
+      }
+    </pre>
+
+    <p>
+      There are three ways to pass state information to a page: by passing a Multimap to <code>TransitionTo.go()</code>
+      ; by passing a Multimap to <code>Navigation.goTo()</code> , or by including the state information in the path
+      parameter or fragment identifier of a hyperlink as illustrated in the previous paragraph. <br/> A page widget can
+      have any number of @PageState fields. </p>
+
+    <p class="tip textblock">NOTE: <code>@PageState</code> fields can be of any primitive or boxed primitive type
+                             (except char or Character), String, or a Collection, List, or Set of the allowable scalar
+                             types. Nested collections are not supported. @PageState fields can be private, protected,
+                             default access, or public.</p>
+
+    <h3>Using HistoryTokens</h3>
+    <p>The Navigation singleton uses the <code>HistoryToken</code> class to keep track of page state between page transitions. A HistoryToken
+       contains the page name, the page's URL pattern (based on the <code>@Page</code> annotation's path attribute) and an
+       ImmutableMultimap containing information about all the page state fields and values. You can use the
+       HistoryToken of a page to get or set its page state values, as illustrated below. <br />
+
+       The following example illustrates how to set the page state values before navigating to a page. You should use
+       the HistoryTokenFactory class to create a HistoryToken:
+    </p>
+
+      <h5>WelcomePage.java</h5>
+      <pre class="code-snippet" data-language="java">
+        @Page
+        public class WelcomePage extends VerticalPanel {
+
+          @Inject
+          Button itemId2;
+
+          @Inject
+          Button itemId4;
+
+          @Inject
+          TransitionTo&lt;ItemPage&gt; goToItemPage;
+
+          @EventHandler("itemId2")
+          public void itemIdIs2() {
+            Multimap&lt;String, String&gt; itemPageState = new ImmutableMultimap&lt;String, String&gt;();
+            HistoryToken item2 = HistoryTokenFactory.createHistoryToken("ItemPage",
+          }
+        }
+      </pre>
     <h3>Page Lifecycles</h3>
 
     <p>There are four annotations related to page lifecycle events: <code>@PageShowing, @PageShown, @PageHiding, and
-                                                                          @PageHidden</code>.These annotations designate
-       methods so a page widget can be notified when it is displayed or hidden. The actual order of events is
+                                                                          @PageHidden</code>. These annotations
+       designate methods so a page widget can be notified when it is displayed or hidden. The actual order of events is
        described in the next section.</p>
 
     <h5>ItemPage.java</h5>
@@ -184,21 +298,22 @@
     }
     </pre>
 
-    <h4>Lifecycle Phases</h4><!--do we really need this section -->
-    <p>Here is the order of execution of lifecycle pages when transitioning from one page to another:</p>
+    <h4>Lifecycle Phases</h4>
+    <p>Here is the order of execution of lifecycle phases when transitioning from one page to another:</p>
 
     <ol>
       <li>The fragment identifier in the URL changes.</li>
-      <li>The @PageHiding method on the current (about-to-be-navigated-away-from) page is invoked.</li>
+      <li>The <code>@PageHiding</code> method on the current (about-to-be-navigated-away-from) page is invoked.</li>
       <li>The current page is removed from the browser’s DOM.</li>
-      <li>The @PageHidden method on the just-removed page is invoked.</li>
-      <li>The navigation system looks up the corresponding new '@Page' bean in the client-side bean manager.</li>
-      <li>The navigation system writes to all @PageState fields in the new page bean (more on this in the next
-          section).
+      <li>The <code>@PageHidden</code> method on the just-removed page is invoked.</li>
+      <li>The navigation system looks up the corresponding new '<code>@Page</code>' bean in the client-side bean
+          manager.</li>
+      <li>The navigation system writes to all <code>@PageState</code> fields in the new page bean (more on this in the
+          next section).
       </li>
-      <li>The @PageShowing method of the new page is invoked.</li>
-      <li>The new page widget is added to the DOM (as a direct child of the navigation content panel).</li>
-      <li>The @PageShown method of the new page is invoked.</li>
+      <li>The <code>@PageShowing</code> method of the new page is invoked.</li>
+      <li>The new <code>@Page</code> Widget is added to the DOM (as a direct child of the navigation content panel).</li>
+      <li>The <code>@PageShown</code> method of the new page is invoked.</li>
     </ol>
 
 
