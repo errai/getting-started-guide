@@ -36,4 +36,5 @@ public class ErraiNavigationPage extends Composite{
             console.log("Colored code elements");
         });
     }-*/;
+
 }

@@ -147,7 +147,7 @@
 
         @Inject
         @DataField
-        TransitionAnchor&lt;ItemListPage&gt; itemLink;
+        TransitionAnchor&lt;ItemPage&gt; itemLink;
 
         // Some code ...
       }
@@ -155,7 +155,7 @@
     <h5>WelcomePage.html</h5>
     <pre class="code-snippet" data-language="html">
       <div>
-        <a id="itemLink">Go to Item List Page</a>
+        <a id="itemLink">Go to Item Page</a>
       </div>
     </pre>
 
@@ -190,6 +190,7 @@
        By injecting a <code>TransitionToRole</code> into a <code>@Page</code>, Errai will verify the existence
        of a single page with this role at compile-time.</p>
 
+    <a href="#WelcomePageWithTransition">Link to Demo</a>
     <h3>Page State Parameters</h3>
 
     <p>Oftentimes, a page widget is used to represent an instance of a class of things. For example, our ItemPage may be
@@ -275,6 +276,15 @@
           }
         }
       </pre>
+
+      <p>You can also use a HistoryToken to get the page state values once the page begins to load. You can annotate a
+         method with <code>@PageShowing</code> or <code>@PageShown</code> and it will be called automatically at the
+         appropriate stage in the page transition process (for more information, take a look at the next section). This
+         method can optionally take a parameter of type <code>HistoryToken</code>, and the page state multimap will be
+         passed into this <code>HistoryToken</code>. As an example, take a look at the code below:
+
+        <pre><!--Code here --></pre>
+
     <h3>Page Lifecycles</h3>
 
     <p>There are four annotations related to page lifecycle events: <code>@PageShowing, @PageShown, @PageHiding, and
