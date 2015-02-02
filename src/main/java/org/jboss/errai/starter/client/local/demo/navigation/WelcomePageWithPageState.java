@@ -5,6 +5,8 @@ import com.google.common.collect.ImmutableMultimap.Builder;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import org.jboss.errai.ui.nav.client.local.HistoryTokenFactory;
+import org.jboss.errai.ui.nav.client.local.Navigation;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.nav.client.local.TransitionTo;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
@@ -16,7 +18,9 @@ import javax.inject.Inject;
 /**
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
-@Page @Templated public class WelcomePageWithPageState extends Composite {
+@Page
+@Templated
+public class WelcomePageWithPageState extends Composite {
 
 		@Inject
 		@DataField
@@ -27,7 +31,6 @@ import javax.inject.Inject;
 		Button itemId4;
 
 		@Inject
-
 		TransitionTo<ItemPageWithPageState> goToItemPage;
 
 		@EventHandler("itemId2")

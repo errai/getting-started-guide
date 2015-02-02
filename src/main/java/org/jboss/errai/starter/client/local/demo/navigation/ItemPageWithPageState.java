@@ -18,7 +18,7 @@ import java.util.Collection;
 /**
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
-@Page
+@Page(path = "item/{itemId}")
 @Templated
 public class ItemPageWithPageState extends Composite {
 

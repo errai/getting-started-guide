@@ -258,21 +258,35 @@
       <h5>WelcomePage.java</h5>
       <pre class="code-snippet" data-language="java">
         @Page
-        public class WelcomePage extends VerticalPanel {
+        @Templated
+        public class WelcomePage extends Composite {
 
           @Inject
+          @DataField
           Button itemId2;
 
           @Inject
+          @DataField
           Button itemId4;
 
           @Inject
+
           TransitionTo&lt;ItemPage&gt; goToItemPage;
 
           @EventHandler("itemId2")
-          public void itemIdIs2() {
-            Multimap&lt;String, String&gt; itemPageState = new ImmutableMultimap&lt;String, String&gt;();
-            HistoryToken item2 = HistoryTokenFactory.createHistoryToken("ItemPage",
+          public void itemIdEquals2(ClickEvent e) {
+            Builder&lt;String, String&gt; mapBuilder = ImmutableMultimap.builder();
+            mapBuilder.put("itemId", "2");
+
+            goToItemPage.go(mapBuilder.build());
+          }
+
+          @EventHandler("itemId4")
+          public void itemIdEquals4(ClickEvent e) {
+            Builder&lt;String, String&gt; mapBuilder = ImmutableMultimap.builder();
+            mapBuilder.put("itemId", "4");
+
+            goToItemPage.go(mapBuilder.build());
           }
         }
       </pre>
