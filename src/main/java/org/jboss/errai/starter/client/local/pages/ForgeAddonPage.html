@@ -3,25 +3,25 @@
   <div class="page">
 
     <h2>Downloading Forge and the Forge Addon</h2>
-    <p>If you don't already have JBoss Forge installed on your machine, you'll need to download it to use Errai's addon. Download the latest version
-       of JBoss Forge <a href="http://forge.jboss.org/download">here</a>.
-    <br />
-      Once installed, you need to add the Errai Forge Addon to your installation to create a new Errai app. Run the following command in your
-      terminal window:
-      <code class="textblock">forge --install org.jboss.errai.forge:errai-forge-addon,3.1.1.Final</code>
+
+    <p>If you don't already have JBoss Forge installed on your machine, you'll need to download it to use Errai's addon.
+       Download the latest version of JBoss Forge <a href="http://forge.jboss.org/download">here</a>. <br/> Once
+       installed, you need to add the Errai Forge Addon to your installation to create a new Errai app. Run the
+       following command in your terminal window: <code class="textblock">forge --install
+                                                                          org.jboss.errai.forge:errai-forge-addon,3.1.1.Final</code>
     </p>
 
     <h2>Using Forge to create an empty Errai App</h2>
+
     <p>This section will outline the steps you need to complete to create your own Errai app.</p>
-    <h5>1. Run Forge from your terminal:</h5>
+    <h4>1. Run Forge from your terminal:</h4>
     <code class="textblock">forge</code>
 
-    You should see a prompt that looks like this (where home is the directory in which you started Forge):
-    <code class="textblock">[home]</code>
-    <h5>2. Run the following command to create a new project:</h5>
-    <code class="textblock">[home] project-new --named errai-forge-demo --topLevelPackage org.jboss.errai.demo --version 1.0.0-SNAPSHOT
-                            --finalName
-                            "Errai Forge Demo" --type war --buildSystem Maven</code>
+    You should see a prompt that looks like this (where home is the directory in which you started Forge): <code
+	class="textblock">[home]</code>
+    <h4>2. Run the following command to create a new project:</h4>
+    <code class="textblock">[home] project-new --named errai-forge-demo --topLevelPackage org.jboss.errai.demo --version
+                            1.0.0-SNAPSHOT --finalName "Errai Forge Demo" --type war --buildSystem Maven</code>
 
     In the above parameters:
     <ul>
@@ -33,21 +33,20 @@
       <li><i>--buildSystem</i> is the build system used by your project.</li>
     </ul>
 
-    Forge will now prompt you from within your project:
-    <code class="textblock">[errai-forge-demo]</code>
+    Forge will now prompt you from within your project: <code class="textblock">[errai-forge-demo]</code>
 
-    <h5>3. Run the <b>errai-setup</b> command to install the core dependencies and configurations required for all Errai features:</h5>
-    <code class="textblock">errai-setup --versionSelect 3.1.1.Final --logicalModuleName org.jboss.errai.demo.ErraiDemo --moduleName
-                            ErraiDemo</code>
-    In the above parameters:
+    <h4>3. Run the <b>errai-setup</b> command to install the core dependencies and configurations required for all Errai
+        features:</h4>
+    <code class="textblock">errai-setup --versionSelect 3.1.1.Final --logicalModuleName org.jboss.errai.demo.ErraiDemo
+                            --moduleName ErraiDemo</code> In the above parameters:
     <ul>
       <li><i>--versionSelect</i> is the version of Errai you wish to use.</li>
       <li><i>--logicalModuleName</i> is the logical name of the GWT module for your project.</li>
       <li><i>--moduleName</i> is a short name used for referencing your GWT module in urls.</li>
     </ul>
 
-    You can also just type <code>errai-setup</code> instead, and the Errai Forge Addon will prompt you with an interactive interface to enter the
-    rest of the values.
+    You can also just type <code>errai-setup</code> instead, and the Errai Forge Addon will prompt you with an
+    interactive interface to enter the rest of the values.
 
     <span class="tip textblock">TIP:  If you are running errai-setup on a pre-existing project with a GWT module you can replace the
       <i>--logicalModule</i> option with <i> --moduleSelect</i> followed by the logical name of your GWT module.
@@ -56,36 +55,62 @@
     <span class="tip textblock">IMPORTANT: Don't forget to unzip a copy of Wildfly 8 into the target/ directory of your new app for
                                 debugging purposes.</span>
 
-    <h5>4. Add Errai Features</h5>
+    <h4>4. Add Errai Features</h4>
     The <code>errai-add-features</code> command adds dependencies and configurations for any selected modules in Errai.
-    <br/>
-    To see a list of Errai features, type the following command and press TAB to auto-complete the available Errai modules:
-    <code class="textblock">errai-add-features --featureSelect</code>
-    Click the links on the left side to learn more about each of the available modules and how to use them.<!--TODO: Change this to an actual link -->
-    <p class="tip textblock">TIP: Use the <code>errai-remove-features</code> command in the same way to remove a feature that you have previously
-                             added to your project. You will not be able to remove a feature if another installed feature depends upon it.</p>
-    <h5>5. Generate Test Classes </h5>
+    <br/> To see a list of Errai features, type the following command and press TAB to auto-complete the available Errai
+    modules: <code class="textblock">errai-add-features --featureSelect</code> Click the links on the left side to learn
+    more about each of the available modules and how to use them.<!--TODO: Change this to an actual link -->
+    <p class="tip textblock">TIP: Use the <code>errai-remove-features</code> command in the same way to remove a feature
+                             that you have previously added to your project. You will not be able to remove a feature if
+                             another installed feature depends upon it.</p>
+    <h4>5. Generate Test Classes </h4>
     The Errai Forge Addon can generate GWT Mockito tests for unit testing and GWTTestCase tests for integration testing.
 
-    <h6>Unit Testing</h6>
-    To generate unit tests, run the following command on your Errai project in the Forge terminal:
-    <code class="textblock">errai-add-unit-test --testableClassName org.jboss.errai.MyClass --testClassName
-                            org.jboss.errai.unittest.MyIntegrationTest</code>
+    <h5>Unit Testing</h5>
+    To generate unit tests, run the following command on your Errai project in the Forge terminal: <code
+	class="textblock">errai-add-unit-test --testableClassName org.jboss.errai.MyClass --testClassName
+                    org.jboss.errai.unittest.MyIntegrationTest</code>
     <ul>
       <li><i>--testableClassName</i> is the fully-qualified name of the Java class being tested.</li>
       <li><i>--testClassName</i> is the fully-qualified name of the test class being generated.</li>
     </ul>
 
-    <h6>Integration Testing</h6>
+    <h5>Integration Testing</h5>
 
-    <p class="tip textblock">IMPORTANT: Integration tests require Errai CDI. You will not be able to create integration tests until you add Errai CDI
-                             to your project using the <code>errai-add-features</code> command.</p>
-    For integration tests, run the following command:
-    <code class="textblock">errai-add-integration-test --testClassSimpleName MyIntegrationTest --testPackageName
-                            org.jboss.errai.integrationtest</code>
+    <p class="tip textblock">IMPORTANT: Integration tests require Errai CDI. You will not be able to create integration
+                             tests until you add Errai CDI to your project using the <code>errai-add-features</code>
+                             command.</p>
+    For integration tests, run the following command: <code class="textblock">errai-add-integration-test
+                                                                              --testClassSimpleName MyIntegrationTest
+                                                                              --testPackageName
+                                                                              org.jboss.errai.integrationtest</code>
     <ul>
       <li><i>--testClassSimpleName</i> is the simple name of the test class being generated.</li>
       <li><i>--testPackageName</i> is the root package for the test GWT module.</li>
     </ul>
+
+    <h2>Using the Forge 2 Eclipse Plugin</h2>
+
+    <p>If you use Eclipse, you can also use Forge's plugin to create an Errai app from within Eclipse, using a GUI
+       instead of the CLI. The steps in this guide were written using Eclipse Luna (4.4). Before you start, make sure
+       you have the <a href="http://www.eclipse.org/m2e/">Eclipse Maven plugin (M2E)</a> installed.
+    </p>
+
+    <h3>Installing the Forge Tools Plugin</h3>
+    <p>The Forge Tools plugin for Eclipse Luna (4.4) is part of the <a
+	  href="http://tools.jboss.org/downloads/jbosstools/luna/4.2.2.Final.html">JBoss Tools</a> installation.<br/>
+
+      To download the plugin, open the Install New Software dialog box (Help -> Install New Software). Enter the
+      following link into the 'Work with:' box: <a
+        href="http://download.jboss.org/jbosstools/updates/development/luna"/></a>. <br />
+
+      Select the <b>Forge Tools</b> entry in the box labeled 'Named' and hit Next. Accept the required licenses and allow Eclipse to
+      restart if necessary. You should now have  the JBoss Forge Eclipse plugin installed.
+    </p>
+
+    <h3>Create an Errai app from within Eclipse</h3>
+    <h4>1. Hit Ctrl+4 to start the Forge addon</h4>
+    <p>Pic of Forge addon dialog</p>
+    <h4></h4>
   </div>
 </div>
