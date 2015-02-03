@@ -1,6 +1,5 @@
 <div id="ErraiNavigationPage">
   <div class="title"><h1>Errai Navigation</h1>
-    <!--<button id="echo" type="button">Echo</button>-->
   </div>
   <div class="page">
     <h2>Introduction</h2>
@@ -126,21 +125,20 @@
 
     <p>Errai Navigation allows for injected links between pages of your web app. There is no limit to the number of
        links that can be used. The only restriction is that the target of the link must be a Widget type annotated with
-       @Page. There are two mechanisms for providing links between pages of your web app:
-      <code>TransitionAnchor&lt;P&gt;
-      </code> and <code>TransitionTo&lt;P&gt;</code>.
-    </p>
+       @Page. There are two mechanisms for providing links between pages of your web app: <code>TransitionAnchor&lt;P&gt;
+      </code> and <code>TransitionTo&lt;P&gt;</code>. </p>
 
     <h4>TransitionAnchor</h4>
-    <p>The easiest way to declare a link between pages is to inject an instance of
-      <code>TransitionAnchor&lt;P&gt;</code>, where P is the class of the target page.<br />
 
-    Here is an example declaring an anchor link from the templated WelcomePage to the ItemPage. The first code
-    sample would go in WelcomePage.java while the second would go in the WelcomePage.html, the associated HTML
-    template (more on templated pages in Errai UI).<!-- TODO: Add link to Errai UI -->
+    <p>The easiest way to declare a link between pages is to inject an instance of
+      <code>TransitionAnchor&lt;P&gt;</code>, where P is the class of the target page.<br/>
+
+       Here is an example declaring an anchor link from the templated WelcomePage to the ItemPage. The first code sample
+       would go in WelcomePage.java while the second would go in the WelcomePage.html, the associated HTML template
+       (more on templated pages in Errai UI).<!-- TODO: Add link to Errai UI -->
     </p>
     <h5>WelcomePage.java</h5>
-    <pre class="code-snippet" data-language="java" >
+    <pre class="code-snippet" data-language="java">
       @Page(role = DefaultPage.class)
       @Templated
       public class WelcomePage extends Composite {
@@ -160,9 +158,10 @@
     </pre>
 
     <h4>TransitionTo</h4>
-    <p>Sometimes it is necessary to manually transition between pages (such as in response to an event being fired).
-    To declare a manual link from one page to another, inject an instance of <code>TransitionTo&lt;P&gt;</code>, where P
-    is the class of the target page. This code declares a manual link from the ItemPage to the WelcomePage:</p>
+
+    <p>Sometimes it is necessary to manually transition between pages (such as in response to an event being fired). To
+       declare a manual link from one page to another, inject an instance of <code>TransitionTo&lt;P&gt;</code>, where P
+       is the class of the target page. This code declares a manual link from the ItemPage to the WelcomePage:</p>
 
     <h5>ItemPage.java</h5>
     <pre class="code-snippet" data-language="java">
@@ -183,14 +182,16 @@
     </pre>
 
     <h4>TransitionTo with a UniquePageRole</h4>
-    <p>For convenience, it is also possible to transition to a page by its role using an injected
-       <code>TransitionToRole&lt;R&gt;</code>
-       where R is an interface extending UniquePageRole. This type is used exactly as the <code>TransitionTo</code>;
-       just inject a parameterized instance and invoke the go() method. <br/>
-       By injecting a <code>TransitionToRole</code> into a <code>@Page</code>, Errai will verify the existence
-       of a single page with this role at compile-time.</p>
 
-    <a href="#WelcomePageWithTransition">Link to Demo</a>
+    <p>For convenience, it is also possible to transition to a page by its role using an injected <code>TransitionToRole&lt;R&gt;</code>
+       where R is an interface extending UniquePageRole. This type is used exactly as the <code>TransitionTo</code>;
+       just inject a parameterized instance and invoke the go() method. <br/> By injecting a
+      <code>TransitionToRole</code> into a <code>@Page</code>, Errai will verify the existence of a single page with
+       this role at compile-time.</p>
+
+    <p>Click on the following link to try out a demo of the Navigation components we have covered so far:</p>
+    <button id="transitionDemoButton" class="btn btn-large btn-success">Go to Page Transition Demo</button>
+
     <h3>Page State Parameters</h3>
 
     <p>Oftentimes, a page widget is used to represent an instance of a class of things. For example, our ItemPage may be
@@ -218,7 +219,7 @@
        loading up the page, the Navigation singleton would assign <code>itemId = 4</code>.</p>
 
     <p>Page state parameters can also be accessed using URLs with path parameters. In this case, you have to declare the
-    template of the page’s path in the path field of the @Page annotation. As an example, consider the following code:</p>
+     template of the page’s path in the path field of the @Page annotation. As an example, consider the following code:</p>
 
     <pre class="code-snippet" data-language="java">
       @Page(path="item/{itemID}/{customerID}")
@@ -233,71 +234,129 @@
         // More code...
       }
     </pre>
+    <p>Navigating to the ItemPage when itemID = 2300 and customerID = 10528  will result in the following URL being generated:</p>
 
-    <p>
-      There are three ways to pass state information to a page: by passing a Multimap to <code>TransitionTo.go()</code>
-      ; by passing a Multimap to <code>Navigation.goTo()</code> , or by including the state information in the path
-      parameter or fragment identifier of a hyperlink as illustrated in the previous paragraph. <br/> A page widget can
-      have any number of @PageState fields. </p>
+    <code class="textblock">http://company.com/store/index.html#ItemPage/2/10/</code>
 
     <p class="tip textblock">NOTE: <code>@PageState</code> fields can be of any primitive or boxed primitive type
                              (except char or Character), String, or a Collection, List, or Set of the allowable scalar
                              types. Nested collections are not supported. @PageState fields can be private, protected,
                              default access, or public.</p>
-
-    <h3>Using HistoryTokens</h3>
-    <p>The Navigation singleton uses the <code>HistoryToken</code> class to keep track of page state between page transitions. A HistoryToken
-       contains the page name, the page's URL pattern (based on the <code>@Page</code> annotation's path attribute) and an
-       ImmutableMultimap containing information about all the page state fields and values. You can use the
-       HistoryToken of a page to get or set its page state values, as illustrated below. <br />
-
-       The following example illustrates how to set the page state values before navigating to a page. You should use
-       the HistoryTokenFactory class to create a HistoryToken:
+    <p>
+      There are three ways to pass state information to a page: by passing a Multimap to <code>TransitionTo.go()</code>
+      ; by passing a Multimap to <code>Navigation.goTo()</code> , or by including the state information in the path
+      parameter or fragment identifier of a hyperlink. <br/> A page widget can have any number of @PageState fields. The
+      example below will show you how to pass state information to a page before navigating to it:
     </p>
 
-      <h5>WelcomePage.java</h5>
-      <pre class="code-snippet" data-language="java">
-        @Page
-        @Templated
-        public class WelcomePage extends Composite {
+    <h5>WelcomePage.java</h5>
+    <pre class="code-snippet" data-language="java">
+      @Page
+      @Templated
+      public class WelcomePageWithPageState extends Composite {
 
-          @Inject
-          @DataField
-          Button itemId2;
+		@Inject
+		@DataField
+		Button itemId2;
 
-          @Inject
-          @DataField
-          Button itemId4;
+		@Inject
+		@DataField
+		Button itemId4;
 
-          @Inject
+		@Inject
+		TransitionTo&lt;ItemPageWithPageState&gt; goToItemPage;
 
-          TransitionTo&lt;ItemPage&gt; goToItemPage;
+		@EventHandler("itemId2")
+		public void itemIdEquals2(ClickEvent e) {
+				Builder&lt;String, String&gt; mapBuilder = ImmutableMultimap.builder();
+				mapBuilder.put("itemId", "2");
 
-          @EventHandler("itemId2")
-          public void itemIdEquals2(ClickEvent e) {
-            Builder&lt;String, String&gt; mapBuilder = ImmutableMultimap.builder();
-            mapBuilder.put("itemId", "2");
+				goToItemPage.go(mapBuilder.build());
+		}
 
-            goToItemPage.go(mapBuilder.build());
-          }
+		@EventHandler("itemId4")
+		public void itemIdEquals4(ClickEvent e) {
+				Builder&lt;String, String&gt; mapBuilder = ImmutableMultimap.builder();
+				mapBuilder.put("itemId", "4");
 
-          @EventHandler("itemId4")
-          public void itemIdEquals4(ClickEvent e) {
-            Builder&lt;String, String&gt; mapBuilder = ImmutableMultimap.builder();
-            mapBuilder.put("itemId", "4");
+				goToItemPage.go(mapBuilder.build());
+		}
+      }
+    </pre>
 
-            goToItemPage.go(mapBuilder.build());
-          }
-        }
-      </pre>
+    <h5>ItemPage.java</h5>
+    <pre class="code-snippet" data-language="java">
+      @Page(path = "item/{itemId}")
+      @Templated
+      public class ItemPageWithPageState extends Composite {
 
-      <p>You can also use a HistoryToken to get the page state values once the page begins to load. You can annotate a
-         method with <code>@PageShowing</code> or <code>@PageShown</code> and it will be called automatically at the
-         appropriate stage in the page transition process (for more information, take a look at the next section). This
-         method can optionally take a parameter of type <code>HistoryToken</code>, and the page state multimap will be
-         passed into this <code>HistoryToken</code>. As an example, take a look at the code below:
+		@Inject
+		@DataField
+		Label printItemId;
 
-        <pre><!--Code here --></pre>
+		@PageState
+		int itemId;
+
+		@PageShowing
+		public void onPageLoad() {
+          printItemId.setText("ItemID = " + itemId);
+		}
+      }
+    </pre>
+
+    <p class="tip textblock">NOTE: Any additional <code>@PageState</code> values not explicitly mentioned in the page
+                             path will be appended as key-value pairs in the format <code>key=value;</code> at the end
+                             of the generated URL. </p>
+
+    <p>Try out the following demo to better understand page states in Errai: </p>
+    <button id="pageStateDemoButton" class="btn btn-large btn-success">Go to Page State Demo</button>
+
+    <h3>Pushstate Functionality</h3>
+  
+    <p>Errai also supports pushstate-based URLs. If HTML5 pushstate is enabled ErraiNavigation urls will not use the
+    fragment-identifier (#). Thus the non-pushstate url from the previous section:</p>
+    <code class="textblock">http://www.company.com/store#item/2300/10528</code>
+
+    <p>would become</p>
+
+    <code class="textblock">http://www.company.com/store/item/2300/10528</code>
+  
+    <p>HTML5 pushState can be enabled by adding the following lines to your GWT host page:</p>
+    
+    <pre class="code-snippet" data-language="html">
+      &lt;script type="text/javascript"&gt;
+        var erraiPushStateEnabled = true;
+      &lt;/script&gt;
+    </pre>
+
+    <p>
+      The application context must be the same as the application’s servlet web context deployed on the server. Errai
+      attempts to infer the application context upon the first page load, but it can also be set manually. To explicitly
+      declare the application context, you can use the <code>setApplicationContext()</code> method in the Navigation
+      class, or set the <code>erraiApplicationWebContext</code> variable in your GWT host page as follows:
+    </p>
+    
+    <pre class="code-snippet" data-language="html">
+      &lt;script type="text/javascript"&gt;
+        var erraiApplicationWebContext = "store";
+      &lt;/script&gt;
+    </pre>
+  
+    <p>
+       In the event that the browser does not support HTML5, Errai automatically disables pushState functionality and
+       reverts to a #-based URL format. That is, Errai uses fragment identifiers to refer to particular resources.
+  
+       If the page that the user is trying to navigate to cannot be found, a 404 - Not Found page is displayed. You can
+       override this functionality and display a custom page in the case of a page not found error. For example, to
+       navigate to the GWT host page by default, add the following lines to your web.xml file:
+    </p>
+    
+    <pre class="code-snippet" data-language="html">
+      &lt;error-page&gt;
+        &lt;error-code&gt;404&lt;/error-code&gt;
+        &lt;location&gt;/&lt;/location&gt;
+      &lt;/error-page&gt;
+    </pre>
 
     <h3>Page Lifecycles</h3>
 
@@ -323,6 +382,7 @@
     </pre>
 
     <h4>Lifecycle Phases</h4>
+
     <p>Here is the order of execution of lifecycle phases when transitioning from one page to another:</p>
 
     <ol>
@@ -331,16 +391,16 @@
       <li>The current page is removed from the browser’s DOM.</li>
       <li>The <code>@PageHidden</code> method on the just-removed page is invoked.</li>
       <li>The navigation system looks up the corresponding new '<code>@Page</code>' bean in the client-side bean
-          manager.</li>
+          manager.
+      </li>
       <li>The navigation system writes to all <code>@PageState</code> fields in the new page bean (more on this in the
           next section).
       </li>
       <li>The <code>@PageShowing</code> method of the new page is invoked.</li>
-      <li>The new <code>@Page</code> Widget is added to the DOM (as a direct child of the navigation content panel).</li>
+      <li>The new <code>@Page</code> Widget is added to the DOM (as a direct child of the navigation content panel).
+      </li>
       <li>The <code>@PageShown</code> method of the new page is invoked.</li>
     </ol>
-
-    <a href="#WelcomePageWithPageState">Link to other demo</a>
 
   </div>
 </div>
