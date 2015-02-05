@@ -149,3 +149,13 @@ img {
     text-align: center;
 }
 
+.list-group-item.disabled {
+    background-color: #101010;
+    color: #3F3F3F;
+}
+
+.list-group-item.disabled:hover {
+    background-color: #101010;
+    color: #3F3F3F;
+    cursor: not-allowed;
+}
