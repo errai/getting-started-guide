@@ -105,16 +105,13 @@ body {
     padding: 0;
     position: fixed;
     width: inherit;
-top: 0px;
-bottom: 0;
-left: 0px;
-z-index: 1000;
-display: block;
-/*padding: 20px;*/
-overflow-x: hidden;
-overflow-y: auto;
-/*background-color: #f5f5f5;*/
-/*border-right: 1px solid #eee;*/
+    top: 0px;
+    bottom: 0;
+    left: 0px;
+    z-index: 1000;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .textblock {
@@ -130,6 +127,13 @@ overflow-y: auto;
     font-weight: bold;
 }
 
+
+img {
+    max-width:inherit;
+    max-height:inherit;
+    vertical-align: middle;
+}
+
 .code-snippet {
     background-color: #202020;
     padding: 20px 10px 0 10px;
@@ -137,4 +141,11 @@ overflow-y: auto;
     display: block;
 }
 
+.img-center {
+    margin: 2% 4% 4% 4%;
+    width: auto;
+    height: auto;
+    max-height: 700px;
+    text-align: center;
+}
 
