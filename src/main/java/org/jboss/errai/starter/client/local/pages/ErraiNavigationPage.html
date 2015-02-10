@@ -26,17 +26,17 @@
 
     <p>Add the following dependencies to your pom.xml</p>
 		<pre data-language=html class="code-snippet">
-		<dependency>
-		  <groupId>org.jboss.errai</groupId>
-		  <artifactId>errai-navigation</artifactId>
-		  <scope>provided</scope>
-      	</dependency>
+	<dependency>
+	  <groupId>org.jboss.errai</groupId>
+	  <artifactId>errai-navigation</artifactId>
+	  <scope>provided</scope>
+	</dependency>
 
-		<dependency>
-          <groupId>org.jboss.errai</groupId>
-          <artifactId>errai-cdi-client</artifactId>
-          <scope>provided</scope>
-        </dependency>
+	<dependency>
+	  <groupId>org.jboss.errai</groupId>
+	  <artifactId>errai-cdi-client</artifactId>
+	  <scope>provided</scope>
+	</dependency>
 		</pre>
 
     <h4>GWT Module Descriptor</h4>
@@ -45,7 +45,7 @@
     this line to your application’s *.gwt.xml file:
     </p>
 		<pre data-language=html class="code-snippet">
-		<inherits name="org.jboss.errai.ui.nav.Navigation"/>
+	<inherits name="org.jboss.errai.ui.nav.Navigation"></inherits>
 		</pre>
     <p class="tip textblock">TIP: In our example, the GWT module file is located at <code>src/main/java/org/jboss/errai/demo/ErraiDemo.gwt.xml</code>
     </p>
