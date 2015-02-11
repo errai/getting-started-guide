@@ -1,15 +1,67 @@
 <div id="ErraiUIPage">
-  <div class="title"><h1>Errai UI</h1></div>
-  <div class="page">
-    <h2>Introduction</h2>
+	<div class="title">
+		<h1>Errai UI</h1>
+	</div>
+	<div class="page">
+		<h2>Introduction</h2>
 
-    <p>The Errai UI module uses a combination of GWT Widgets and HTML5 templating to create UI components. Errai UI's Widgets are
-    functionally the same as GWT Composite Widgets, except that they derive their styling from HTML templates. This separates the UI's
-    layout design from the widget's software functionality, allowing you to use HTML5 and CSS to style your web pages and eliminating the
-    need for painstaking Java styling.
-    </p>
+		<p>With Errai UI, you can use HTML5 templating for your GWT
+			Widgets. Errai UI's Widgets arefunctionally the same as GWT Composite
+			Widgets, except that they derive their styling from HTML templates.
+			This separates the UI'slayout design from the widget's software
+			functionality, allowing you to use HTML5 and CSS to style your web
+			pages and eliminating the need for painstaking Java styling.</p>
 
-    <h2>Installation Instructions</h2>
+		<h2>Installation Instructions</h2>
 
-  </div>
+		<h3>Errai Forge Addon</h3>
+
+		<p>
+			To run the code in this section in your own app, use the Errai Forge
+			Addon <i>Add Errai Features</i> command to add
+			<code>errai-ui</code>
+			to your project.
+		</p>
+
+		<h3>Manual Installation</h3>
+
+		<p>To manually add Errai UI to your classpath, follow these steps:</p>
+
+		<h4>Maven Dependencies</h4>
+
+		<p>Add the following dependency to your classpath:</p>
+		<pre data-language=html class="code-snippet">
+     <dependency>
+       <groupId>org.jboss.errai</groupId>
+       <artifactId>errai-ui</artifactId>
+       <version>${errai.version}</version>
+       <scope>provided</scope>
+     </dependency>
+		</pre>
+
+		<h4>GWT Module Descriptor</h4>
+
+		<p>Once you have added the dependency, your application must
+			inherit the GWT module as well. Add the following line to your
+			.gwt.xml file:</p>
+		<pre data-language="html" class="code-snippet">
+	  <inherits name="org.jboss.errai.ui.UI" >
+	</pre>
+
+		<h2>Using Errai UI</h2>
+
+		<p>
+			Once built, Errai UI components are essentially the same as other GWT
+			Widgets. The only difference is in their construction and
+			instantiation. As with most other features in Errai, dependency
+			injection using CDI is the programming model of choice, so you should
+			always
+			<code>@Inject</code>
+			all references to your Composite components.
+		</p>
+		
+		<h3>Creating Composite components</h3>
+		
+
+	</div>
 </div>

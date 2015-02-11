@@ -1,19 +1,19 @@
 package org.jboss.errai.starter.client.local.demo.navigation;
 
-import com.google.common.collect.Multimap;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import org.jboss.errai.starter.client.local.NavigationModule;
-import org.jboss.errai.ui.nav.client.local.*;
+import org.jboss.errai.ui.nav.client.local.Page;
+import org.jboss.errai.ui.nav.client.local.PageShowing;
+import org.jboss.errai.ui.nav.client.local.PageState;
+import org.jboss.errai.ui.nav.client.local.TransitionToRole;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.EventHandler;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
 import javax.inject.Inject;
-import java.util.Collection;
 
 /**
  * @author Divya Dadlani <ddadlani@redhat.com>

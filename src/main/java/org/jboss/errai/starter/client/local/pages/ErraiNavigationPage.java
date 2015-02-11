@@ -26,7 +26,7 @@ import javax.inject.Inject;
  */
 @Page(role = NavigationModule.class)
 @Templated
-public class ErraiNavigationPage extends Composite{
+public class ErraiNavigationPage extends Composite {
 
     @Inject
     TransitionTo<WelcomePageWithTransition> transitionDemo;
