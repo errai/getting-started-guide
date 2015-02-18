@@ -1,4 +1,4 @@
-package org.jboss.errai.starter.client.local.demo.navigation;
+package org.jboss.errai.starter.client.local.demopages;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.ImmutableMultimap.Builder;

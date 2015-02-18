@@ -1,4 +1,4 @@
-package org.jboss.errai.starter.client.local.demo.navigation;
+package org.jboss.errai.starter.client.local.demopages;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.Button;

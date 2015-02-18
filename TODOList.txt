@@ -1,5 +1,4 @@
 This is a list of things needed to do for the Getting Started guide:
 
 * Change headings for distinct Tutorial and Forge addon in SetupPage
-* Maybe remove GettingStarted?
 * Fix up Rainbow.js indentation.

@@ -11,9 +11,9 @@ import javax.enterprise.context.ApplicationScoped;
 /**
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
-@Templated
-@Page(role = DefaultPage.class)
-@ApplicationScoped
+//@Templated
+//@Page(role = DefaultPage.class)
+//@ApplicationScoped
 public class WelcomePage extends Composite{
 
     @PostConstruct

@@ -39,7 +39,7 @@
 
 		<p>Once you have added the dependency, your application must inherit the GWT module as well. Add the following
 			line to your .gwt.xml file:</p>
-		<pre data-language="html" class="code-snippet">
+		<pre data-language=html class="code-snippet">
   <inherits name="org.jboss.errai.ui.UI" />
   		</pre>
 
@@ -62,7 +62,7 @@
 		<p>For this demo, we will build a custom login form component. The basic outline of the LoginForm is shown below:</p>
 
 		<h5>LoginForm.java</h5>
-		<pre class="code-snippet" data-language="java">
+		<pre data-language=java class="code-snippet">
   @Templated
   public class LoginForm extends Composite {
 	/* template will be in LoginForm.html in this package */
@@ -76,7 +76,7 @@
 		</p>
 
 		<h5>LoginForm.java</h5>
-		<pre class="code-snippet" data-language="java">
+		<pre data-language=java class="code-snippet">
   @Templated("/org/jboss/errai/demo/templates/login-template.html")
   public class LoginForm extends Composite {
     /* attaches template from login-template.html */
@@ -93,20 +93,20 @@
 		</p>
 
 		<h5>LoginForm.html</h5>
-		<pre class="code-snippet" data-language="html">
-  <form>
-    <legend>Log in to your account:</legend>
+        <pre data-language=html class="code-snippet">
+  &lt;form&gt;
+    &lt;legend&gt;Log in to your account:&lt;/legend&gt;
 
-    <label for="username">Username</label>
-    <input id="username" type="text" placeholder="Enter username">
+    &lt;label for="username"&gt;Username&lt;/label&gt;
+    &lt;input id="username" type="text" placeholder="Enter username"&gt;
 
-    <label for="password">Password</label>
-    <input id="password" type="password" placeholder="Password">
+    &lt;label for="password"&gt;Password&lt;/label&gt;
+    &lt;input id="password" type="password" placeholder="Password"&gt;
 
-    <button id="signup">Create account</button>
-    <button id="login">Sign In</button>
-    <button id="cancel">Cancel</button>
-  </form>
+    &lt;button id="signup"&gt;Create account&lt;/button&gt;
+    &lt;button id="login"&gt;Sign In&lt;/button&gt;
+    &lt;button id="cancel"&gt;Cancel&lt;/button&gt;
+  &lt;/form&gt;
       </pre>
 
 		<p>
@@ -115,31 +115,35 @@
 		</p>
 
 		<h5>HtmlDoc.html</h5>
-		<pre class="code-snippet" data-language="html">
+		<pre data-language=html class="code-snippet">
   &lt;!DOCTYPE html&gt;
   &lt;html&gt;
   &lt;head&gt;<title>A Complete HTML Document</title>&lt;/head&gt;
   &lt;body&gt;
-  <div>
-    <!-- Some HTML -->
-    <form id="form-template">
-      <!-- Form elements -->
-    </form>
-  </div>
+  &lt;div&gt;
+    &lt;!-- Some HTML --&gt;
+    &lt;form id="form-template"&gt;
+      &lt;!-- Form elements --&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
     <!-- More HTML -->
   &lt;/body&gt;
   &lt;/html&gt;
       </pre>
 
 		<h5>LoginForm.java</h5>
-		<pre class="code-snippet" data-language="java">
+		<pre data-language=java class="code-snippet">
   @Templated("HtmlDoc.html#form-template")
   public class LoginForm extends Composite {
       // The element with id 'form-template' in HtmlDoc.html will be the root element of this widget
   }
-      </pre>
+        </pre>
 
-		<h3>Using other Widgets in your Widget</h3>
+		<h3>Using other Widgets in your Composite component</h3>
+        <p>
+
+        </p>
+
 	</div>
 
 </div>
