@@ -5,21 +5,17 @@
 	<div class="page">
 		<h2>Introduction</h2>
 
-		<p>With Errai UI, you can use HTML5 templating for your GWT
-			Widgets. Errai UI's Widgets arefunctionally the same as GWT Composite
-			Widgets, except that they derive their styling from HTML templates.
-			This separates the UI'slayout design from the widget's software
-			functionality, allowing you to use HTML5 and CSS to style your web
-			pages and eliminating the need for painstaking Java styling.</p>
+		<p>With Errai UI, you can use HTML5 templating for your GWT Widgets. Errai UI's Widgets are functionally the same
+			as GWT Composite Widgets, except that they derive their styling from HTML templates. This separates the UI's layout
+			design from the widget's software functionality, allowing you to use HTML5 and CSS to style your web pages and
+			eliminating the need for painstaking Java styling.</p>
 
 		<h2>Installation Instructions</h2>
 
 		<h3>Errai Forge Addon</h3>
 
 		<p>
-			To run the code in this section in your own app, use the Errai Forge
-			Addon <i>Add Errai Features</i> command to add
-			<code>errai-ui</code>
+			To run the code in this section in your own app, use the Errai Forge Addon <i>Add Errai Features</i> command to add <code>errai-ui</code>
 			to your project.
 		</p>
 
@@ -31,37 +27,119 @@
 
 		<p>Add the following dependency to your classpath:</p>
 		<pre data-language=html class="code-snippet">
-     <dependency>
-       <groupId>org.jboss.errai</groupId>
-       <artifactId>errai-ui</artifactId>
-       <version>${errai.version}</version>
-       <scope>provided</scope>
-     </dependency>
+  <dependency>
+    <groupId>org.jboss.errai</groupId>
+    <artifactId>errai-ui</artifactId>
+    <version>${errai.version}</version>
+    <scope>provided</scope>
+  </dependency>
 		</pre>
 
 		<h4>GWT Module Descriptor</h4>
 
-		<p>Once you have added the dependency, your application must
-			inherit the GWT module as well. Add the following line to your
-			.gwt.xml file:</p>
+		<p>Once you have added the dependency, your application must inherit the GWT module as well. Add the following
+			line to your .gwt.xml file:</p>
 		<pre data-language="html" class="code-snippet">
-	  <inherits name="org.jboss.errai.ui.UI" >
-	</pre>
+  <inherits name="org.jboss.errai.ui.UI" />
+  		</pre>
 
 		<h2>Using Errai UI</h2>
 
 		<p>
-			Once built, Errai UI components are essentially the same as other GWT
-			Widgets. The only difference is in their construction and
-			instantiation. As with most other features in Errai, dependency
-			injection using CDI is the programming model of choice, so you should
-			always
-			<code>@Inject</code>
-			all references to your Composite components.
+			Once built, Errai UI components are essentially the same as other GWT Widgets. The only difference is in their
+			construction and instantiation. As with most other features in Errai, dependency injection using CDI is the
+			programming model of choice, so you should always <code>@Inject</code> all references to your Composite components.
 		</p>
-		
-		<h3>Creating Composite components</h3>
-		
 
+		<h3>Creating Composite components</h3>
+		<p>
+			Errai UI custom components are classes that extend <code>com.google.gwt.user.client.ui.Composite</code> and are
+			annotated with <code>@Templated</code> . This annotation means that by default, Errai will search for an HTML file
+			with the same name in the same package as the Java class.
+		</p>
+
+		<h4>Basic Component</h4>
+		<p>For this demo, we will build a custom login form component. The basic outline of the LoginForm is shown below:</p>
+
+		<h5>LoginForm.java</h5>
+		<pre class="code-snippet" data-language="java">
+  @Templated
+  public class LoginForm extends Composite {
+	/* template will be in LoginForm.html in this package */
+  }
+	  </pre>
+		<br />
+		<p>
+			If you wish to place your template in a different HTML file, you can pass the name in to the <code>@Templated</code>
+			annotation. If your HTML template is in another package, you have to specify the fully qualified path of the file in
+			the annotation parameter, starting with a leading slash.
+		</p>
+
+		<h5>LoginForm.java</h5>
+		<pre class="code-snippet" data-language="java">
+  @Templated("/org/jboss/errai/demo/templates/login-template.html")
+  public class LoginForm extends Composite {
+    /* attaches template from login-template.html */
+  }
+      </pre>
+
+		<h4>HTML Templates</h4>
+		<p>
+			To create an HTML template for your custom component, you can either use an entire HTML document or an HTML snippet.
+			You can also create an Errai page using an existing HTML page as its template (more on this in <a
+				href="#ErraiNavigationPage">Errai Navigation</a>). To identify elements in your template, you can 'name' them using
+			any one of the <code>id, class</code> or <code>data-field</code> attributes. As an example, take a look at the HTML
+			template for our LoginForm component below.
+		</p>
+
+		<h5>LoginForm.html</h5>
+		<pre class="code-snippet" data-language="html">
+  <form>
+    <legend>Log in to your account:</legend>
+
+    <label for="username">Username</label>
+    <input id="username" type="text" placeholder="Enter username">
+
+    <label for="password">Password</label>
+    <input id="password" type="password" placeholder="Password">
+
+    <button id="signup">Create account</button>
+    <button id="login">Sign In</button>
+    <button id="cancel">Cancel</button>
+  </form>
+      </pre>
+
+		<p>
+			To use part of an existing HTML document as a template, pass the <code>id, class</code> or <code>data-field</code>
+			attribute of the relevant part of the document into the <code>@Templated</code> annotation as follows:
+		</p>
+
+		<h5>HtmlDoc.html</h5>
+		<pre class="code-snippet" data-language="html">
+  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+  &lt;head&gt;<title>A Complete HTML Document</title>&lt;/head&gt;
+  &lt;body&gt;
+  <div>
+    <!-- Some HTML -->
+    <form id="form-template">
+      <!-- Form elements -->
+    </form>
+  </div>
+    <!-- More HTML -->
+  &lt;/body&gt;
+  &lt;/html&gt;
+      </pre>
+
+		<h5>LoginForm.java</h5>
+		<pre class="code-snippet" data-language="java">
+  @Templated("HtmlDoc.html#form-template")
+  public class LoginForm extends Composite {
+      // The element with id 'form-template' in HtmlDoc.html will be the root element of this widget
+  }
+      </pre>
+
+		<h3>Using other Widgets in your Widget</h3>
 	</div>
+
 </div>
