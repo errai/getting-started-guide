@@ -1,6 +1,5 @@
 package org.jboss.errai.starter.client.local.pages;
 
-import com.google.gwt.user.client.ui.Composite;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
@@ -9,5 +8,5 @@ import org.jboss.errai.ui.shared.api.annotations.Templated;
  */
 @Page
 @Templated
-public class ForgeAddonPage extends Composite {
+public class ForgeAddonPage extends AbstractErraiModulePage {
 }
