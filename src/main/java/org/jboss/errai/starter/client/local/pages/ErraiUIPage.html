@@ -1,81 +1,85 @@
 <div id="ErraiUIPage">
-	<div class="title">
-		<h1>Errai UI</h1>
-	</div>
-	<div class="page">
-		<h2>Introduction</h2>
+    <div class="title">
+        <h1>Errai UI</h1>
+    </div>
+    <div class="page">
+        <h2>Introduction</h2>
 
-		<p>With Errai UI, you can use HTML5 templating for your GWT Widgets. Errai UI's Widgets are functionally the same
-			as GWT Composite Widgets, except that they derive their styling from HTML templates. This separates the UI's layout
-			design from the widget's software functionality, allowing you to use HTML5 and CSS to style your web pages and
-			eliminating the need for painstaking Java styling.</p>
+        <p>With Errai UI, you can use HTML5 templating for your GWT Widgets. Errai UI's Widgets are functionally the same
+        as GWT Composite Widgets, except that they derive their styling from HTML templates. This separates the UI's layout
+        design from the widget's software functionality, allowing you to use HTML5 and CSS to style your web pages and
+        eliminating the need for painstaking Java styling.</p>
 
-		<h2>Installation Instructions</h2>
+        <h2>Installation Instructions</h2>
 
-		<h3>Errai Forge Addon</h3>
+        <h3>Errai Forge Addon</h3>
 
-		<p>
-			To run the code in this section in your own app, use the Errai Forge Addon <i>Add Errai Features</i> command to add <code>errai-ui</code>
-			to your project.
-		</p>
+        <p>
+            To run the code in this section in your own app, use the Errai Forge Addon <i>Add Errai Features</i> command
+            to add <code>errai-ui</code> to your project.
+        </p>
 
-		<h3>Manual Installation</h3>
+        <h3>Manual Installation</h3>
 
-		<p>To manually add Errai UI to your classpath, follow these steps:</p>
+        <p>To manually add Errai UI to your classpath, follow these steps:</p>
 
-		<h4>Maven Dependencies</h4>
+        <h4>Maven Dependencies</h4>
 
-		<p>Add the following dependency to your classpath:</p>
+        <p>Add the following dependency to your classpath:</p>
 		<pre data-language=html class="code-snippet">
-  <dependency>
-    <groupId>org.jboss.errai</groupId>
-    <artifactId>errai-ui</artifactId>
-    <version>${errai.version}</version>
-    <scope>provided</scope>
-  </dependency>
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.jboss.errai&lt;/groupId&gt;
+    &lt;artifactId&gt;errai-ui&lt;/artifactId&gt;
+    &lt;version&gt;${errai.version}&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+  &lt;/dependency&gt;
 		</pre>
 
-		<h4>GWT Module Descriptor</h4>
+        <h4>GWT Module Descriptor</h4>
 
-		<p>Once you have added the dependency, your application must inherit the GWT module as well. Add the following
-			line to your .gwt.xml file:</p>
+        <p>Once you have added the dependency, your application must inherit the GWT module as well. Add the following
+        line to your .gwt.xml file:</p>
 		<pre data-language=html class="code-snippet">
-  <inherits name="org.jboss.errai.ui.UI" />
+  &lt;inherits name="org.jboss.errai.ui.UI" /&gt;
   		</pre>
 
-		<h2>Using Errai UI</h2>
+        <h2>Using Errai UI</h2>
 
-		<p>
-			Once built, Errai UI components are essentially the same as other GWT Widgets. The only difference is in their
-			construction and instantiation. As with most other features in Errai, dependency injection using CDI is the
-			programming model of choice, so you should always <code>@Inject</code> all references to your Composite components.
-		</p>
+        <p>
+            Once built, Errai UI components are essentially the same as other GWT Widgets. The only difference is in
+            their construction and instantiation. As with most other features in Errai, dependency injection using CDI
+            is the programming model of choice, so you should always <code>@Inject</code> all references to your
+            Composite components.
+        </p>
 
-		<h3>Creating Composite components</h3>
-		<p>
-			Errai UI custom components are classes that extend <code>com.google.gwt.user.client.ui.Composite</code> and are
-			annotated with <code>@Templated</code> . This annotation means that by default, Errai will search for an HTML file
-			with the same name in the same package as the Java class.
-		</p>
+        <h3>Creating Composite components</h3>
 
-		<h4>Basic Component</h4>
-		<p>For this demo, we will build a custom login form component. The basic outline of the LoginForm is shown below:</p>
+        <p>
+            Errai UI custom components are classes that extend <code>com.google.gwt.user.client.ui.Composite</code> and
+            are annotated with <code>@Templated</code> . This annotation means that by default, Errai will search for an
+            HTML file with the same name in the same package as the Java class.
+        </p>
 
-		<h5>LoginForm.java</h5>
+        <h4>Basic Component</h4>
+
+        <p>For this demo, we will build a custom login form component. The basic outline of the LoginForm is shown below:</p>
+
+        <h5>LoginForm.java</h5>
 		<pre data-language=java class="code-snippet">
   @Templated
   public class LoginForm extends Composite {
 	/* template will be in LoginForm.html in this package */
   }
 	  </pre>
-		<br />
-		<p>
-			If you wish to place your template in a different HTML file, you can pass the name in to the <code>@Templated</code>
-			annotation. If your HTML template is in another package, you have to specify the fully qualified path of the file in
-			the annotation parameter, starting with a leading slash.
-		</p>
+        <br/>
 
-		<h5>LoginForm.java</h5>
+        <p>
+            If you wish to place your template in a different HTML file, you can pass the name in to the <code>@Templated</code>
+            annotation. If your HTML template is in another package, you have to specify the fully qualified path of the
+            file in the annotation parameter, starting with a leading slash.
+        </p>
+
+        <h5>LoginForm.java</h5>
 		<pre data-language=java class="code-snippet">
   @Templated("/org/jboss/errai/demo/templates/login-template.html")
   public class LoginForm extends Composite {
@@ -83,16 +87,17 @@
   }
       </pre>
 
-		<h4>HTML Templates</h4>
-		<p>
-			To create an HTML template for your custom component, you can either use an entire HTML document or an HTML snippet.
-			You can also create an Errai page using an existing HTML page as its template (more on this in <a
-				href="#ErraiNavigationPage">Errai Navigation</a>). To identify elements in your template, you can 'name' them using
-			any one of the <code>id, class</code> or <code>data-field</code> attributes. As an example, take a look at the HTML
-			template for our LoginForm component below.
-		</p>
+        <h4>HTML Templates</h4>
 
-		<h5>LoginForm.html</h5>
+        <p>
+            To create an HTML template for your custom component, you can either use an entire HTML document or an HTML
+            snippet. You can also create an Errai page using an existing HTML page as its template (more on this in <a
+            href="#ErraiNavigationPage">Errai Navigation</a>). To identify elements in your template, you can 'name'
+            them using any one of the <code>id, class</code> or <code>data-field</code> attributes. As an example, take
+            a look at the HTML template for our LoginForm component below.
+        </p>
+
+        <h5>LoginForm.html</h5>
         <pre data-language=html class="code-snippet">
   &lt;form&gt;
     &lt;legend&gt;Log in to your account:&lt;/legend&gt;
@@ -109,12 +114,13 @@
   &lt;/form&gt;
       </pre>
 
-		<p>
-			To use part of an existing HTML document as a template, pass the <code>id, class</code> or <code>data-field</code>
-			attribute of the relevant part of the document into the <code>@Templated</code> annotation as follows:
-		</p>
+        <p>
+            To use part of an existing HTML document as a template, pass the <code>id, class</code> or
+            <code>data-field</code> attribute of the relevant part of the document into the <code>@Templated</code>
+            annotation as follows:
+        </p>
 
-		<h5>HtmlDoc.html</h5>
+        <h5>HtmlDoc.html</h5>
 		<pre data-language=html class="code-snippet">
   &lt;!DOCTYPE html&gt;
   &lt;html&gt;
@@ -129,9 +135,9 @@
     <!-- More HTML -->
   &lt;/body&gt;
   &lt;/html&gt;
-      </pre>
+        </pre>
 
-		<h5>LoginForm.java</h5>
+        <h5>LoginForm.java</h5>
 		<pre data-language=java class="code-snippet">
   @Templated("HtmlDoc.html#form-template")
   public class LoginForm extends Composite {
@@ -139,13 +145,208 @@
   }
         </pre>
 
-        <button id="loginPagePlainAnchor" class="btn btn-large btn-success">Take a look at the LoginForm component
+        <button id="loginPagePlainAnchor" class="btn btn-large btn-success">
+            Take a look at the LoginForm component <span class="glyphicon glyphicon-arrow-right"></span>
         </button>
         <h3>Using other Widgets in your Composite component</h3>
-        <p>
 
+        <p>
+            We can also create Errai UI components using other GWT Widgets (or components) as building blocks. This
+            allows us to access the functionality of GWT Widgets while still using HTML to template our components. We
+            do this by replacing elements in the template's DOM with fields and methods in our component class. To do
+            this, we use the <code>@DataField</code> annotation on the Widget fields in the component, along with a
+            corresponding <code>id, data-field</code> or <code>class</code> attribute in the element.
         </p>
 
-	</div>
+        <h4>@DataField Annotation</h4>
+
+        <p>
+            To indicate which of our <code>@Template</code>-d component's fields must be inserted into the DOM, we
+            annotate them with <code>@DataField</code>. Each <code>@DataField</code> reference in the Java class must
+            match an element in the HTML template. Since the replacements occur during the construction of the templated
+            component, the fields must either be 'injected' into the component (using the <code>@Inject</code>
+            annotation) or provide their own Widget or Element during field initialization.
+        </p>
+
+        <p class="tip textblock">
+            INFO: The <code>@Inject</code> annotation automatically finds or creates an instance of the Widget and passes
+            it in to the component during initialization.
+        </p>
+
+        <h4>HTML Template Attributes</h4>
+
+        <p>
+            In order to match an HTML template element with a Widget, we use the attribute values of the element. To
+            insert a Widget called <code class=tip>myWidget</code> into the DOM, the corresponding template must contain
+            an HTML element that has any one of the <code>id, class</code> or <code>data-field</code> attributes equal
+            to <code>'myWidget'</code>. While initializing the templated component, Errai UI will then insert the Widget
+            <code class=tip>myWidget</code> into the DOM in place of that HTML element.
+        </p>
+        <p class="tip textblock">
+            NOTE: If you require the Widget's name and the HTML element's attribute value to be different, you can pass
+            the attribute value in as a parameter to the <code>@DataField</code> annotation.
+        </p>
+        <p>
+            To clarify these concepts further, we recreate our LoginForm component using the GWT TextBox and Button
+            widgets:
+        </p>
+
+        <h5>LoginForm.java</h5>
+        <pre data-language="java" class="code-snippet">
+    @Templated
+    public class LoginForm extends Composite {
+
+      // Manually initialized because @Inject is only used for Widgets
+      @DataField
+      private Element form = DOM.createForm();
+
+      @Inject
+      @DataField
+      private TextBox username;
+
+      // The corresponding input element has id=passwd
+      @Inject
+      @DataField("passwd")
+      private PasswordTextBox password;
+
+      @Inject
+      @DataField
+      private Button cancel;
+
+      // Manual instantiation is also permitted. Using @Inject is optional
+      @DataField
+      private Button login = new Button();
+
+    }
+        </pre>
+
+        <h5>LoginForm.html</h5>
+        <pre data-language="html" class="code-snippet">
+    &lt;form id="form"&gt;
+        &lt;legend&gt;Log in to your account:&lt;/legend&gt;
+
+        &lt;label for="username"&gt;Username&lt;/label&gt;
+        &lt;input id="username" class="form-control" type="text" placeholder="Enter username"&gt;
+        &lt;br/&gt;
+
+        &lt;label for="passwd"&gt;Password&lt;/label&gt;
+        &lt;input id="passwd" class="form-control" type="password" placeholder="********"&gt;
+        &lt;br/&gt;
+
+        &lt;button id="cancel" class="btn btn-danger"&gt;Cancel&lt;/button&gt;
+        &lt;button id="login" class="btn btn-success"&gt;Sign In&lt;/button&gt;
+    &lt;/form&gt;
+        </pre>
+
+        <p>
+            This LoginForm component renders exactly like the previous demo, except that it now contains GWT Widgets, which you
+            can manipulate using Java code. You can try out this code in your own app, too!
+        </p>
+
+
+        <h3>Event Handling</h3>
+        <p>
+            Errai UI also provides support for handling events on UI components using its "quick handler" functionality.
+            The <code>@EventHandler</code> annotation is used to denote methods that are listening for events on
+            the class or on the <code>@DataField</code> Widget fields of the class. The <code>@EventHandler</code>
+            annotation takes an optional String parameter. You can pass the name of any <code>@DataField</code> in this
+            class as a parameter to the annotation, in order to handle events on that Widget. An empty <code>@EventHandler</code>
+            anootation means that the method will handle events on the <code>@Templated</code> class.
+        </p>
+
+        <h4>GWT Events on Widgets</h4>
+        <p>
+            The simplest use case for Errai UI event handling is to handle GWT Events on GWT Widgets that are <code>@DataField</code>s
+            of the parent templated class. This is illustrated below using the previous LoginForm component:
+        </p>
+
+        <h5>LoginForm.java</h5>
+        <pre class="code-snippet" data-language="java">
+    @Templated
+    public class LoginForm extends Composite {
+
+      @Inject
+      @DataField
+      private TextBox username;
+
+      // Corresponds to an &lt;input id="passwd"&gt; in the HTML template
+      @Inject
+      @DataField("passwd")
+      private PasswordTextBox password;
+
+      @Inject
+      @DataField
+      private Button cancel;
+
+      @EventHandler("cancel")
+      public void clearForm(ClickEvent e) {
+        username.setText("");
+        password.setText("");
+      }
+
+      // Other code
+
+    }
+        </pre>
+
+        <p class="tip textblock">TIP: Always pass the <code>@DataField</code> value of a Widget into the <code>@EventHandler</code>
+            annotation. In the example above, to handle events on the 'password' Widget, annotate the handler method with
+            <code>@EventHandler("passwd")</code>
+        </p>
+
+        <h5>GWT Events on DOM Elements</h5>
+        <p>
+            Errai UI also supports handling of GWT events on native DOM elements. You may sometimes need to use an
+            Element for which there is no corresponding GWT Widget. You might also need your Element to handle a GWT
+            event that is not normally available on that Element. For example, you might want to listen for ClickEvents
+            on a <code>&lt;div&gt;</code>, which does not receive a GWT ClickEvent. The following code snippet shows you
+            how to achieve this with Errai UI:
+        </p>
+
+        <h5>LoginForm.java</h5>
+        <pre class="code-snippet" data-language="java">
+    @Templated
+    public class LoginForm extends Composite {
+
+      // corresponds to a &lt;div id="button-div"&gt; element in the HTML template
+      @DataField("button-div")
+      private DivElement button = DOM.createDiv();
+
+      @EventHandler("button-div")
+      public void onDivButtonClicked(ClickEvent e) {
+        // handle the ClickEvent
+      }
+    }
+        </pre>
+
+        <h4>GWT Events on @Templated Beans</h4>
+        <p>
+            You may also want to handle events on your entire <code>@Templated</code> Widget. In this case, you can annotate any event
+            handler methods with a plain <code>@EventHandler</code> annotation as follows:
+        </p>
+
+        <h5>LoginForm.java</h5>
+        <pre class="code-snippet" data-language="java">
+    @Templated
+    public class LoginForm extends Composite {
+
+      // Inject required widgets and elements
+
+      // triggered when a mouseover event occurs anywhere
+      // on the LoginForm
+      @EventHandler
+      public void onMouseOver(MouseOverEvent e) {
+          // handle the mouseover event
+      }
+
+      // Other code
+    }
+        </pre>
+
+        <p>We also created a demo to show you how Errai UI's event handling works. Check it out here:</p>
+        <button id="loginPageEventsAnchor" class="btn btn-large btn-success">Try out Errai UI with Event Handling<span
+        class="glyphicon glyphicon-arrow-right"></span></button>
+
+    </div>
 
 </div>
