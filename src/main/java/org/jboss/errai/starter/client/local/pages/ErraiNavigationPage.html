@@ -25,19 +25,19 @@
     <h4>Maven Dependencies</h4>
 
     <p>Add the following dependencies to your pom.xml</p>
-		<pre data-language=html class="code-snippet">
-	<dependency>
-	  <groupId>org.jboss.errai</groupId>
-	  <artifactId>errai-navigation</artifactId>
-	  <scope>provided</scope>
-	</dependency>
+    <pre data-language=html class="code-snippet">
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.jboss.errai&lt;/groupId&gt;
+    &lt;artifactId&gt;errai-navigation&lt;/artifactId&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+  &lt;/dependency&gt;
 
-	<dependency>
-	  <groupId>org.jboss.errai</groupId>
-	  <artifactId>errai-cdi-client</artifactId>
-	  <scope>provided</scope>
-	</dependency>
-		</pre>
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.jboss.errai&lt;/groupId&gt;
+    &lt;artifactId&gt;errai-cdi-client&lt;/artifactId&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+  &lt;/dependency>
+    </pre>
 
     <h4>GWT Module Descriptor</h4>
 
@@ -45,7 +45,7 @@
     this line to your application’s *.gwt.xml file:
     </p>
 		<pre data-language=html class="code-snippet">
-	<inherits name="org.jboss.errai.ui.nav.Navigation"></inherits>
+    &lt;inherits name="org.jboss.errai.ui.nav.Navigation"/&gt;
 		</pre>
     <p class="tip textblock">TIP: In our example, the GWT module file is located at <code>src/main/java/org/jboss/errai/demo/ErraiDemo.gwt.xml</code>
     </p>
@@ -76,10 +76,10 @@
 
     <h5>ItemPage.java</h5>
     <pre class="code-snippet" data-language="java">
-      @Page
-      public class ItemPage extends Composite {
-        // Some code...
-      }
+  @Page
+  public class ItemPage extends Composite {
+	// Some code...
+  }
     </pre>
     <p>
       By default, the name of a page is the simple name of the class that declares it. In the above example, the
@@ -87,10 +87,10 @@
       If you prefer a different page name, use the @Page annotation’s path attribute: </p>
     <h5>ItemPage.java</h5>
     <pre class="code-snippet" data-language="java">
-      @Page(path="items")
-      public class ItemPage extends Composite {
-        // Some code...
-      }
+  @Page(path="items")
+  public class ItemPage extends Composite {
+	// Some code...
+  }
     </pre>
     <p>Using this in our ErraiDemo example, the URL to the ItemPage would look like<code class="textblock">localhost:8888/errai-forge-demo/index.html<strong>#items</strong></code>
     </p>
@@ -104,10 +104,10 @@
        the default starting page, like this: </p>
     <h5>ItemPage.java</h5>
     <pre class="code-snippet" data-language="java">
-      @Page(role = DefaultPage.class)
-      public class ItemPage extends VerticalPanel {
-        // Some code...
-      }
+  @Page(role = DefaultPage.class)
+  public class ItemPage extends VerticalPanel {
+	// Some code...
+  }
 	</pre>
 
     <h4>Page Roles</h4>
@@ -139,22 +139,22 @@
     </p>
     <h5>WelcomePage.java</h5>
     <pre class="code-snippet" data-language="java">
-      @Page(role = DefaultPage.class)
-      @Templated
-      public class WelcomePage extends Composite {
+  @Page(role = DefaultPage.class)
+  @Templated
+  public class WelcomePage extends Composite {
 
-        @Inject
-        @DataField
-        TransitionAnchor&lt;ItemPage&gt; itemLink;
+	@Inject
+	@DataField
+	TransitionAnchor&lt;ItemPage&gt; itemLink;
 
-        // Some code ...
-      }
+	// Some code ...
+  }
     </pre>
     <h5>WelcomePage.html</h5>
     <pre class="code-snippet" data-language="html">
-      <div>
-        <a id="itemLink">Go to Item Page</a>
-      </div>
+  &lt;div&gt;
+    &lt;a id="itemLink"&gt;Go to Item Page&lt;/a&gt;
+  &lt;/div&gt;
     </pre>
 
     <h4>TransitionTo</h4>
@@ -165,20 +165,20 @@
 
     <h5>ItemPage.java</h5>
     <pre class="code-snippet" data-language="java">
-      @Page
-      public class ItemPage extends Composite {
+  @Page
+  public class ItemPage extends Composite {
 
-        @Inject
-        TransitionTo&lt;WelcomePage&gt; startButtonClicked;
+	@Inject
+	TransitionTo&lt;WelcomePage&gt; startButtonClicked;
 
-        @Inject
-        Button startButton;
+	@Inject
+	Button startButton;
 
-        @EventHandler("startButton")
-        public void onStartButtonClicked(ClickEvent e) {
-          startButtonClicked.go();
-        }
-      }
+	@EventHandler("startButton")
+	public void onStartButtonClicked(ClickEvent e) {
+	  startButtonClicked.go();
+	}
+  }
     </pre>
 
     <h4>TransitionTo with a UniquePageRole</h4>
@@ -202,14 +202,14 @@
     <p>To do this, Errai Navigation uses page state parameters. Consider the following page widget:</p>
 
     <pre class="code-snippet" data-language="java">
-      @Page
-      public class ItemPage extends VerticalPanel {
+  @Page
+  public class ItemPage extends VerticalPanel {
 
-        @PageState
-        private int itemId;
+	@PageState
+	private int itemId;
 
-        // Code ...
-      }
+	// Code ...
+  }
     </pre>
 
     <p>This page would be accessible at a URL like the following: </p>
@@ -222,17 +222,17 @@
      template of the page’s path in the path field of the @Page annotation. As an example, consider the following code:</p>
 
     <pre class="code-snippet" data-language="java">
-      @Page(path="item/{itemID}/{customerID}")
-      public class ItemPage extends VerticalPanel {
+  @Page(path="item/{itemID}/{customerID}")
+  public class ItemPage extends VerticalPanel {
 
-        @PageState
-        private int itemID;
+	@PageState
+	private int itemID;
 
-        @PageState
-        private String customerID;
+	@PageState
+	private String customerID;
 
-        // More code...
-      }
+	// More code...
+  }
     </pre>
     <p>Navigating to the ItemPage when itemID = 2300 and customerID = 10528  will result in the following URL being generated:</p>
 
@@ -251,57 +251,57 @@
 
     <h5>WelcomePage.java</h5>
     <pre class="code-snippet" data-language="java">
-      @Page
-      @Templated
-      public class WelcomePageWithPageState extends Composite {
+@Page
+@Templated
+public class WelcomePageWithPageState extends Composite {
 
-		@Inject
-		@DataField
-		Button itemId2;
+    @Inject
+    @DataField
+    Button itemId2;
 
-		@Inject
-		@DataField
-		Button itemId4;
+    @Inject
+    @DataField
+    Button itemId4;
 
-		@Inject
-		TransitionTo&lt;ItemPageWithPageState&gt; goToItemPage;
+    @Inject
+    TransitionTo&lt;ItemPageWithPageState&gt; goToItemPage;
 
-		@EventHandler("itemId2")
-		public void itemIdEquals2(ClickEvent e) {
-				Builder&lt;String, String&gt; mapBuilder = ImmutableMultimap.builder();
-				mapBuilder.put("itemId", "2");
+    @EventHandler("itemId2")
+    public void itemIdEquals2(ClickEvent e) {
+        Builder&lt;String, String&gt; mapBuilder = ImmutableMultimap.builder();
+        mapBuilder.put("itemId", "2");
 
-				goToItemPage.go(mapBuilder.build());
-		}
+        goToItemPage.go(mapBuilder.build());
+    }
 
-		@EventHandler("itemId4")
-		public void itemIdEquals4(ClickEvent e) {
-				Builder&lt;String, String&gt; mapBuilder = ImmutableMultimap.builder();
-				mapBuilder.put("itemId", "4");
+    @EventHandler("itemId4")
+    public void itemIdEquals4(ClickEvent e) {
+        Builder&lt;String, String&gt; mapBuilder = ImmutableMultimap.builder();
+        mapBuilder.put("itemId", "4");
 
-				goToItemPage.go(mapBuilder.build());
-		}
-      }
+        goToItemPage.go(mapBuilder.build());
+    }
+}
     </pre>
 
     <h5>ItemPage.java</h5>
     <pre class="code-snippet" data-language="java">
-      @Page(path = "item/{itemId}")
-      @Templated
-      public class ItemPageWithPageState extends Composite {
+  @Page(path = "item/{itemId}")
+  @Templated
+  public class ItemPageWithPageState extends Composite {
 
-		@Inject
-		@DataField
-		Label printItemId;
+	@Inject
+	@DataField
+	Label printItemId;
 
-		@PageState
-		int itemId;
+	@PageState
+	int itemId;
 
-		@PageShowing
-		public void onPageLoad() {
-          printItemId.setText("ItemID = " + itemId);
-		}
-      }
+	@PageShowing
+	public void onPageLoad() {
+	  printItemId.setText("ItemID = " + itemId);
+	}
+  }
     </pre>
 
     <p class="tip textblock">NOTE: Any additional <code>@PageState</code> values not explicitly mentioned in the page
@@ -324,9 +324,9 @@
     <p>HTML5 pushState can be enabled by adding the following lines to your GWT host page:</p>
     
     <pre class="code-snippet" data-language="html">
-      &lt;script type="text/javascript"&gt;
-        var erraiPushStateEnabled = true;
-      &lt;/script&gt;
+  &lt;script type="text/javascript"&gt;
+	var erraiPushStateEnabled = true;
+  &lt;/script&gt;
     </pre>
 
     <p>
@@ -337,9 +337,9 @@
     </p>
     
     <pre class="code-snippet" data-language="html">
-      &lt;script type="text/javascript"&gt;
-        var erraiApplicationWebContext = "store";
-      &lt;/script&gt;
+  &lt;script type="text/javascript"&gt;
+	var erraiApplicationWebContext = "store";
+  &lt;/script&gt;
     </pre>
   
     <p>
@@ -352,10 +352,10 @@
     </p>
     
     <pre class="code-snippet" data-language="html">
-      &lt;error-page&gt;
-        &lt;error-code&gt;404&lt;/error-code&gt;
-        &lt;location&gt;/&lt;/location&gt;
-      &lt;/error-page&gt;
+  &lt;error-page&gt;
+	&lt;error-code&gt;404&lt;/error-code&gt;
+	&lt;location&gt;/&lt;/location&gt;
+  &lt;/error-page&gt;
     </pre>
 
     <h3>Page Lifecycles</h3>
@@ -367,18 +367,18 @@
 
     <h5>ItemPage.java</h5>
     <pre class="code-snippet" data-language="java">
-      @Page
-      public class ItemPage extends VerticalPanel {
-        @PageShowing
-        private void preparePage() {
-        }
+  @Page
+  public class ItemPage extends VerticalPanel {
+	@PageShowing
+	private void preparePage() {
+	}
 
-        @PageHiding
-        private void unpreparePage() {
-        }
+	@PageHiding
+	private void unpreparePage() {
+	}
 
-        // Some code...
-    }
+	// Some code...
+  }
     </pre>
 
     <h4>Lifecycle Phases</h4>
