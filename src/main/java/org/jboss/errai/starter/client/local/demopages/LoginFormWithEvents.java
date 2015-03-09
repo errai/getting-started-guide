@@ -20,7 +20,7 @@ import com.google.gwt.user.client.ui.TextBox;
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
 @Page
-@Templated("LoginPagePlain.html")
+@Templated("LoginForm.html")
 public class LoginPageWithEvents extends Composite {
 
   @Inject

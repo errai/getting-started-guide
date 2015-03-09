@@ -161,10 +161,6 @@ img {
     cursor: not-allowed;
 }
 
-.btn {
-    margin-right: 30px;
-}
-
 form {
     max-width: 400px;
     margin-top: 15px;
@@ -174,6 +170,12 @@ form {
     margin: 0 5px;
 }
 
-.password-hover {
-    background-color: blue;
+.nav-button {
+    font-size: 20px;
+
+}
+
+#footer {
+    margin: 0;
+    padding-top: 15px;
 }
