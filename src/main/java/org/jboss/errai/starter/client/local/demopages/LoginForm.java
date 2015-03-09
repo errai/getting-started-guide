@@ -9,6 +9,6 @@ import com.google.gwt.user.client.ui.Composite;
  */
 @Page
 @Templated
-public class LoginPagePlain extends Composite {
+public class LoginForm extends Composite {
 
 }

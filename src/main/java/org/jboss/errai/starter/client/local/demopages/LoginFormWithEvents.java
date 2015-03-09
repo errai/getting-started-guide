@@ -21,7 +21,7 @@ import com.google.gwt.user.client.ui.TextBox;
  */
 @Page
 @Templated("LoginForm.html")
-public class LoginPageWithEvents extends Composite {
+public class LoginFormWithEvents extends Composite {
 
   @Inject
   @DataField
@@ -52,10 +52,10 @@ public class LoginPageWithEvents extends Composite {
 
   @PostConstruct
   public void onLoad() {
-    info.setText("This demo uses the same LoginForm template as the earlier LoginForm demo. \n Both the Cancel and "
-                   + "Sign In buttons on this page handle ClickEvents using @EventHandler methods."
+    info.setHTML("This demo uses the same LoginForm template as the earlier LoginForm demo. <br/><br/> Both the "
+                   + "Cancel and Sign In buttons on this page handle ClickEvents using @EventHandler methods. "
                    + "The Cancel button is injected as a Widget, and will clear the form of any data typed into "
-                   + "it. \n The Sign In button is manually instantiated as a button element, and will display "
+                   + "it. <br/><br/> The Sign In button is manually instantiated as a button element, and will display "
                    + "the username entered into the form below.");
   }
 
@@ -66,13 +66,14 @@ public class LoginPageWithEvents extends Composite {
   }
 
   @EventHandler("login")
-    public void onSubmit(ClickEvent e) {
+  public void onSubmit(ClickEvent e) {
 
-      if ((password.getText().equals("")) || username.getText().equals("")) {
-        Window.alert("Please enter a valid username and password.");
-      } else {
-        loginLabel.setText("Thank you for signing in, " + username.getText()+ ".");
-      }
+    if ((password.getText().equals("")) || username.getText().equals("")) {
+      Window.alert("Please enter a valid username and password.");
+    }
+    else {
+      loginLabel.setText("Thank you for signing in, " + username.getText() + ".");
+    }
   }
 
 }
