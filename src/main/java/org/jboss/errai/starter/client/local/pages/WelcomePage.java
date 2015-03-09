@@ -14,7 +14,7 @@ import javax.enterprise.context.ApplicationScoped;
 //@Templated
 //@Page(role = DefaultPage.class)
 //@ApplicationScoped
-public class WelcomePage extends Composite{
+public class WelcomePage extends Composite {
 
     @PostConstruct
     public void setup() {

@@ -19,6 +19,7 @@ h4 {
     margin-top: 20px;
     font-weight: bold;
 }
+
 h5 {
     margin-top: 20px;
     font-weight: bold;
@@ -178,4 +179,8 @@ form {
 #footer {
     margin: 0;
     padding-top: 15px;
+}
+
+.info {
+    margin-top: 15px;
 }
