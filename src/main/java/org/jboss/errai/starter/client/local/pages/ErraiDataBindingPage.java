@@ -8,5 +8,5 @@ import org.jboss.errai.ui.shared.api.annotations.Templated;
  */
 @Page
 @Templated
-public class ErraiJPAPage extends AbstractErraiModulePage {
+public class ErraiDataBindingPage extends AbstractErraiModulePage {
 }
