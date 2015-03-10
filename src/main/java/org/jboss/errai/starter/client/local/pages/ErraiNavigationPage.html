@@ -74,25 +74,25 @@
     <p>Pages in Errai are subclasses of GWT's Widget class. To declare a page, simply annotate any subclass of Widget
        with the <code>@Page</code> annotation:</p>
 
-    <h5>ItemPage.java</h5>
+    <h5>LoginFormPage.java</h5>
     <pre class="code-snippet" data-language="java">
   @Page
-  public class ItemPage extends Composite {
+  public class LoginFormPage extends Composite {
 	// Some code...
   }
     </pre>
     <p>
       By default, the name of a page is the simple name of the class that declares it. In the above example, the
-      ItemPage will fill the navigation panel whenever the browser’s location bar reads <code class="textblock">localhost:8888/errai-forge-demo/index.html<strong>#ItemPage</strong></code>
+      SignUpPage will fill the navigation panel whenever the browser’s location bar reads <code class="textblock">localhost:8888/errai-forge-demo/index.html<strong>#SignUpPage</strong></code>
       If you prefer a different page name, use the @Page annotation’s path attribute: </p>
-    <h5>ItemPage.java</h5>
+    <h5>SignUpPage.java</h5>
     <pre class="code-snippet" data-language="java">
-  @Page(path="items")
-  public class ItemPage extends Composite {
+  @Page(path="login")
+  public class LoginFormPage extends Composite {
 	// Some code...
   }
     </pre>
-    <p>Using this in our ErraiDemo example, the URL to the ItemPage would look like<code class="textblock">localhost:8888/errai-forge-demo/index.html<strong>#items</strong></code>
+    <p>Using this in our ErraiDemo example, the URL to the SignUpPage would look like<code class="textblock">localhost:8888/errai-forge-demo/index.html<strong>#items</strong></code>
     </p>
 
     <h4>Default Page</h4>
@@ -102,10 +102,10 @@
        in the URL bar. In addition, in case of any page navigation errors, Errai's default error handling behaviour is
        to navigate back to the default page. <br/> Use the <code>role = DefaultPage.class</code> attribute to declare
        the default starting page, like this: </p>
-    <h5>ItemPage.java</h5>
+    <h5>LoginFormPage.java</h5>
     <pre class="code-snippet" data-language="java">
   @Page(role = DefaultPage.class)
-  public class ItemPage extends VerticalPanel {
+  public class LoginFormPage extends VerticalPanel {
 	// Some code...
   }
 	</pre>
@@ -133,27 +133,27 @@
     <p>The easiest way to declare a link between pages is to inject an instance of
       <code>TransitionAnchor&lt;P&gt;</code>, where P is the class of the target page.<br/>
 
-       Here is an example declaring an anchor link from the templated WelcomePage to the ItemPage. The first code sample
-       would go in WelcomePage.java while the second would go in the WelcomePage.html, the associated HTML template
-       (more on templated pages in Errai UI).<!-- TODO: Add link to Errai UI -->
+       Here is an example declaring an anchor link from the templated LoginFormPage to the SignUpPage. The first code sample
+       would go in LoginFormPage.java while the second would go in the LoginFormPage.html, the associated HTML template
+       (more on templated pages in <a href="#ErraiUIPage">Errai UI</a>).
     </p>
-    <h5>WelcomePage.java</h5>
+    <h5>LoginFormPage.java</h5>
     <pre class="code-snippet" data-language="java">
   @Page(role = DefaultPage.class)
   @Templated
-  public class WelcomePage extends Composite {
+  public class LoginFormPage extends Composite {
 
 	@Inject
 	@DataField
-	TransitionAnchor&lt;ItemPage&gt; itemLink;
+	TransitionAnchor&lt;SignUpPage&gt; signup;
 
 	// Some code ...
   }
     </pre>
-    <h5>WelcomePage.html</h5>
+    <h5>LoginFormPage.html</h5>
     <pre class="code-snippet" data-language="html">
   &lt;div&gt;
-    &lt;a id="itemLink"&gt;Go to Item Page&lt;/a&gt;
+    &lt;button id="signup"&gt;First time user? Create an account&lt;/a&gt;
   &lt;/div&gt;
     </pre>
 
@@ -161,23 +161,24 @@
 
     <p>Sometimes it is necessary to manually transition between pages (such as in response to an event being fired). To
        declare a manual link from one page to another, inject an instance of <code>TransitionTo&lt;P&gt;</code>, where P
-       is the class of the target page. This code declares a manual link from the ItemPage to the WelcomePage:</p>
+       is the class of the target page. This code declares a manual link from the SignUpPage to the LoginFormPage:</p>
 
-    <h5>ItemPage.java</h5>
+    <h5>SignUpPage.java</h5>
     <pre class="code-snippet" data-language="java">
   @Page
-  public class ItemPage extends Composite {
+  public class SignUpPage extends Composite {
 
-	@Inject
-	TransitionTo&lt;WelcomePage&gt; startButtonClicked;
+    @Inject
+    TransitionTo&lt;LoginFormPage&gt; goToLogin;
 
-	@Inject
-	Button startButton;
+    @Inject
+    @DataField
+    public Button signin;
 
-	@EventHandler("startButton")
-	public void onStartButtonClicked(ClickEvent e) {
-	  startButtonClicked.go();
-	}
+    @EventHandler("signin")
+    public void goToLoginPage(ClickEvent e) {
+      goToLogin.go();
+    }
   }
     </pre>
 
@@ -194,7 +195,7 @@
 
     <h3>Page State Parameters</h3>
 
-    <p>Oftentimes, a page widget is used to represent an instance of a class of things. For example, our ItemPage may be
+    <p>Oftentimes, a page widget is used to represent an instance of a class of things. For example, our SignUpPage may be
     used as a template to display a particular user-selected item available at a store. In this case, it is important
     that the bookmarkable navigation URL includes not only the name of the page but also an identifier for the
     particular item being displayed.</p>
@@ -203,40 +204,42 @@
 
     <pre class="code-snippet" data-language="java">
   @Page
-  public class ItemPage extends VerticalPanel {
+  public class AccountCreatedPage extends Composite {
 
-	@PageState
-	private int itemId;
+  @PageState
+  public String username;
 
 	// Code ...
   }
     </pre>
 
     <p>This page would be accessible at a URL like the following: </p>
-    <code class="textblock">http://www.company.com/store/index.html<strong>#ItemPage;id=4</strong></code>
+    <code class="textblock">http://www.webapp.com/appcontext/index.html<strong>#AccountCreatedPage;username=abcd</strong></code>
 
-    <p>where the host address is <code>www.company.com</code> and the application context is <code>store</code>. Before
-       loading up the page, the Navigation singleton would assign <code>itemId = 4</code>.</p>
+    <p>where the host address is <code>www.webapp.com</code> and the application context is <code>appcontext</code>.
+        Before
+       loading up the page, the Navigation singleton would assign <code>username = abcd</code>.</p>
 
     <p>Page state parameters can also be accessed using URLs with path parameters. In this case, you have to declare the
      template of the page’s path in the path field of the @Page annotation. As an example, consider the following code:</p>
 
     <pre class="code-snippet" data-language="java">
-  @Page(path="item/{itemID}/{customerID}")
-  public class ItemPage extends VerticalPanel {
+  @Page(path="user/{username}/{userID}")
+  public class SignUpPage extends VerticalPanel {
 
 	@PageState
-	private int itemID;
+	public String username;
 
 	@PageState
-	private String customerID;
+	public int userID;
 
 	// More code...
   }
     </pre>
-    <p>Navigating to the ItemPage when itemID = 2300 and customerID = 10528  will result in the following URL being generated:</p>
+    <p>Navigating to the AccountCreatedPage when userID = 2300 and username = abcd  will result in the following URL being
+    generated:</p>
 
-    <code class="textblock">http://company.com/store/index.html#ItemPage/2300/10528/</code>
+    <code class="textblock">http://www.webapp.com/appcontext/index.html#AccountCreatedPage/2300/abcd/</code>
 
     <p class="tip textblock">NOTE: <code>@PageState</code> fields can be of any primitive or boxed primitive type
                              (except char or Character), String, or a Collection, List, or Set of the allowable scalar
@@ -249,59 +252,68 @@
       example below will show you how to pass state information to a page before navigating to it:
     </p>
 
-    <h5>WelcomePage.java</h5>
+    <h5>SignUpPage.java</h5>
     <pre class="code-snippet" data-language="java">
-@Page
-@Templated
-public class WelcomePageWithPageState extends Composite {
+    @Page
+    @Templated
+    public class SignUpPage extends Composite {
 
-    @Inject
-    @DataField
-    Button itemId2;
+      @Inject
+      @DataField
+      public TextBox username;
 
-    @Inject
-    @DataField
-    Button itemId4;
+      @Inject
+      @DataField
+      public PasswordTextBox password;
 
-    @Inject
-    TransitionTo&lt;ItemPageWithPageState&gt; goToItemPage;
+      @Inject
+      @DataField
+      public TextBox email;
 
-    @EventHandler("itemId2")
-    public void itemIdEquals2(ClickEvent e) {
-        Builder&lt;String, String&gt; mapBuilder = ImmutableMultimap.builder();
-        mapBuilder.put("itemId", "2");
 
-        goToItemPage.go(mapBuilder.build());
+      @Inject
+      @DataField
+      public Button submit;
+
+      @Inject
+      TransitionTo&lt;AccountCreatedPage&gt; accountCreated;
+
+        @EventHandler("submit")
+        public void submitNewAccount(ClickEvent e) {
+          String user = username.getText();
+          String emailId = email.getText();
+
+          accountCreated.go(ImmutableMultimap.of("username", user, "email", emailId));
+        }
+
     }
-
-    @EventHandler("itemId4")
-    public void itemIdEquals4(ClickEvent e) {
-        Builder&lt;String, String&gt; mapBuilder = ImmutableMultimap.builder();
-        mapBuilder.put("itemId", "4");
-
-        goToItemPage.go(mapBuilder.build());
-    }
-}
     </pre>
 
-    <h5>ItemPage.java</h5>
-    <pre class="code-snippet" data-language="java">
-  @Page(path = "item/{itemId}")
-  @Templated
-  public class ItemPageWithPageState extends Composite {
+    <h5>AccountCreatedPage.java</h5>
+ @Page
+@Templated
+public class AccountCreatedPage extends Composite {
 
-	@Inject
-	@DataField
-	Label printItemId;
+  @PageState
+  public String username;
 
-	@PageState
-	int itemId;
+  @PageState
+  public String email;
 
-	@PageShowing
-	public void onPageLoad() {
-	  printItemId.setText("ItemID = " + itemId);
-	}
+  @Inject
+  @DataField
+  public HTML pageState;
+
+  @PageShown
+  public void fillCredentials() {
+
+    String registered = new String("Thank you for registering with us! Your account was successfully created with the"
+                                     + " username "
+                                     +
+                                     username + " and the email address " + email + ".");
+    pageState.setText(registered);
   }
+}
     </pre>
 
     <p class="tip textblock">NOTE: Any additional <code>@PageState</code> values not explicitly mentioned in the page
@@ -315,11 +327,11 @@ public class WelcomePageWithPageState extends Composite {
   
     <p>Errai also supports pushstate-based URLs. If HTML5 pushstate is enabled ErraiNavigation urls will not use the
     fragment-identifier (#). Thus the non-pushstate url from the previous section:</p>
-    <code class="textblock">http://www.company.com/store#item/2300/10528</code>
+    <code class="textblock">http://www.webapp.com/appcontext/index.html#AccountCreatedPage/2300/abcd</code>
 
     <p>would become</p>
 
-    <code class="textblock">http://www.company.com/store/item/2300/10528</code>
+    <code class="textblock">http://www.webapp.com/appcontext/AccountCreatedPage/2300/abcd</code>
   
     <p>HTML5 pushState can be enabled by adding the following lines to your GWT host page:</p>
     
@@ -365,10 +377,10 @@ public class WelcomePageWithPageState extends Composite {
        designate methods so a page widget can be notified when it is displayed or hidden. The actual order of events is
        described in the next section.</p>
 
-    <h5>ItemPage.java</h5>
+    <h5>SignUpPage.java</h5>
     <pre class="code-snippet" data-language="java">
   @Page
-  public class ItemPage extends VerticalPanel {
+  public class SignUpPage extends Composite {
 	@PageShowing
 	private void preparePage() {
 	}
@@ -385,7 +397,7 @@ public class WelcomePageWithPageState extends Composite {
 
     <p>Here is the order of execution of lifecycle phases when transitioning from one page to another:</p>
 
-    <ol>
+      <ol>
       <li>The fragment identifier in the URL changes.</li>
       <li>The <code>@PageHiding</code> method on the current (about-to-be-navigated-away-from) page is invoked.</li>
       <li>The current page is removed from the browser’s DOM.</li>
@@ -402,7 +414,9 @@ public class WelcomePageWithPageState extends Composite {
       <li>The <code>@PageShown</code> method of the new page is invoked.</li>
     </ol>
 
-      <br>
+      <br/>
+      <p>Now that you have a good understanding of Errai Navigation, you can try it out in your own app, or click Next below
+          to learn about <b>Errai Data Binding</b>.</p>
       <div id="footer" class="row">
           <button id="backButton" class="btn btn-large btn-primary pull-left nav-button">
               <span class="glyphicon glyphicon-arrow-left"></span>
