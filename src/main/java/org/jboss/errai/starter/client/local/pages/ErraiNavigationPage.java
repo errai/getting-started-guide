@@ -4,8 +4,6 @@ import javax.inject.Inject;
 import org.jboss.errai.starter.client.local.NavigationModule;
 import org.jboss.errai.starter.client.local.demopages.LoginFormPage;
 import org.jboss.errai.starter.client.local.demopages.SignUpPageSubmit;
-import org.jboss.errai.starter.client.local.demopages.WelcomePageWithPageState;
-import org.jboss.errai.starter.client.local.demopages.WelcomePageWithTransition;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.nav.client.local.TransitionTo;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
