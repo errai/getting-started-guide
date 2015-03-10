@@ -172,7 +172,7 @@ form {
 }
 
 .nav-button {
-    font-size: 20px;
+    font-size: 16px;
 
 }
 
@@ -183,4 +183,8 @@ form {
 
 .info {
     margin-top: 15px;
+}
+
+.btn-row {
+    margin: 0 0 20px 0;
 }

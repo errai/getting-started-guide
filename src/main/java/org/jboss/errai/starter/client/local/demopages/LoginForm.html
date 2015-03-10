@@ -1,5 +1,5 @@
 <div id="LoginPagePlain">
-    <div class="title"><h1>Demo: Sample Login Page</h1></div>
+    <div class="title"></div>
     <div class="page">
         <div class="info"></div>
         <form id="form">
@@ -14,8 +14,11 @@
                 <input id="passwd" class="form-control" type="password" placeholder="********">
                 <br/>
 
-                <button id="cancel" class="btn btn-danger">Cancel</button>
+                <div class="row btn-row">
+                <button id="cancel" class="btn btn-danger pull-left">Cancel</button>
                 <button id="login" class="btn btn-success pull-right">Sign In</button>
+                    </div>
+                <button id="signup" class="btn btn-primary btn-block">First time user? Create an account</button>
             </div>
         </form>
         <p id="loginLabel"></p>
