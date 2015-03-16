@@ -2,8 +2,8 @@ package org.jboss.errai.starter.client.local.pages;
 
 import javax.inject.Inject;
 import org.jboss.errai.starter.client.local.NavigationModule;
-import org.jboss.errai.starter.client.local.demopages.LoginFormPage;
-import org.jboss.errai.starter.client.local.demopages.SignUpPageSubmit;
+import org.jboss.errai.starter.client.local.demos.LoginFormPage;
+import org.jboss.errai.starter.client.local.demos.SignUpPageSubmit;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.nav.client.local.TransitionTo;
 import org.jboss.errai.ui.shared.api.annotations.DataField;

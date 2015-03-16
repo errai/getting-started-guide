@@ -1,8 +1,96 @@
 <div id="ErraiDataBindingPage">
     <div class="title"><h1>Errai Data Binding</h1></div>
     <div class="page">
+        <h2>Introduction</h2>
+        <p>
+            One of the most common tasks of web development involves updating model objects based on changes in input
+            fields in the user interface. Similarly, you may also need to update the user interface if a change
+            occurs in your app's model objects. These tasks usually involve a significant amount of event handling
+            and manual updating of fields and widgets. Errai's data binding module aims to eliminate the need for
+            this boilerplate code by <b>binding model objects to user interface widgets and automatically keeping
+            their values in sync</b>.
+        </p>
+        <p>
+            While the Errai Data Binding module can be used independently, it is also designed be combined with the
+            <a href="#ErraiUIPage">Errai UI module</a> for even more efficient code.
+        </p>
+
+        <h2>Installation Instructions</h2>
+
+        <h3>Errai Forge Addon</h3>
+
+        <p>
+            To run the code in this section, use the Errai Forge Addon to add the <code>errai-data-binding</code>
+            feature to your project.
+        </p>
+
+        <h3>Manual Installation</h3>
+
+        <p>
+            To manually add Errai Data Binding to your project, follow these steps. Note that the Errai Tutorial
+            already has these dependencies in place.
+        </p>
+
+        <h4>Maven Dependencies</h4>
+
+        <p>Add the following dependencies to your pom.xml</p>
+        <pre data-language="html" class="code-snippet">
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.jboss.errai&lt;/groupId&gt;
+        &lt;artifactId&gt;errai-data-binding&lt;/artifactId&gt;
+        &lt;version&gt;${errai.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+        </pre>
+
+        <h4>GWT Module Descriptor</h4>
+        <p>Once you have Errai Data Binding on your classpath, ensure your application inherits the GWT module as well. Add
+        this line to your application’s *.gwt.xml file:</p>
+
+        <pre class="code-snippet" data-language="html">
+    &lt;inherits name="org.jboss.errai.databinding.DataBinding" /&gt;
+        </pre>
+
+        <h2>Using Errai Data Binding</h2>
+        <p>
+            There are three main components to using Errai Data Binding: a <b>model</b> object to store properties, a user
+            interface <b>widget</b> (or Errai UI component), and a DataBinder. We use the DataBinder to "bind" the Model
+            and
+            Widget classes together.
+        </p>
+
+        <h3>Declarative Binding</h3>
+        <p>
+            Errai provides an easy annotation-based API to create a binding between a model and a widget. The steps
+            to establish this binding are described below:
+        </p>
+        <ol>
+
+            <li>
+                Create a model class according to Java bean conventions and annotate it with <code>@Bindable </code>
+                to declare it as a Bindable object.
+            </li>
+            <li>
+                Inject the model object or the corresponding DataBinder instance into the Widget class. To inject a
+                model object, annotate the instance with <code>@Model</code>. If you prefer to use a DataBinder&lt;M&gt;,
+                ensure that the DataBinder is of type Model, and is annotated with <code>@AutoBound</code>. Injecting
+                a Model class automatically uses a DataBinder.
+            </li>
+            <li>
+                To bind a field in the Widget class to a property in the Model class, the field name must match the
+                property name. In addition, the field must be annotated with <code>@Bound</code> to indicate
+                to Errai data binding that this field is to be bound to a property.
+            </li>
+        </ol>
 
 
+
+
+
+
+
+
+
+        <!-- Footer navigation buttons -->
         <div id="footer" class="row">
           <button id="backButton" class="btn btn-large btn-primary pull-left nav-button">
               <span class="glyphicon glyphicon-arrow-left"></span>

@@ -1,4 +1,4 @@
-package org.jboss.errai.starter.client.local.demopages;
+package org.jboss.errai.starter.client.local.demos;
 
 import javax.inject.Inject;
 import org.jboss.errai.ui.nav.client.local.Page;
@@ -12,7 +12,7 @@ import com.google.gwt.user.client.ui.HTML;
 /**
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
-@Page
+@Page(path = "/demos/navigation/pagestate/AccountCreated")
 @Templated
 public class AccountCreatedPage extends Composite {
 

@@ -1,4 +1,4 @@
-package org.jboss.errai.starter.client.local.demopages;
+package org.jboss.errai.starter.client.local.demos;
 
 import javax.annotation.PostConstruct;
 import org.jboss.errai.ui.nav.client.local.Page;

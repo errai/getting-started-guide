@@ -1,4 +1,4 @@
-package org.jboss.errai.starter.client.local.demopages;
+package org.jboss.errai.starter.client.local.demos;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -10,7 +10,7 @@ import org.jboss.errai.ui.shared.api.annotations.Templated;
 /**
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
-@Page
+@Page(path = "/demos/navigation/transition/LoginForm")
 @Templated("LoginForm.html")
 public class LoginFormPage extends LoginFormWithEvents {
 

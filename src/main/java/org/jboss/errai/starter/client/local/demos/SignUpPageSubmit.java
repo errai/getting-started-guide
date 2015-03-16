@@ -1,6 +1,8 @@
-package org.jboss.errai.starter.client.local.demopages;
+package org.jboss.errai.starter.client.local.demos;
 
 import javax.inject.Inject;
+import org.jboss.errai.starter.client.local.demos.AccountCreatedPage;
+import org.jboss.errai.starter.client.local.demos.SignUpPage;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.nav.client.local.TransitionTo;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
@@ -14,7 +16,7 @@ import com.google.gwt.user.client.ui.Button;
 /**
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
-@Page
+@Page(path = "/demos/navigation/pagestate/SIgnUp")
 @Templated("SignUpPage.html")
 public class SignUpPageSubmit extends SignUpPage {
 

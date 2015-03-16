@@ -1,7 +1,8 @@
-package org.jboss.errai.starter.client.local.demopages;
+package org.jboss.errai.starter.client.local.demos;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import org.jboss.errai.starter.client.local.demos.LoginFormPage;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.nav.client.local.TransitionTo;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
@@ -17,7 +18,7 @@ import com.google.gwt.user.client.ui.TextBox;
 /**
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
-@Page
+@Page(path = "/demos/navigation/transition/SignUp")
 @Templated
 public class SignUpPage extends Composite {
 

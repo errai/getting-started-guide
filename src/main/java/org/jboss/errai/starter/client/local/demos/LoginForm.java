@@ -1,4 +1,4 @@
-package org.jboss.errai.starter.client.local.demopages;
+package org.jboss.errai.starter.client.local.demos;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -6,7 +6,6 @@ import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.HeadingElement;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
