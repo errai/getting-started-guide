@@ -2,17 +2,18 @@
     <div class="title"><h1>Errai Data Binding</h1></div>
     <div class="page">
         <h2>Introduction</h2>
+
         <p>
             One of the most common tasks of web development involves updating model objects based on changes in input
-            fields in the user interface. Similarly, you may also need to update the user interface if a change
-            occurs in your app's model objects. These tasks usually involve a significant amount of event handling
-            and manual updating of fields and widgets. Errai's data binding module aims to eliminate the need for
-            this boilerplate code by <b>binding model objects to user interface widgets and automatically keeping
-            their values in sync</b>.
+            fields in the user interface. Similarly, you may also need to update the user interface if a change occurs
+            in your app's model objects. These tasks usually involve a significant amount of event handling and manual
+            updating of fields and widgets. Errai's data binding module aims to eliminate the need for this boilerplate
+            code by <b>binding model objects to user interface widgets and automatically keeping their values in
+            sync</b>.
         </p>
         <p>
-            While the Errai Data Binding module can be used independently, it is also designed be combined with the
-            <a href="#ErraiUIPage">Errai UI module</a> for even more efficient code.
+            While the Errai Data Binding module can be used independently, it is also designed be combined with the <a
+        href="#ErraiUIPage">Errai UI module</a> for even more efficient code.
         </p>
 
         <h2>Installation Instructions</h2>
@@ -43,6 +44,7 @@
         </pre>
 
         <h4>GWT Module Descriptor</h4>
+
         <p>Once you have Errai Data Binding on your classpath, ensure your application inherits the GWT module as well. Add
         this line to your application’s *.gwt.xml file:</p>
 
@@ -51,14 +53,15 @@
         </pre>
 
         <h2>Using Errai Data Binding</h2>
+
         <p>
-            There are three main components to using Errai Data Binding: a <b>model</b> object to store properties, a user
-            interface <b>widget</b> (or Errai UI component), and a DataBinder. We use the DataBinder to "bind" the Model
-            and
-            Widget classes together.
+            There are three main components to using Errai Data Binding: a <b>model</b> object to store properties, a
+            user interface <b>widget</b> (or Errai UI component), and a DataBinder. We use the DataBinder to "bind" the
+            Model and Widget classes together.
         </p>
 
         <h3>Declarative Binding</h3>
+
         <p>
             Errai provides an easy annotation-based API to create a binding between a model and a widget. The steps
             to establish this binding are described below:
@@ -66,40 +69,85 @@
         <ol>
 
             <li>
-                Create a model class according to Java bean conventions and annotate it with <code>@Bindable </code>
-                to declare it as a Bindable object.
+                Create a model class according to Java bean conventions and annotate it with <code>@Bindable </code> to
+                declare it as a Bindable object.
             </li>
             <li>
                 Inject the model object or the corresponding DataBinder instance into the Widget class. To inject a
                 model object, annotate the instance with <code>@Model</code>. If you prefer to use a DataBinder&lt;M&gt;,
-                ensure that the DataBinder is of type Model, and is annotated with <code>@AutoBound</code>. Injecting
-                a Model class automatically uses a DataBinder.
+                ensure that the DataBinder is of type Model, and is annotated with <code>@AutoBound</code>. Injecting a
+                Model class automatically uses a DataBinder.
             </li>
             <li>
                 To bind a field in the Widget class to a property in the Model class, the field name must match the
-                property name. In addition, the field must be annotated with <code>@Bound</code> to indicate
-                to Errai data binding that this field is to be bound to a property.
+                property name. In addition, the field must be annotated with <code>@Bound</code> to indicate to Errai
+                data binding that this field is to be bound to a property.
             </li>
         </ol>
 
+        <p>
+            The example below shows how to create a User with the SignUpForm widget using databinding:
+        </p>
+        <div class="tip textblock">
+            <p>
+                NOTE: The previous example creates a <code>DataBinder</code> using field injection. There are a few
+                other ways to manually create an instance of <code>DataBinder</code>:
+            </p>
+            <ul>
+                <li>
+                    Manual creation: <br/> <code>DataBinder&lt;Model&gt; dataBinder =
+                    DataBinder.forType(Model.class);</code>
+                </li>
+                <li>
+                    To create a DataBinder for an existing Model object: <br/> <code>DataBinder&lt;Model&gt; dataBinder
+                    = DataBinder.forModel(existingModelObject);</code>
+                </li>
+                <li>
+                    To set the UI's initial state using the Model object: <br/> <code>DataBinder&lt;Model&gt; dataBinder
+                    = DataBinder.forModel(existingModelObject, InitialState.FROM_MODEL);</code>
+                </li>
+                <li>
+                    To set the Model's initial state using the UI widget's values: <br/> <code>DataBinder&lt;Model&gt;
+                    DataBinder.forModel(existingCustomerObject, InitialState.FROM_UI);</code>
+                </li>
+            </ul>
+        </div>
 
+        <h3>Simple and Chained Property Bindings</h3>
+        <p>
+            By default, bindings are determined based on matching property and field names in the Model and the
+            Widget. However, it is possible to create bindings where the Model's property and the Widget's field names
+            do not match. For this purpose, the <code>@Bound</code> annotation takes an optional String parameter; to
+            specify the name of a property in the Model, or to specify a chained property in the Model, to which the
+            Widget's field must be bound.
+        </p>
 
+        <h4>Specifying Property Names</h4>
+        <p>
+            To bind a Widget's field to a particular property in the Model, simply pass in the name of the property
+            as a String parameter to the <code>@Bound</code> annotation. In our example, if the <code>Username</code> field in the SignUpForm is to be bound
+            to the <code>name</code> property of the User, the <code>Username</code> textbox should be annotated with
+            <code>@Bound("name")</code>.
+        </p>
 
-
-
-
+        <h4>Using Chained Bindings</h4>
+        <p>
+            In some cases, the Model class itself may contain another Model to store some data. For example, the User
+            class may contain a BirthDate property, which contains integers to store the date, month, and year of the
+            user's birthdate. In this case, the <code>Month</code> textbox is to be bound to the <code>month</code>
+            property by using the following annotation on the <code>Month</code> textbox: <code>@Bound("birthDate.month")</code>.
+        </p>
+        <h3>Converters</h3>
 
 
         <!-- Footer navigation buttons -->
         <div id="footer" class="row">
-          <button id="backButton" class="btn btn-large btn-primary pull-left nav-button">
-              <span class="glyphicon glyphicon-arrow-left"></span>
-              Go Back
-          </button>
-          <button id="nextButton" class="btn btn-large btn-success pull-right nav-button">
-              Next
-              <span class="glyphicon glyphicon-arrow-right"></span>
-          </button>
-      </div>
+            <button id="backButton" class="btn btn-large btn-primary pull-left nav-button">
+                <span class="glyphicon glyphicon-arrow-left"></span> Go Back
+            </button>
+            <button id="nextButton" class="btn btn-large btn-success pull-right nav-button">
+                Next <span class="glyphicon glyphicon-arrow-right"></span>
+            </button>
+        </div>
     </div>
 </div>
