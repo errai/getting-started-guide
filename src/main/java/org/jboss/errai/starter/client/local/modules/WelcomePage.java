@@ -1,8 +1,7 @@
 package org.jboss.errai.starter.client.local.modules;
 
-import com.google.gwt.user.client.ui.Composite;
-
 import javax.annotation.PostConstruct;
+import com.google.gwt.user.client.ui.Composite;
 
 /**
  * @author Divya Dadlani <ddadlani@redhat.com>

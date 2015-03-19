@@ -5,6 +5,7 @@ import org.jboss.errai.starter.client.local.NavigationModule;
 import org.jboss.errai.starter.client.local.demos.pages.LoginPageWithTransition;
 import org.jboss.errai.starter.client.local.demos.pages.SignUpPageWithPageState;
 import org.jboss.errai.ui.nav.client.local.Page;
+import org.jboss.errai.ui.nav.client.local.TransitionAnchor;
 import org.jboss.errai.ui.nav.client.local.TransitionTo;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.EventHandler;
@@ -19,28 +20,38 @@ import com.google.gwt.user.client.ui.Button;
 @Templated
 public class ErraiNavigationPage extends AbstractErraiModulePage {
 
-    @Inject
-    TransitionTo<LoginPageWithTransition> transitionDemo;
+  // Back and Next buttons
+  @Inject
+  @DataField
+  public TransitionAnchor<ErraiUIPage> backButton;
 
-    @Inject
-    TransitionTo<SignUpPageWithPageState> pageStateDemo;
+  @Inject
+  @DataField
+  public TransitionAnchor<ErraiDataBindingPage> nextButton;
 
-    @Inject
-    @DataField
-    Button transitionDemoButton;
+  // Demo buttons
+  @Inject
+  TransitionTo<LoginPageWithTransition> transitionDemo;
 
-    @Inject
-    @DataField
-    Button pageStateDemoButton;
+  @Inject
+  TransitionTo<SignUpPageWithPageState> pageStateDemo;
 
-    @EventHandler("transitionDemoButton")
-    public void goToTransitionDemo(ClickEvent e) {
-        transitionDemo.go();
-    }
+  @Inject
+  @DataField
+  Button transitionDemoButton;
 
-    @EventHandler("pageStateDemoButton")
-    public void goToPageStateDemo(ClickEvent e) {
-        pageStateDemo.go();
-    }
+  @Inject
+  @DataField
+  Button pageStateDemoButton;
+
+  @EventHandler("transitionDemoButton")
+  public void goToTransitionDemo(ClickEvent e) {
+    transitionDemo.go();
+  }
+
+  @EventHandler("pageStateDemoButton")
+  public void goToPageStateDemo(ClickEvent e) {
+    pageStateDemo.go();
+  }
 
 }
