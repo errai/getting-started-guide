@@ -2,6 +2,7 @@ package org.jboss.errai.starter.client.local.demos;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import org.jboss.errai.starter.client.local.demos.widgets.SignUpFormPageState;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
@@ -10,7 +11,7 @@ import org.jboss.errai.ui.shared.api.annotations.Templated;
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
 @Page
-@Templated("SignUpPage.html")
+@Templated("SignUpPageTemplate.html")
 public class SignUpPageWithPageState extends AbstractDemoPage {
 
   @Inject

@@ -1,6 +1,8 @@
-package org.jboss.errai.starter.client.local.demos;
+package org.jboss.errai.starter.client.local.demos.widgets;
 
 import javax.inject.Inject;
+import org.jboss.errai.starter.client.local.demos.SignUpPageWithTransition;
+import org.jboss.errai.ui.nav.client.local.TransitionAnchor;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.EventHandler;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
@@ -16,7 +18,7 @@ import com.google.gwt.user.client.ui.TextBox;
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
 @Templated("LoginForm.html")
-public class LoginFormEvents extends Composite {
+public class LoginFormTransition extends Composite {
 
   @Inject
   @DataField
@@ -37,6 +39,10 @@ public class LoginFormEvents extends Composite {
   @Inject
   @DataField
   public Button login;
+
+  @Inject
+  @DataField
+  TransitionAnchor<SignUpPageWithTransition> signup;
 
   public String getUsername() {
     return username.getText();
@@ -67,7 +73,7 @@ public class LoginFormEvents extends Composite {
   @EventHandler("login")
   public void onLogin(ClickEvent e) {
     if (noInfoEntered()) {
-      Window.alert("Please enter a username and password.");
+      Window.alert("Please enter a valid username and password.");
     }
     else {
       loginLabel.setHTML("Thank you for signing in, " + getUsername() + ".");
@@ -75,4 +81,5 @@ public class LoginFormEvents extends Composite {
       setPassword("");
     }
   }
+
 }

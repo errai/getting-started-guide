@@ -13,7 +13,7 @@
 // * @author Divya Dadlani <ddadlani@redhat.com>
 // */
 ////@Page
-////@Templated("SignUpPage.html")
+////@Templated("SignUpPageTemplate.html")
 //public class NewUserSignUpPage extends Composite {
 ////
 ////  @Inject

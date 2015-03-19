@@ -1,4 +1,4 @@
-package org.jboss.errai.starter.client.local.demos;
+package org.jboss.errai.starter.client.local.demos.widgets;
 
 import javax.inject.Inject;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
