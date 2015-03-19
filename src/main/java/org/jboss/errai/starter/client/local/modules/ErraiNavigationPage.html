@@ -254,66 +254,63 @@
 
     <h5>SignUpPage.java</h5>
     <pre class="code-snippet" data-language="java">
-    @Page
-    @Templated
-    public class SignUpPage extends Composite {
+  @Page
+  @Templated
+  public class SignUpPage extends Composite {
 
-      @Inject
-      @DataField
-      public TextBox username;
+    @Inject
+    @DataField
+    public TextBox username;
 
-      @Inject
-      @DataField
-      public PasswordTextBox password;
+    @Inject
+    @DataField
+    public PasswordTextBox password;
 
-      @Inject
-      @DataField
-      public TextBox email;
+    @Inject
+    @DataField
+    public TextBox email;
 
+    @Inject
+    @DataField
+    public Button submit;
 
-      @Inject
-      @DataField
-      public Button submit;
+    @Inject
+    TransitionTo&lt;AccountCreatedPage&gt; accountCreated;
 
-      @Inject
-      TransitionTo&lt;AccountCreatedPage&gt; accountCreated;
+    @EventHandler("submit")
+    public void submitNewAccount(ClickEvent e) {
+      String user = username.getText();
+      String emailId = email.getText();
 
-        @EventHandler("submit")
-        public void submitNewAccount(ClickEvent e) {
-          String user = username.getText();
-          String emailId = email.getText();
-
-          accountCreated.go(ImmutableMultimap.of("username", user, "email", emailId));
-        }
-
+      accountCreated.go(ImmutableMultimap.of("username", user, "email", emailId));
     }
+  }
     </pre>
 
     <h5>AccountCreatedPage.java</h5>
- @Page
-@Templated
-public class AccountCreatedPage extends Composite {
+  <pre class="code-snippet" data-language="java">
+  @Page
+  @Templated
+  public class AccountCreatedPage extends Composite {
 
-  @PageState
-  public String username;
+    @PageState
+    public String username;
 
-  @PageState
-  public String email;
+    @PageState
+    public String email;
 
-  @Inject
-  @DataField
-  public HTML pageState;
+    @Inject
+    @DataField
+    public HTML pageState;
 
-  @PageShown
-  public void fillCredentials() {
+    @PageShown
+    public void fillCredentials() {
 
-    String registered = new String("Thank you for registering with us! Your account was successfully created with the"
-                                     + " username "
-                                     +
-                                     username + " and the email address " + email + ".");
-    pageState.setText(registered);
+      String registered = new String("Thank you for registering with us! Your account was successfully created with the"
+                                       + " username " + username + " and the email address " + email + ".");
+      pageState.setText(registered);
+    }
   }
-}
     </pre>
 
     <p class="tip textblock">NOTE: Any additional <code>@PageState</code> values not explicitly mentioned in the page
@@ -381,15 +378,16 @@ public class AccountCreatedPage extends Composite {
     <pre class="code-snippet" data-language="java">
   @Page
   public class SignUpPage extends Composite {
-	@PageShowing
-	private void preparePage() {
-	}
 
-	@PageHiding
-	private void unpreparePage() {
-	}
+    @PageShowing
+    private void preparePage() {
+    }
 
-	// Some code...
+    @PageHiding
+    private void unpreparePage() {
+    }
+
+    // Some code...
   }
     </pre>
 
@@ -397,21 +395,21 @@ public class AccountCreatedPage extends Composite {
 
     <p>Here is the order of execution of lifecycle phases when transitioning from one page to another:</p>
 
-      <ol>
+    <ol>
       <li>The fragment identifier in the URL changes.</li>
-      <li>The <code>@PageHiding</code> method on the current (about-to-be-navigated-away-from) page is invoked.</li>
+      <li>The <code><b>@PageHiding</b></code> method on the current (about-to-be-navigated-away-from) page is invoked.</li>
       <li>The current page is removed from the browser’s DOM.</li>
-      <li>The <code>@PageHidden</code> method on the just-removed page is invoked.</li>
-      <li>The navigation system looks up the corresponding new '<code>@Page</code>' bean in the client-side bean
+      <li>The <code><b>@PageHidden</b></code> method on the just-removed page is invoked.</li>
+      <li>The navigation system looks up the corresponding new '<code><b>@Page</b></code>' bean in the client-side bean
           manager.
       </li>
-      <li>The navigation system writes to all <code>@PageState</code> fields in the new page bean (more on this in the
+      <li>The navigation system writes to all <code><b>@PageState</b></code> fields in the new page bean (more on this in the
           next section).
       </li>
-      <li>The <code>@PageShowing</code> method of the new page is invoked.</li>
-      <li>The new <code>@Page</code> Widget is added to the DOM (as a direct child of the navigation content panel).
+      <li>The <code><b>@PageShowing</b></code> method of the new page is invoked.</li>
+      <li>The new <code><b>@Page</b></code> Widget is added to the DOM (as a direct child of the navigation content panel).
       </li>
-      <li>The <code>@PageShown</code> method of the new page is invoked.</li>
+      <li>The <code><b>@PageShown</b></code> method of the new page is invoked.</li>
     </ol>
 
       <br/>

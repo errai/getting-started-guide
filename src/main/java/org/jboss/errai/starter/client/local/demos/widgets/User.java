@@ -1,4 +1,4 @@
-package org.jboss.errai.starter.client.local.demos;
+package org.jboss.errai.starter.client.local.demos.widgets;
 
 import org.jboss.errai.databinding.client.api.Bindable;
 

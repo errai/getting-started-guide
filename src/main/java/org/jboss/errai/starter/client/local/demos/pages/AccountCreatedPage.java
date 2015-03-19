@@ -1,4 +1,4 @@
-package org.jboss.errai.starter.client.local.demos;
+package org.jboss.errai.starter.client.local.demos.pages;
 
 import javax.inject.Inject;
 import org.jboss.errai.ui.nav.client.local.Page;
