@@ -74,10 +74,10 @@
     <p>Pages in Errai are subclasses of GWT's Widget class. To declare a page, simply annotate any subclass of Widget
        with the <code>@Page</code> annotation:</p>
 
-    <h5>LoginFormPage.java</h5>
+    <h5>LoginPage.java</h5>
     <pre class="code-snippet" data-language="java">
   @Page
-  public class LoginFormPage extends Composite {
+  public class LoginPage extends Composite {
 	// Some code...
   }
     </pre>
@@ -88,11 +88,11 @@
     <h5>SignUpPage.java</h5>
     <pre class="code-snippet" data-language="java">
   @Page(path="login")
-  public class LoginFormPage extends Composite {
+  public class LoginPage extends Composite {
 	// Some code...
   }
     </pre>
-    <p>Using this in our ErraiDemo example, the URL to the SignUpPage would look like<code class="textblock">localhost:8888/errai-forge-demo/index.html<strong>#items</strong></code>
+    <p>Using this in our ErraiDemo example, the URL to the SignUpPage would look like<code class="textblock">localhost:8888/errai-forge-demo/index.html<strong>#login</strong></code>
     </p>
 
     <h4>Default Page</h4>
@@ -102,10 +102,10 @@
        in the URL bar. In addition, in case of any page navigation errors, Errai's default error handling behaviour is
        to navigate back to the default page. <br/> Use the <code>role = DefaultPage.class</code> attribute to declare
        the default starting page, like this: </p>
-    <h5>LoginFormPage.java</h5>
+    <h5>LoginPage.java</h5>
     <pre class="code-snippet" data-language="java">
   @Page(role = DefaultPage.class)
-  public class LoginFormPage extends VerticalPanel {
+  public class LoginPage extends Composite {
 	// Some code...
   }
 	</pre>
@@ -133,15 +133,15 @@
     <p>The easiest way to declare a link between pages is to inject an instance of
       <code>TransitionAnchor&lt;P&gt;</code>, where P is the class of the target page.<br/>
 
-       Here is an example declaring an anchor link from the templated LoginFormPage to the SignUpPage. The first code sample
-       would go in LoginFormPage.java while the second would go in the LoginFormPage.html, the associated HTML template
+       Here is an example declaring an anchor link from the templated LoginPage to the SignUpPage. The first code sample
+       would go in LoginPage.java while the second would go in the LoginPage.html, the associated HTML template
        (more on templated pages in <a href="#ErraiUIPage">Errai UI</a>).
     </p>
-    <h5>LoginFormPage.java</h5>
+    <h5>LoginPage.java</h5>
     <pre class="code-snippet" data-language="java">
   @Page(role = DefaultPage.class)
   @Templated
-  public class LoginFormPage extends Composite {
+  public class LoginPage extends Composite {
 
 	@Inject
 	@DataField
@@ -150,7 +150,7 @@
 	// Some code ...
   }
     </pre>
-    <h5>LoginFormPage.html</h5>
+    <h5>LoginPage.html</h5>
     <pre class="code-snippet" data-language="html">
   &lt;div&gt;
     &lt;button id="signup"&gt;First time user? Create an account&lt;/a&gt;
@@ -161,7 +161,7 @@
 
     <p>Sometimes it is necessary to manually transition between pages (such as in response to an event being fired). To
        declare a manual link from one page to another, inject an instance of <code>TransitionTo&lt;P&gt;</code>, where P
-       is the class of the target page. This code declares a manual link from the SignUpPage to the LoginFormPage:</p>
+       is the class of the target page. This code declares a manual link from the SignUpPage to the LoginPage:</p>
 
     <h5>SignUpPage.java</h5>
     <pre class="code-snippet" data-language="java">
@@ -169,7 +169,7 @@
   public class SignUpPage extends Composite {
 
     @Inject
-    TransitionTo&lt;LoginFormPage&gt; goToLogin;
+    TransitionTo&lt;LoginPage&gt; goToLogin;
 
     @Inject
     @DataField

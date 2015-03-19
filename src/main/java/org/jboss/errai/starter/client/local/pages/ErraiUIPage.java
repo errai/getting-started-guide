@@ -1,8 +1,8 @@
 package org.jboss.errai.starter.client.local.pages;
 
 import javax.inject.Inject;
-import org.jboss.errai.starter.client.local.demos.LoginForm;
-import org.jboss.errai.starter.client.local.demos.LoginFormWithEvents;
+import org.jboss.errai.starter.client.local.demos.LoginPage;
+import org.jboss.errai.starter.client.local.demos.LoginPageWithEvents;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.nav.client.local.TransitionAnchor;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
@@ -17,10 +17,10 @@ public class ErraiUIPage extends AbstractErraiModulePage {
 
   @Inject
   @DataField
-  TransitionAnchor<LoginForm> loginFormAnchor;
+  TransitionAnchor<LoginPage> loginFormAnchor;
 
   @Inject
   @DataField
-  TransitionAnchor<LoginFormWithEvents> loginFormEventsAnchor;
+  TransitionAnchor<LoginPageWithEvents> loginFormEventsAnchor;
 
 }

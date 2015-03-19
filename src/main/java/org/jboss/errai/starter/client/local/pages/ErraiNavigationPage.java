@@ -2,8 +2,8 @@ package org.jboss.errai.starter.client.local.pages;
 
 import javax.inject.Inject;
 import org.jboss.errai.starter.client.local.NavigationModule;
-import org.jboss.errai.starter.client.local.demos.LoginFormPage;
-import org.jboss.errai.starter.client.local.demos.SignUpPageSubmit;
+import org.jboss.errai.starter.client.local.demos.LoginPageWithTransition;
+import org.jboss.errai.starter.client.local.demos.SignUpPageWithPageState;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.nav.client.local.TransitionTo;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
@@ -20,10 +20,10 @@ import com.google.gwt.user.client.ui.Button;
 public class ErraiNavigationPage extends AbstractErraiModulePage {
 
     @Inject
-    TransitionTo<LoginFormPage> transitionDemo;
+    TransitionTo<LoginPageWithTransition> transitionDemo;
 
     @Inject
-    TransitionTo<SignUpPageSubmit> pageStateDemo;
+    TransitionTo<SignUpPageWithPageState> pageStateDemo;
 
     @Inject
     @DataField

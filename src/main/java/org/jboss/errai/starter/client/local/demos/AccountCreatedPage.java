@@ -12,7 +12,7 @@ import com.google.gwt.user.client.ui.HTML;
 /**
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
-@Page(path = "/demos/navigation/pagestate/AccountCreated")
+@Page
 @Templated
 public class AccountCreatedPage extends Composite {
 
