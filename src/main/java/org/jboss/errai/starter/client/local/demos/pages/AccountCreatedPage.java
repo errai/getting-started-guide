@@ -24,15 +24,19 @@ public class AccountCreatedPage extends Composite {
 
   @Inject
   @DataField
-  public HTML pageState;
+  public HTML usernm;
+
+  @Inject
+  @DataField
+  public HTML emailId;
 
   @PageShown
   public void fillCredentials() {
+    if (username != null && !username.equals("")) {
+      usernm.setText(username);
+    }
 
-    String registered = new String("Thank you for registering with us! Your account was successfully created with the"
-                                     + " username "
-                                     +
-                                     username + " and the email address " + email + ".");
-    pageState.setText(registered);
+    if (email != null && !email.equals(""))
+    emailId.setHTML(email);
   }
 }
