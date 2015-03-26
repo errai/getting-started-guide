@@ -8,7 +8,7 @@
   <packaging>war</packaging>
   <properties>
     <errai.jboss.home>/home/ddadlani/wildfly/wildfly-8.2.0.Final</errai.jboss.home>
-    <errai.version>3.1.1.Final</errai.version>
+    <errai.version>3.2.0-SNAPSHOT</errai.version>
     <gwt.version>2.7.0</gwt.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
@@ -162,7 +162,7 @@
                   <type>zip</type>
                   <overWrite>false</overWrite>
                   <outputDirectory>${project.build.directory}</outputDirectory>
-                  <version>8.1.0.Final</version>
+                  <version>8.2.0.Final</version>
                 </artifactItem>
               </artifactItems>
             </configuration>
