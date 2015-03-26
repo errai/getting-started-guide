@@ -8,13 +8,28 @@ import org.jboss.errai.databinding.client.api.Bindable;
 @Bindable
 public class User {
 
-  private static int nextUserId;
+//  public static int nextUserId = 1;
 
   private String username;
 
   private String email;
 
-  private int userId;
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  private String password;
+
+//  private int userId;
+
+  public User() {
+//    setUserId(nextUserId);
+//    nextUserId++;
+  }
 
   public String getUsername() {
     return username;
@@ -32,11 +47,11 @@ public class User {
     this.email = email;
   }
 
-  public int getUserId() {
-    return userId;
-  }
-
-  public void setUserId(int userId) {
-    this.userId = userId;
-  }
+//  public int getUserId() {
+//    return userId;
+//  }
+//
+//  public void setUserId(int userId) {
+//    this.userId = userId;
+//  }
 }
