@@ -193,3 +193,7 @@ form {
 ol li {
     margin-bottom: 10px;
 }
+
+#infoDisplay {
+    padding-top: 16px;
+}
