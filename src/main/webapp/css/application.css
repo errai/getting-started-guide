@@ -67,7 +67,7 @@ ul {
 }
 
 a.list-group-item {
-    border-radius: 0px !important;
+    border-radius: 0 !important;
     color: #f5f5f5;
 }
 

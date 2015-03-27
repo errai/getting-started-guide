@@ -74,9 +74,9 @@
             </li>
             <li>
                 Inject the model object or the corresponding DataBinder instance into the Widget class. To inject a
-                model object, annotate the instance with <code>@Model</code>. If you prefer to use a DataBinder&lt;M&gt;,
+                model object, annotate the instance with <code>@Model</code>. If you prefer to use a <code>DataBinder&lt;M&gt;</code>,
                 ensure that the DataBinder is of type Model, and is annotated with <code>@AutoBound</code>. Injecting a
-                Model class automatically uses a DataBinder.
+                Model class automatically creates and uses a DataBinder.
             </li>
             <li>
                 To bind a field in the Widget class to a property in the Model class, the field name must match the
@@ -87,6 +87,48 @@
 
         <p>
             The example below shows how to create a User with the SignUpForm widget using databinding:
+        </p>
+        <h5>SignUpForm.java</h5>
+        <pre class="code-snippet" data-language="java">
+    @Templated
+    public class SignUpForm extends Composite {
+    
+      @Inject
+      @AutoBound
+      private DataBinder&lt;User&gt; userBinder;
+    
+      @Inject
+      @DataField
+      @Bound
+      public TextBox username;
+    
+      @Inject
+      @DataField
+      @Bound
+      public TextBox password;
+    
+      @Inject
+      @DataField
+      @Bound
+      public TextBox email;
+    
+      @Inject
+      @DataField
+      public Button cancel;
+
+      // Value changes must fire events for the DataBinder to update the model
+      @EventHandler("cancel")
+      public void cancel(ClickEvent e) {
+        username.setValue("", true);
+        password.setValue("", true);
+        email.setValue("", true);
+      }
+    }
+        </pre>
+
+        <p>To access the data stored in the User model in the above example, you can call
+            <code>userBinder.getModel()</code> which returns a bean of type User containing all the correct entered user
+            data.
         </p>
         <div class="tip textblock">
             <p>
@@ -114,30 +156,32 @@
         </div>
 
         <h3>Simple and Chained Property Bindings</h3>
+
         <p>
-            By default, bindings are determined based on matching property and field names in the Model and the
-            Widget. However, it is possible to create bindings where the Model's property and the Widget's field names
-            do not match. For this purpose, the <code>@Bound</code> annotation takes an optional String parameter; to
-            specify the name of a property in the Model, or to specify a chained property in the Model, to which the
-            Widget's field must be bound.
+            By default, bindings are determined based on matching property and field names in the Model and the Widget.
+            However, it is possible to create bindings where the Model's property and the Widget's field names do not
+            match. For this purpose, the <code>@Bound</code> annotation takes an optional String parameter; to specify
+            the name of a property in the Model, or to specify a chained property in the Model, to which the Widget's
+            field must be bound.
         </p>
 
         <h4>Specifying Property Names</h4>
+
         <p>
-            To bind a Widget's field to a particular property in the Model, simply pass in the name of the property
-            as a String parameter to the <code>@Bound</code> annotation. In our example, if the <code>Username</code> field in the SignUpForm is to be bound
-            to the <code>name</code> property of the User, the <code>Username</code> textbox should be annotated with
-            <code>@Bound("name")</code>.
+            To bind a Widget's field to a particular property in the Model, simply pass in the name of the property as a
+            String parameter to the <code>@Bound</code> annotation. In our example, if the <code>Username</code> field
+            in the SignUpForm is to be bound to the <code>name</code> property of the User, the <code>Username</code>
+            textbox should be annotated with <code>@Bound("name")</code>.
         </p>
 
         <h4>Using Chained Bindings</h4>
+
         <p>
             In some cases, the Model class itself may contain another Model to store some data. For example, the User
             class may contain a BirthDate property, which contains integers to store the date, month, and year of the
             user's birthdate. In this case, the <code>Month</code> textbox is to be bound to the <code>month</code>
             property by using the following annotation on the <code>Month</code> textbox: <code>@Bound("birthDate.month")</code>.
         </p>
-        <h3>Converters</h3>
 
 
         <!-- Footer navigation buttons -->
@@ -147,8 +191,7 @@
             </button>
             <!--Uncomment button when there is a "Next" page for Errai Databinding -->
             <!--<button id="nextButton" class="btn btn-large btn-success pull-right nav-button">-->
-                <!--Next <span class="glyphicon glyphicon-arrow-right"></span>-->
-            <!--</button>-->
+            <!--Next <span class="glyphicon glyphicon-arrow-right"></span>--><!--</button>-->
         </div>
     </div>
 </div>
