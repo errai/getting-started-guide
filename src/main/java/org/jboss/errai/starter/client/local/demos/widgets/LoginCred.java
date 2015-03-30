@@ -8,6 +8,10 @@ import org.jboss.errai.databinding.client.api.Bindable;
 @Bindable
 public class LoginCred {
 
+  private String username;
+
+  private String name;
+
   public String getUsername() {
     return username;
   }
@@ -16,15 +20,11 @@ public class LoginCred {
     this.username = username;
   }
 
-  public String getPassword() {
-    return password;
+  public String getName() {
+    return name;
   }
 
-  public void setPassword(String password) {
-    this.password = password;
+  public void setName(String name) {
+    this.name = name;
   }
-
-  private String username;
-
-  private String password;
 }

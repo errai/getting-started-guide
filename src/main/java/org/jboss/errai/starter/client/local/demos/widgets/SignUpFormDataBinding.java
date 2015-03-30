@@ -16,7 +16,7 @@ import com.google.gwt.user.client.ui.TextBox;
 /**
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
-@Templated("SignUpForm.html")
+@Templated("SignUpFormWithName.html")
 public class SignUpFormDataBinding extends Composite implements HasModel<User> {
 
   @Inject
@@ -31,7 +31,7 @@ public class SignUpFormDataBinding extends Composite implements HasModel<User> {
   @Inject
   @DataField
   @Bound
-  public TextBox password;
+  public TextBox name;
 
   @Inject
   @DataField
@@ -46,7 +46,7 @@ public class SignUpFormDataBinding extends Composite implements HasModel<User> {
   @EventHandler("cancel")
   public void cancel(ClickEvent e) {
     username.setValue("", true);
-    password.setValue("", true);
+    name.setValue("", true);
     email.setValue("", true);
   }
 

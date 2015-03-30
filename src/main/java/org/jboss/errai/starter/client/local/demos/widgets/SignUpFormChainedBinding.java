@@ -16,7 +16,7 @@ import com.google.gwt.user.client.ui.TextBox;
 /**
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
-@Templated("SignUpForm.html")
+@Templated("SignUpFormWithName.html")
 public class SignUpFormChainedBinding extends Composite implements HasModel<UserWithLoginCred> {
 
   @Inject
@@ -30,8 +30,8 @@ public class SignUpFormChainedBinding extends Composite implements HasModel<User
 
   @Inject
   @DataField
-  @Bound(property = "loginCred.password")
-  public TextBox password;
+  @Bound(property = "loginCred.name")
+  public TextBox name;
 
   @Inject
   @DataField
@@ -46,7 +46,7 @@ public class SignUpFormChainedBinding extends Composite implements HasModel<User
   @EventHandler("cancel")
   public void cancel(ClickEvent e) {
     username.setValue("", true);
-    password.setValue("", true);
+    name.setValue("", true);
     email.setValue("", true);
   }
 
