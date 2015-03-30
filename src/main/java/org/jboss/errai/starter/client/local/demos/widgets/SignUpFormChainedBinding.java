@@ -25,12 +25,12 @@ public class SignUpFormChainedBinding extends Composite implements HasModel<User
 
   @Inject
   @DataField
-  @Bound("loginCred.username")
+  @Bound(property = "loginCred.username")
   public TextBox username;
 
   @Inject
   @DataField
-  @Bound("loginCred.password")
+  @Bound(property = "loginCred.password")
   public TextBox password;
 
   @Inject
