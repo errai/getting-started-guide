@@ -1,22 +1,100 @@
 <div id="ErraiCDIPage">
-  <div class="title"><h1>Introduction to Errai CDI and IOC</h1></div>
-  <div class="page">
-      <h2>Introduction</h2>
-      All of Errai's features are built around Errai's core modules, Errai CDI and Errai IOC. The Errai IOC module
-      implements the <i>JSR-330 Dependency Injection</i> specification, whereas the Errai CDI module
-      <h2>Errai IOC</h2>
+    <div class="title"><h1>Introduction to Errai CDI and IOC</h1></div>
+    <div class="page">
+        <h2>Introduction</h2>
+
+        <p>
+            All of Errai's features are built around Errai's core modules, Errai CDI and Errai IOC. The Errai IOC module
+            implements the <i>JSR-330 Dependency Injection</i> specification, whereas the Errai CDI module implements
+            <i>JSR-299</i> to handle dependency injection. This section will provide some basic information on how to
+            use these modules, as they are used by all of Errai's features.
+        </p>
+
+        <h2>Installation Instructions</h2>
+
+        <p>
+            Note that if you are using Errai Tutorial to follow along, you can skip these installation steps as all of
+            Errai's modules are already installed for you.
+        </p>
+
+        <h3>Errai Forge Addon</h3>
+
+        <p>
+            To use Errai CDI and IOC, use the Errai Forge Addon to add the <i>Errai CDI</i> feature to your project.
+        </p>
+
+        <h3>Manual Installation</h3>
+
+        <p>
+            If you are not using the Errai Forge Addon, add the following dependencies to your project.
+        </p>
+
+        <h4>Maven Dependencies</h4>
+
+        <p>Add the following dependencies to your pom.xml</p>
+      <pre class="code-snippet" data-language="html">
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.jboss.errai&lt;/groupId&gt;
+      &lt;artifactId&gt;errai-javaee-all&lt;/artifactId&gt;
+      &lt;version&gt;${errai.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+      </pre>
+
+        <h4>GWT Module Descriptor</h4>
+        <p>Once you have Errai CDI and IOC on your classpath, ensure your application inherits the GWT modules as well. Add
+        these lines to your application’s *.gwt.xml file:
+        </p>
+		<pre data-language=html class="code-snippet">
+    &lt;inherits name="org.jboss.errai.ioc.Container"/&gt;
+    &lt;inherits name="org.jboss.errai.enterprise.CDI"/&gt;
+		</pre>
+
+        <p class="tip textblock">TIP: In our example, the GWT module file is located at <code>src/main/java/org/jboss/errai/demo/ErraiDemo.gwt.xml</code>
+        </p>
+
+        <p class="tip textblock">NOTE: Any classpath locations that are to be scanned by Errai CDI must have a file
+            called <code>ErraiApp.properties</code> at their root. Without this file, none of Errai CDI's features will
+            work.
+        </p>
+
+        <h2>Using Errai CDI and IOC</h2>
+        <p>
+            Errai CDI and IOC use various annotations within your code to provide functionality and eliminate
+            unnecessary code. This section will highlight and explain the most common ones. For detailed
+            information regarding the supported annotations, please refer to the documentation of <a
+        href="http://docs.jboss.org/errai/3.1.2.Final/errai/reference/html_single/#sid-5931402">Errai IOC</a> and <a
+        href="http://docs.jboss.org/errai/3.1.2.Final/errai/reference/html_single/#sid-19398999">Errai CDI</a>.
+        </p>
+
+        <h3>Scopes</h3>
+
+        <p>
+            The Errai IOC container supports three major scopes: <code>@Dependent, @Singleton</code> and <code>@EntryPoint</code>.
+            The <code>@Singleton</code> and <code>@EntryPoint</code> scopes are semantically the same. They are used to
+            indicate that only one instance of this bean is used throughout the app. You can also use the <code>@ApplicationScoped</code>
+            annotation on your bean to achieve the same effect.
+        </p>
+        <p>
+            The Dependent scope is the default scope assigned to all unqualified client types. This means that a new
+            bean of this type is created for every different instantiation within the code, and is not shared across
+            objects.
+        </p>
+        <h4>@Inject</h4>
+        <p>
+            <code>@Inject</code> is the most commonly used annotation in Errai IOC. It can be used to annotate fields in a Java class,
+            which will then automatically be "injected" into the class without the need for manual instantation.
+        </p>
 
 
 
-      <div id="footer" class="row">
-          <button id="backButton" class="btn btn-large btn-primary pull-left nav-button">
-              <span class="glyphicon glyphicon-arrow-left"></span>
-              Go Back
-          </button>
-          <button id="nextButton" class="btn btn-large btn-success pull-right nav-button">
-              Next
-              <span class="glyphicon glyphicon-arrow-right"></span>
-          </button>
-      </div>
-  </div>
+
+        <div id="footer" class="row">
+            <button id="backButton" class="btn btn-large btn-primary pull-left nav-button">
+                <span class="glyphicon glyphicon-arrow-left"></span> Go Back
+            </button>
+            <button id="nextButton" class="btn btn-large btn-success pull-right nav-button">
+                Next <span class="glyphicon glyphicon-arrow-right"></span>
+            </button>
+        </div>
+    </div>
 </div>
