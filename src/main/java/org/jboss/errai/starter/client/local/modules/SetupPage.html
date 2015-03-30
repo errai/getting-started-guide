@@ -20,6 +20,10 @@
 			as an example to explore Errai's functionality and as a base upon which to build your own more complex web app. The
 			Errai Tutorial can be downloaded from the GitHub repository <a href="https://github.com/errai/errai-tutorial">here</a>.
 		</p>
+		<p class="tip textblock">
+			NOTE: If you pick this option, you do not need to perform any of the installation steps described in the
+			modules to follow. Errai Tutorial comes with all of Errai's modules installed.
+		</p>
 
 		<h3>Option 2: Create a new app with JBoss Forge</h3>
 
@@ -51,19 +55,19 @@
 
 		<h5>App.java</h5>
 		<pre class="code-snippet" data-language="java">
-	  package org.jboss.errai.demo.client.local;
+  package org.jboss.errai.demo.client.local;
 
-	  import javax.annotation.PostConstruct;
-	  import org.jboss.errai.ioc.client.api.EntryPoint;
-	  import com.google.gwt.user.client.Window;
+  import javax.annotation.PostConstruct;
+  import org.jboss.errai.ioc.client.api.EntryPoint;
+  import com.google.gwt.user.client.Window;
 
-	  @EntryPoint
-	  public class App {
-		  @PostConstruct
-		  public void onLoad() {
-			  Window.alert("Hello World!");
-		  }
-	  }
+  @EntryPoint
+  public class App {
+    @PostConstruct
+    public void onLoad() {
+	  Window.alert("Hello World!");
+    }
+  }
         </pre>
 
 		<h4>Running your app</h4>
@@ -79,15 +83,15 @@
 		<p>You should see your page load with a "Hello World!" popup alert. Congratulations! You just successfully ran
 			your first Errai app!</p>
 
-		<br />
 		<h4>Debugging your app</h4>
 
 		<p>GWT's Super Dev Mode also supports debugging via source maps. Super Dev Mode compiles Java code into JavaScript
 			to run natively in the browser. With browsers that support source maps, it is possible to debug your code directly in
 			the browser.</p>
 
-		<p>Now that you know how to run your Errai app, it's time to make it even more awesome by adding some more Errai
-			features! You can learn about them by navigating the links on the left side, or by clicking Next below.</p>
+		<p>Now that you know how to run your Errai app, it's time to learn more about Errai's features. Click Next below to
+			start with the basics. For more help with Errai setup, take a look at <a
+			href="http://docs.jboss.org/errai/3.1.2.Final/errai/reference/html_single/">Errai's documentation</a>.</p>
 
         <div id="footer" class="row">
           <button id="nextButton" class="btn btn-large btn-success pull-right nav-button">
