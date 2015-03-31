@@ -16,7 +16,7 @@ public class ErraiCDIPage extends AbstractErraiModulePage {
   @Inject
   @DataField
   public
-  TransitionAnchor<ForgeAddonPage> backButton;
+  TransitionAnchor<SetupPage> backButton;
 
   @Inject
   @DataField

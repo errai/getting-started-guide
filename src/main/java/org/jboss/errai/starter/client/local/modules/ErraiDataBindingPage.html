@@ -88,10 +88,28 @@
         <p>
             The example below shows how to create a User with the SignUpForm widget using databinding:
         </p>
+        <h5>User.java</h5>
+        <pre class="code-snippet" data-language="java">
+    @Bindable
+    public class User {
+      // This class is the Model class
+
+      private String username;
+
+      private String name;
+
+      private String email;
+
+      // Getter and setter methods
+
+    }
+        </pre>
+
         <h5>SignUpForm.java</h5>
         <pre class="code-snippet" data-language="java">
     @Templated
     public class SignUpForm extends Composite {
+      // This is the Widget class
 
       // Inject a databinder of type User to automatically create and
       // use a User model object
@@ -184,7 +202,7 @@
 
         <p>
             In some cases, the Model class itself may contain another Model to store some data. For example, the User
-            class may contain a LoginCredentials property, which contains Strings to store the user's login info. In
+            class may contain a property of type LoginCred, which contains Strings to store the user's login info. In
             this case, the <code>Username</code> textbox is to be bound to the <code>username</code> property by using
             the following annotation on the <code>Username</code> textbox: <code>@Bound(property =
             "loginCred.username")</code>. The following example illustrates how to use chained bindings:

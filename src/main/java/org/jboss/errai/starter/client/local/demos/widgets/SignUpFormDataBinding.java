@@ -47,9 +47,14 @@ public class SignUpFormDataBinding extends Composite implements HasModel<User> {
   @DataField
   public Button signin;
 
+  @Inject
+  @DataField
+  public Button submit;
+
   @PostConstruct
   public void onLoad() {
     signin.setEnabled(false);
+    submit.setEnabled(false);
   }
 
   // Value changes must fire events for the DataBinder to update the model

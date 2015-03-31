@@ -253,7 +253,7 @@
         <p>Navigating to the AccountCreatedPage when userID = 2300 and username = abcd  will result in the following URL being
         generated:</p>
 
-        <code class="textblock">http://www.webapp.com/appcontext/index.html#AccountCreatedPage/2300/abcd/</code>
+        <code class="textblock">http://www.webapp.com/appcontext/index.html#<b>AccountCreatedPage/user/abcd/2300</b></code>
 
         <p class="tip textblock">NOTE: <code>@PageState</code> fields can be of any primitive or boxed primitive type
             (except char or Character), String, or a Collection, List, or Set of the allowable scalar types. Nested
@@ -341,11 +341,11 @@
 
         <p>Errai also supports pushstate-based URLs. If HTML5 pushstate is enabled ErraiNavigation urls will not use the
         fragment-identifier (#). Thus the non-pushstate url from the previous section:</p>
-        <code class="textblock">http://www.webapp.com/appcontext/index.html#AccountCreatedPage/2300/abcd</code>
+        <code class="textblock">http://www.webapp.com/appcontext/index.html#AccountCreatedPage/user/abcd/2300</code>
 
         <p>would become</p>
 
-        <code class="textblock">http://www.webapp.com/appcontext/AccountCreatedPage/2300/abcd</code>
+        <code class="textblock">http://www.webapp.com/appcontext/user/abcd/2300</code>
 
         <p>HTML5 pushState can be enabled by adding the following lines to your GWT host page:</p>
     
