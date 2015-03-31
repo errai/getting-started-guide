@@ -22,9 +22,11 @@ public class SignUpPageWithPageState extends AbstractDemoPage {
   @PostConstruct
   public void onLoad() {
     title.setHTML("<h1>Demo: SignUp Page setting Page State</h1>");
-    info.setHTML("In this demo, the Sign Up page uses a <code>TransitionTo</code> to pass page state data (in this "
-                   + "case, the username and email address) to the AccountCreated page. <br /><br /> As before, the "
-                   + "\"Sign In\" button takes you to the LoginPage; and the \"Cancel\" button clears all fields.");
+    info.setHTML("<p>In this demo, the Sign Up page uses a <code>TransitionTo</code> to pass page state data (in this "
+                   + "case, the username and email address) to the AccountCreated page.</p>"
+                   + "<p>Once you fill in the fields, you can click \"Create Account\" and the "
+                   + "<code>TransitionTo</code> will take you to the AccountCreated page, displaying the "
+                   + "information you entered.</p>");
   }
 
 }

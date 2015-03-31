@@ -1,5 +1,6 @@
 package org.jboss.errai.starter.client.local.demos.widgets;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import org.jboss.errai.starter.client.local.demos.pages.AccountCreatedPage;
 import org.jboss.errai.starter.client.local.demos.pages.LoginPageWithTransition;
@@ -45,9 +46,10 @@ public class SignUpFormPageState extends Composite {
   @DataField
   public Button submit;
 
-  // Clicking "Already have an account" takes you to the login page
-  @Inject
-  TransitionTo<LoginPageWithTransition> goToLogin;
+  @PostConstruct
+  public void onLoad() {
+    signin.setEnabled(false);
+  }
 
   // Clicking "Create Account" takes you to the account created page
   @Inject
@@ -58,11 +60,6 @@ public class SignUpFormPageState extends Composite {
     username.setText("");
     password.setText("");
     email.setText("");
-  }
-
-  @EventHandler("signin")
-  public void goToLoginPage(ClickEvent e) {
-    goToLogin.go();
   }
 
   @EventHandler("submit")

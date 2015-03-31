@@ -1,5 +1,6 @@
 package org.jboss.errai.starter.client.local.demos.widgets;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import org.jboss.errai.starter.client.local.demos.pages.LoginPageWithTransition;
 import org.jboss.errai.ui.nav.client.local.TransitionTo;
@@ -39,7 +40,16 @@ public class SignUpFormTransition extends Composite {
   public Button signin;
 
   @Inject
+  @DataField
+  public Button submit;
+
+  @Inject
   TransitionTo<LoginPageWithTransition> goToLogin;
+
+  @PostConstruct
+  public void onLoad(){
+    submit.setEnabled(false);
+  }
 
   @EventHandler("cancel")
   public void cancel(ClickEvent e) {

@@ -1,5 +1,6 @@
 package org.jboss.errai.starter.client.local.demos.widgets;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import org.jboss.errai.databinding.client.api.DataBinder;
 import org.jboss.errai.ui.client.widget.HasModel;
@@ -41,6 +42,15 @@ public class SignUpFormChainedBinding extends Composite implements HasModel<User
   @Inject
   @DataField
   public Button cancel;
+
+  @Inject
+  @DataField
+  public Button signin;
+
+  @PostConstruct
+  public void onLoad() {
+    signin.setEnabled(false);
+  }
 
   // Value changes must fire events for the DataBinder to update the model
   @EventHandler("cancel")

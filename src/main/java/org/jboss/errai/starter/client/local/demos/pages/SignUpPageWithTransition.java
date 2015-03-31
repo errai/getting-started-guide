@@ -25,8 +25,7 @@ public class SignUpPageWithTransition extends AbstractDemoPage {
     setInfo("This is the SignUp page, that navigates to the LoginPage using a <code>TransitionTo&lt;LoginPage&gt;"
               + "</code>.<br/> <br/> If you click on "
               + "the \"Sign in here\" button below, it will trigger a call to <code>TransitionTo.go()"
-              + "</code>, taking you back to the LoginPage. In addition, the Cancel button clears the "
-              + "fields, whereas the \"Create Account\" button currently does nothing.");
+              + "</code>, taking you back to the LoginPage.");
   }
 
 }

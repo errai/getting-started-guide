@@ -1,5 +1,6 @@
 package org.jboss.errai.starter.client.local.demos.widgets;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.EventHandler;
@@ -37,6 +38,15 @@ public class LoginFormEvents extends Composite {
   @Inject
   @DataField
   public Button login;
+
+  @Inject
+  @DataField
+  public Button signup;
+
+  @PostConstruct
+  public void onLoad() {
+    signup.setEnabled(false);
+  }
 
   public String getUsername() {
     return username.getText();
