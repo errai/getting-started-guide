@@ -6,7 +6,7 @@
         <p>
             All of Errai's features are built around Errai's core modules, Errai CDI and Errai IOC. The Errai IOC module
             implements the <i>JSR-330 Dependency Injection</i> specification, whereas the Errai CDI module implements
-            <i>JSR-299</i> to handle dependency injection. This section will provide some basic information on how to
+            <i>JSR-299 Contexts and Dependency Injection</i>. This section will provide some basic information on how to
             use these modules, as they are used by all of Errai's features.
         </p>
 
@@ -69,25 +69,63 @@
         <h3>Scopes</h3>
 
         <p>
-            The Errai IOC container supports three major scopes: <code>@Dependent, @Singleton</code> and <code>@EntryPoint</code>.
-            The <code>@Singleton</code> and <code>@EntryPoint</code> scopes are semantically the same. They are used to
-            indicate that only one instance of this bean is used throughout the app. You can also use the <code>@ApplicationScoped</code>
-            annotation on your bean to achieve the same effect.
+            The Errai IOC container supports three major scopes: <code><b>@Dependent, @Singleton</b></code> and
+            <code><b> @EntryPoint</b></code>. The <code><b>@Singleton</b></code> and <code><b>@EntryPoint</b></code>
+            scopes are semantically the same. They are used to indicate that only one instance of this bean is used
+            throughout the app. You can also use the <code> <b>@ApplicationScoped</b></code> annotation on your bean
+            to achieve the same effect.
         </p>
         <p>
             The Dependent scope is the default scope assigned to all unqualified client types. This means that a new
             bean of this type is created for every different instantiation within the code, and is not shared across
             objects.
         </p>
-        <h4>@Inject</h4>
+        <h3>Other important annotations</h3>
+
+        <h4>Inject</h4>
         <p>
-            <code>@Inject</code> is the most commonly used annotation in Errai IOC. It can be used to annotate fields in a Java class,
-            which will then automatically be "injected" into the class without the need for manual instantation.
+            <code><b>@Inject</b></code> is the most commonly used annotation in Errai IOC. It can be used to annotate
+            fields in a Java class, which will then automatically be "injected" into the class without the need for
+            manual instantation. The example below describes how to use this annotation:
         </p>
 
+        <h5>LoginForm.java</h5>
+        <pre class="code-snippet" data-language="java">
+    public class LoginForm extends Composite{
 
+      // A username textbox is now available for use without any further setup
+      @Inject
+      public TextBox username;
 
+    }
+        </pre>
 
+        <h4>PostConstruct</h4>
+        <p>
+            Often you may need to complete some initialization steps on a widget before it is displayed. In this case,
+            you can make use of the <code><b>@PostConstruct</b></code> annotation on your setup method. The method will
+            then be invoked immediately after dependency injection and before the bean is put into service.
+        </p>
+        <h5>LoginForm.java</h5>
+        <pre class="code-snippet" data-language="java">
+    public class LoginForm extends Composite {
+
+      @Inject
+      public TextBox username;
+
+      // Some code
+
+      // Invoked just after injection for setup purposes
+      @PostConstruct
+      public void onLoad() {
+        username.setMaxLength(length);
+      }
+    }
+        </pre>
+        <p>
+            Now that you have been introduced to the basics, click on the Next button below to learn how to build
+            widgets with Errai UI.
+        </p>
         <div id="footer" class="row">
             <button id="backButton" class="btn btn-large btn-primary pull-left nav-button">
                 <span class="glyphicon glyphicon-arrow-left"></span> Go Back
