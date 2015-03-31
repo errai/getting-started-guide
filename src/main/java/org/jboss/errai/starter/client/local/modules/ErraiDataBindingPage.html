@@ -92,7 +92,9 @@
         <pre class="code-snippet" data-language="java">
     @Templated
     public class SignUpForm extends Composite {
-    
+
+      // Inject a databinder of type User to automatically create and
+      // use a User model object
       @Inject
       @AutoBound
       private DataBinder&lt;User&gt; userBinder;
@@ -116,9 +118,9 @@
       @DataField
       public Button cancel;
 
-      // Value changes must fire events for the DataBinder to update the model
       @EventHandler("cancel")
       public void cancel(ClickEvent e) {
+      // Value changes must fire events for the DataBinder to update the model
         username.setValue("", true);
         password.setValue("", true);
         email.setValue("", true);
@@ -128,8 +130,11 @@
 
         <p>To access the data stored in the User model in the above example, you can call
             <code>userBinder.getModel()</code> which returns a bean of type User containing all the correct entered user
-            data.
+            data. Click the button below to view the databinding demo:
         </p>
+
+        <button id="dataBindingDemoButton" class="btn btn-success">Go to Data Binding demo</button>
+
         <div class="tip textblock">
             <p>
                 NOTE: The previous example creates a <code>DataBinder</code> using field injection. There are a few
@@ -171,19 +176,103 @@
             To bind a Widget's field to a particular property in the Model, simply pass in the name of the property as a
             String parameter to the <code>@Bound</code> annotation. In our example, if the <code>Username</code> field
             in the SignUpForm is to be bound to the <code>name</code> property of the User, the <code>Username</code>
-            textbox should be annotated with <code>@Bound("name")</code>.
+            textbox should be annotated with <code>@Bound(property = "name")</code>.
         </p>
 
         <h4>Using Chained Bindings</h4>
 
         <p>
             In some cases, the Model class itself may contain another Model to store some data. For example, the User
-            class may contain a BirthDate property, which contains integers to store the date, month, and year of the
-            user's birthdate. In this case, the <code>Month</code> textbox is to be bound to the <code>month</code>
-            property by using the following annotation on the <code>Month</code> textbox: <code>@Bound("birthDate.month")</code>.
+            class may contain a LoginCredentials property, which contains Strings to store the user's login info. In
+            this case, the <code>Username</code> textbox is to be bound to the <code>username</code> property by using
+            the following annotation on the <code>Username</code> textbox: <code>@Bound(property =
+            "loginCred.username")</code>. The following example illustrates how to use chained bindings:
         </p>
 
+        <h5>LoginCred.java</h5>
+        <pre class="code-snippet" data-language="java">
+    // Note the @Bindable annotation on the chained model class
+    @Bindable
+    public class LoginCred {
 
+      private String username;
+
+      private String name;
+
+      // Getters and setters
+    }
+        </pre>
+
+        <h5>User.java</h5>
+        <pre class="code-snippet" data-language="java">
+    @Bindable
+    public class UserWithLoginCred {
+
+      // An instance of LoginCred as shown above
+      private LoginCred loginCred;
+
+      // Other fields
+      private String email;
+
+      // Getters and setters
+
+    }
+        </pre>
+
+        <h5>SignUpForm.java</h5>
+        <pre class="code-snippet" data-language="java">
+    @Templated
+    public class SignUpForm extends Composite {
+
+      @Inject
+      @AutoBound
+      // Databinder generates model of type UserWithLoginCred
+      private DataBinder&lt;UserWithLoginCred&gt; userBinder;
+
+      @Inject
+      @DataField
+      @Bound(property = "loginCred.username")  // bound to the model's loginCred.username property
+      public TextBox username;
+
+      @Inject
+      @DataField
+      @Bound(property = "loginCred.name")   // bound to the model's loginCred.name property
+      public TextBox name;
+
+      // Other code
+
+      // Value changes must fire events for the DataBinder to update the model
+      @EventHandler("cancel")
+      public void cancel(ClickEvent e) {
+        // Widget value changes automatically trigger changes in the chained bound properties
+        username.setValue("", true);
+        name.setValue("", true);
+          ...
+      }
+
+    }
+        </pre>
+
+        <p>
+            Using this code, the LoginCred's properties will be automatically kept in sync with the UI input fields.
+            To see the chained databinding in action, view the following demo:
+        </p>
+
+        <button id="chainedDBDemoButton" class="btn btn-success">Go to Chained Data Binding Demo</button>
+
+        <h2>More Information</h2>
+        <p>
+            This guide is intended to showcase the basic features of Errai databinding. For a more thorough
+            explanation of all of Errai Databinding's features, please refer to the <a
+        href="http://docs.jboss.org/errai/3.1.2.Final/errai/reference/html_single/#sid-51282340">Errai Reference
+            Guide - Data Binding</a>.
+        </p>
+        <p class="goodbye">
+            Congratulations! You now know how to use Errai! To learn more about Errai, and advanced use of Errai's
+            features, you can look through our <a
+            href="http://docs.jboss.org/errai/3.1.2.Final/errai/reference/html_single/">reference guide</a>, or post
+            questions on the <a href="https://developer.jboss.org/en/errai">Errai forums</a>. Happy coding!
+        </p>
         <!-- Footer navigation buttons -->
         <div id="footer" class="row">
             <button id="backButton" class="btn btn-large btn-primary pull-left nav-button">

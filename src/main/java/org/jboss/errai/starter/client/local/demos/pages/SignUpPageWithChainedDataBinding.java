@@ -42,11 +42,10 @@ public class SignUpPageWithChainedDataBinding extends AbstractDemoPage {
     userDataBinder = DataBinder.forModel(signupForm.getModel());
     userDataBinder.bind(username, "loginCred.username").bind(name, "loginCred.name").bind(email, "email");
     setPageTitle("Demo: Signup Form With Data Binding");
-    setInfo("This page demonstrates the use of a <code>DataBinder&lt;User&gt;</code> to bind a model of type "
-              + "<code>User</code> to a Widget of type <code>SignUpForm</code>. The user information fields on the right"
-              + " are updated with the User instance values as they are typed. The Cancel button clears the fields but"
-              + " the other buttons are inactive."
-              + "<br /><br /> The user information fields are manually bound to the User model. "
-              + "For more information on manual databinding, refer to the Documentation link above.");
+    setInfo("<p>This page demonstrates the binding of chained data models to a user Widget. The UI widgets used in "
+              + "this "
+              + "demo are identical to the previous demo. The difference is that the Username and Name fields are "
+              + "bound to a LoginCred model which is chained to the original User model.</p>"
+              + "<p>The Cancel button clears all fields while the other buttons have no functionality.</p>");
   }
 }
