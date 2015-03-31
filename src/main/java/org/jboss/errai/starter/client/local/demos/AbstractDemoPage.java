@@ -1,6 +1,5 @@
 package org.jboss.errai.starter.client.local.demos;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import com.google.gwt.user.client.ui.Composite;

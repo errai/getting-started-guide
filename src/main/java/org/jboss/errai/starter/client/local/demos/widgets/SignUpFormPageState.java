@@ -3,7 +3,6 @@ package org.jboss.errai.starter.client.local.demos.widgets;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import org.jboss.errai.starter.client.local.demos.pages.AccountCreatedPage;
-import org.jboss.errai.starter.client.local.demos.pages.LoginPageWithTransition;
 import org.jboss.errai.ui.nav.client.local.TransitionTo;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.EventHandler;

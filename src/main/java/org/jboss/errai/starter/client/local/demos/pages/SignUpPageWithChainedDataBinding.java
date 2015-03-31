@@ -5,7 +5,6 @@ import javax.inject.Inject;
 import org.jboss.errai.databinding.client.api.DataBinder;
 import org.jboss.errai.starter.client.local.demos.AbstractDemoPage;
 import org.jboss.errai.starter.client.local.demos.widgets.SignUpFormChainedBinding;
-import org.jboss.errai.starter.client.local.demos.widgets.User;
 import org.jboss.errai.starter.client.local.demos.widgets.UserWithLoginCred;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.shared.api.annotations.DataField;

@@ -2,7 +2,6 @@ package org.jboss.errai.starter.client.local.demos.widgets;
 
 import javax.inject.Inject;
 import org.jboss.errai.starter.client.local.demos.pages.SignUpPageWithPageState;
-import org.jboss.errai.starter.client.local.demos.pages.SignUpPageWithTransition;
 import org.jboss.errai.ui.nav.client.local.TransitionAnchor;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.EventHandler;
