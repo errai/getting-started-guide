@@ -1,4 +1,0 @@
-This is a list of things needed to do for the Getting Started guide:
-
-* Update Navigation demos
-* Change page paths to /pages/PageName for module info pages and /demos/DemoName for demo pages.
