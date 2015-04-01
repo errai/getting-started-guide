@@ -1,6 +1,6 @@
 .forge_settings
 .errai
-src/main/webapp/app/
+src/main/webapp/GettingStarted/
 src/main/gwt-unitCache/
 rebel.xml
 .forge_settings

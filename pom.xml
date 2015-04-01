@@ -130,7 +130,7 @@
                 <include>src/main/webapp/WEB-INF/classes/</include>
                 <include>**/gwt-unitCache/**</include>
                 <include>.errai/</include>
-                <include>src/main/webapp/org.jboss.errai.starter.GettingStarted/</include>
+                <include>src/main/webapp/GettingStarted/</include>
               </includes>
             </fileset>
           </filesets>
