@@ -8,7 +8,7 @@ import com.google.gwt.user.client.ui.HTML;
 /**
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
-public class AbstractDemoPage extends Composite {
+public class BasicDemoPage extends Composite {
 
   @Inject
   @DataField
