@@ -2,7 +2,7 @@ package org.jboss.errai.starter.client.local.demos.pages;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import org.jboss.errai.starter.client.local.demos.AbstractDemoPage;
+import org.jboss.errai.starter.client.local.demos.BasicDemoPage;
 import org.jboss.errai.starter.client.local.demos.widgets.LoginFormPageState;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
@@ -13,7 +13,7 @@ import org.jboss.errai.ui.shared.api.annotations.Templated;
  */
 @Page
 @Templated("DemoPageTemplate.html")
-public class LoginPageForPageState extends AbstractDemoPage {
+public class LoginPageForPageState extends BasicDemoPage {
 
   @Inject
   @DataField("demoWidget")

@@ -3,7 +3,7 @@ package org.jboss.errai.starter.client.local.demos.pages;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import org.jboss.errai.databinding.client.api.DataBinder;
-import org.jboss.errai.starter.client.local.demos.AbstractDemoPage;
+import org.jboss.errai.starter.client.local.demos.BasicDemoPage;
 import org.jboss.errai.starter.client.local.demos.widgets.SignUpFormChainedBinding;
 import org.jboss.errai.starter.client.local.demos.widgets.UserWithLoginCred;
 import org.jboss.errai.ui.nav.client.local.Page;
@@ -16,7 +16,7 @@ import com.google.gwt.user.client.ui.HTML;
  */
 @Page
 @Templated("SignUpPageWithDataBinding.html")
-public class SignUpPageWithChainedDataBinding extends AbstractDemoPage {
+public class SignUpPageWithChainedDataBinding extends BasicDemoPage {
 
   @Inject
   @DataField("demoWidget")
