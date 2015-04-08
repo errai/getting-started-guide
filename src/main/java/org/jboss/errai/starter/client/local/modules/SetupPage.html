@@ -1,67 +1,70 @@
 <div id="SetupPage">
-	<div class="title">
-		<h1>Setting up your app</h1>
-	</div>
-	<div class="page">
-		<h2>Introduction</h2>
-		<p>
-			Welcome to the Errai Getting Started Guide! This guide is targeted toward users with little to no
-			previous experience with Errai. It describes and explains some of the most commonly used features of
-			Errai, using handy demos to explain every concept. In addition, the guide itself is also an Errai app!
-			This means that you can look through the source code at <a href="www.github.com/errai">Errai's Github
-			repository</a> to see how Errai's various features are used here. Without further ado, let's get started
-			with Errai!
-		</p>
+    <div class="title">
+        <h1>Setting up your app</h1>
+    </div>
+    <div class="page">
+        <h2>Introduction</h2>
 
-		<h2>Create your first app</h2>
+        <p>
+            Welcome to the Errai Getting Started Guide! This guide is targeted toward users with little to no previous
+            experience with Errai. It describes and explains some of the most commonly used features of Errai, using
+            handy demos to explain every concept. In addition, the guide itself is also an Errai app! This means that
+            you can look through the source code at <a href="www.github.com/errai">Errai's Github repository</a> to see
+            how Errai's various features are used here. Without further ado, let's get started with Errai!
+        </p>
 
-		<p>There are two ways for you to create your first Errai application. You can use our sample app, Errai Tutorial,
-			as a starting point, or you can create a barebones Errai app using JBoss Forge, that will have all the basic
-			dependencies in place for you. To get familiar with Errai, we recommend creating a new app and developing it using
-			the steps in this guide. If you prefer to learn by example, the Errai Tutorial is a better option for you. Both
-			options are explained in detail below:</p>
+        <h2>Create your first app</h2>
 
-		<h3>Option 1: Errai Tutorial</h3>
+        <p>There are two ways for you to create your first Errai application. You can use our sample app, Errai Tutorial,
+        as a starting point, or you can create a barebones Errai app using JBoss Forge, that will have all the basic
+        dependencies in place for you. To get familiar with Errai, we recommend creating a new app and developing it using
+        the steps in this guide. If you prefer to learn by example, the Errai Tutorial is a better option for you. Both
+        options are explained in detail below:</p>
 
-		<p>
-			The Errai Tutorial is a basic sample application that showcases all the major features of Errai. You can use it both
-			as an example to explore Errai's functionality and as a base upon which to build your own more complex web app. The
-			Errai Tutorial can be downloaded from the GitHub repository <a href="https://github.com/errai/errai-tutorial">here</a>.
-		</p>
-		<p class="tip textblock">
-			NOTE: If you pick this option, you do not need to perform any of the installation steps described in the
-			modules to follow. Errai Tutorial comes with all of Errai's modules installed.
-		</p>
+        <h3>Option 1: Errai Tutorial</h3>
 
-		<h3>Option 2: Create a new app with JBoss Forge</h3>
+        <p>
+            The Errai Tutorial is a basic sample application that showcases all the major features of Errai. You can use
+            it both as an example to explore Errai's functionality and as a base upon which to build your own more
+            complex web app. The Errai Tutorial can be downloaded from the GitHub repository <a
+        href="https://github.com/errai/errai-tutorial">here</a>.
+        </p>
+        <p class="tip textblock">
+            NOTE: If you pick this option, you do not need to perform any of the installation steps described in the
+            modules to follow. Errai Tutorial comes with all of Errai's modules installed.
+        </p>
 
-		<p>
-			To get you started with your first Errai app, we will use JBoss Forge and the Errai Forge Addon to create a new app
-			with the basic dependencies already in place. Instructions for downloading and using the Forge addon are on the <a
-				href="#ForgeAddonPage"> Errai Forge Addon Page</a>.
-		</p>
-		<h4>Hello World!</h4>
+        <h3>Option 2: Create a new app with JBoss Forge</h3>
 
-		<p>
-			Now that you have an empty Errai app set up with the Forge addon, you need to be able to run it. We'll first add some
-			simple code so you can see something when you run the app. <strong>Make sure you have a copy of Wildfly 8 in
-				the target/ directory of your new app for debugging purposes.</strong>
-		</p>
+        <p>
+            To get you started with your first Errai app, we will use JBoss Forge and the Errai Forge Addon to create a
+            new app with the basic dependencies already in place. Instructions for downloading and using the Forge addon
+            are on the <a
+        href="#ForgeAddonPage"> Errai Forge Addon Page</a>.
+        </p>
+        <h4>Hello World!</h4>
+
+        <p>
+            Now that you have an empty Errai app set up with the Forge addon, you need to be able to run it. We'll first
+            add some simple code so you can see something when you run the app. <strong>Make sure you have a copy of
+            Wildfly 8 in the target/ directory of your new app for debugging purposes.</strong>
+        </p>
 
 		<span class="tip textblock">TIP: Before you add the code snippet below, use the Errai Forge Addon to add <code>errai-cdi-integration</code>
 			to your project for it to run properly.
 		</span>
 
-		<p>
-			Create a new subfolder <code>client/local/</code> under the folder which contains your GWT module file (with the
-			extension .gwt.xml). In our example, the GWT module file <code>ErraiDemo.gwt.xml</code> is located in the directory <code>errai-forge-demo/src/main/java/org/jboss/errai/demo/</code>.
-		</p>
+        <p>
+            Create a new subfolder <code>client/local/</code> under the folder which contains your GWT module file (with
+            the extension .gwt.xml). In our example, the GWT module file <code>ErraiDemo.gwt.xml</code> is located in
+            the directory <code>errai-forge-demo/src/main/java/org/jboss/errai/demo/</code>.
+        </p>
 
-		<p>
-			In the new <code>client/local/</code> subfolder, create a file called App.java with the following contents:
-		</p>
+        <p>
+            In the new <code>client/local/</code> subfolder, create a file called App.java with the following contents:
+        </p>
 
-		<h5>App.java</h5>
+        <h5>App.java</h5>
 		<pre class="code-snippet" data-language="java">
   package org.jboss.errai.demo.client.local;
 
@@ -78,35 +81,42 @@
   }
         </pre>
 
-		<h4>Running your app</h4>
+        <h4>Running your app</h4>
 
-		<p>
-			Errai apps run exactly like any other GWT apps. Since Errai 3.1.0.Final, <a
-				href="http://www.gwtproject.org/articles/superdevmode.html">GWT's Super Dev Mode</a> is available to run and debug
-			Errai apps. To run your app, type the following in terminal in your app's main directory:
-		</p>
+        <p>
+            Errai apps run exactly like any other GWT apps. Since Errai 3.1.0.Final, <a
+        href="http://www.gwtproject.org/articles/superdevmode.html">GWT's Super Dev Mode</a> is available to run and
+            debug Errai apps. To run your app, type the following in terminal in your app's main directory:
+        </p>
 
-		<code class="textblock">mvn clean gwt:run</code>
+        <code class="textblock">mvn clean gwt:run</code>
 
-		<p>You should see your page load with a "Hello World!" popup alert. Congratulations! You just successfully ran
-			your first Errai app!</p>
+        <p>You should see your page load with a "Hello World!" popup alert. Congratulations! You just successfully ran
+        your first Errai app!</p>
 
-		<h4>Debugging your app</h4>
+        <h4>Debugging your app</h4>
 
-		<p>GWT's Super Dev Mode also supports debugging via source maps. Super Dev Mode compiles Java code into JavaScript
-			to run natively in the browser. With browsers that support source maps, it is possible to debug your code directly in
-			the browser.</p>
+        <p>GWT's Super Dev Mode also supports debugging via source maps. Super Dev Mode compiles Java code into JavaScript
+        to run natively in the browser. With browsers that support source maps, it is possible to debug your code directly in
+        the browser.</p>
 
-		<h2>More Information</h2>
-		<p>Now that you know how to run your Errai app, it's time to learn more about Errai's features. Click Next below to
-			start with the basics. For more help with Errai setup, take a look at <a
-			href="http://docs.jboss.org/errai/latest/errai/reference/html_single/">Errai's documentation</a>.</p>
+        <p>
+            You can also debug your application from within your IDE. Refer to the <a
+        href="http://docs.jboss.org/errai/latest/errai/reference/html_single/#_running_and_debugging_in_your_ide_using_gwt_tooling">run/debug documentation</a>
+            for detailed instructions on how to debug your Errai app using Eclipse or IntelliJ IDEA Ultimate Edition.
+        </p>
+
+        <h2>More Information</h2>
+
+        <p>Now that you know how to run your Errai app, it's time to learn more about Errai's features. Click Next below
+            to start with the basics. For more help with Errai setup, take a look at <a
+            href="http://docs.jboss.org/errai/latest/errai/reference/html_single/">Errai's documentation</a>.
+        </p>
 
         <div id="footer" class="row">
-          <button id="nextButton" class="btn btn-large btn-success pull-right nav-button">
-              Next
-              <span class="glyphicon glyphicon-arrow-right"></span>
-          </button>
-      </div>
-	</div>
+            <button id="nextButton" class="btn btn-large btn-success pull-right nav-button">
+                Next <span class="glyphicon glyphicon-arrow-right"></span>
+            </button>
+        </div>
+    </div>
 </div>
