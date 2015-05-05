@@ -272,13 +272,52 @@
     }
         </pre>
 
+
         <p>
-            Using this code, the LoginCred's properties will be automatically kept in sync with the UI input fields.
-            To see the chained databinding in action, view the following demo:
+        Using this code, the LoginCred's properties will be automatically kept in sync with the UI input fields.
+        To see the chained databinding in action, view the following demo:
         </p>
 
         <button id="chainedDBDemoButton" class="btn btn-success">Go to Chained Data Binding Demo<span
-        class="glyphicon glyphicon-chevron-right"></span></button>
+            class="glyphicon glyphicon-chevron-right"></span></button>
+
+        <h4>Binding Text-Based Widgets on Key Events</h4>
+        <p>
+            Errai Data Binding binds Widgets and model properties by updating the model property when the
+            corresponding widget fires a ValueChangeEvent, as defined by GWT. For most use cases, this is
+            adequate. However, for text-based widgets, GWT only fires a ValueChangeEvent once the Widget
+            loses focus. This is not ideal, as you may require the model to be updated instantly every time the
+            text entered into the Widget is modified.
+        </p>
+        <p>
+            For this purpose, Errai also allows you to bind your text Widget on a <i>KeyUpEvent</i>. This means
+            that the model property will be updated every time the user presses a key while focused on the Widget. <b>Note
+            that this functionality is only available for Widgets that extend <a
+            href="http://www.gwtproject.org/javadoc/latest/com/google/gwt/user/client/ui/ValueBoxBase.html">ValueBoxBase</a></b>
+            (i.e. TextBox, TextArea etc).
+        </p>
+        <p>
+            To specify that your text-based Widget should be bound on KeyUpEvents, add the boolean flag
+            <code>onKeyUp = true</code> to your <code>@Bound</code> annotation. This will ensure that Errai Data
+            Binding updates the model property on KeyUpEvents fired by your widget in addition to the
+            default ValueChangeEvent. Using this flag in the previous example would change the
+            annotation on the <code>username</code> textbox in the <code>SignUpForm</code> as follows:
+        </p>
+        <h5>SignUpForm.java</h5>
+        <pre class="code-snippet" data-language="java">
+    @Inject
+    @DataField
+    @Bound(property = "loginCred.username", onKeyUp = true)
+    public TextBox username;
+        </pre>
+
+        <p>
+            Here is another demo for you to try out the <code>onKeyUp</code> feature. In contrast to the previous
+            demos, the model will be updated instantly when you type anything into the widgets. Try it for yourself:
+        </p>
+
+         <button id="keyUpDBDemoButton" class="btn btn-success">Go to KeyUpEvent Data Binding Demo<span
+            class="glyphicon glyphicon-chevron-right"></span></button>
 
         <h2>More Information</h2>
         <p>
